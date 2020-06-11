@@ -9,10 +9,10 @@ import sys
 import time
 
 
-def add_new_node(graph, label):
-    if graph.has_node(label):
+def add_new_node(graph, label, version = ""):
+    if graph.has_node(label) and version == "":
         return
-    graph.add_node(label, label=label)
+    graph.add_node(label, label=label, version=version)
 
 
 def add_new_edge(graph, u, v):
@@ -51,7 +51,7 @@ def update_results(graph, parent_info, parent_key, results, is_inbound):
 
         results[direction_tag][other_key] = peer
         add_new_node(graph, parent_key)
-        add_new_node(graph, other_key)
+        add_new_node(graph, other_key, peer["version"])
         add_new_edge(graph, other_key, parent_key)
 
     if "numTotalInboundPeers" in parent_info:
