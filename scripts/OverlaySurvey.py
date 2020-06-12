@@ -5,6 +5,7 @@ from collections import defaultdict
 import json
 import networkx as nx
 import requests
+import responses
 import sys
 import time
 
@@ -190,6 +191,19 @@ def run_survey(args):
     with open(args.surveyResult, 'w') as outfile:
         json.dump(merged_results, outfile)
 
+@responses.activate
+def run_surey_on_mock_network(args):
+    # Mock network has three nodes.
+    args.node = "http://127.0.0.1:8080"
+    args.duration = 25
+    responses.add(responses.GET, 'http://127.0.0.1:8080/stopsurvey', json={}, status=404)
+    with open('mock/peers.json') as peers_json:
+        responses.add(responses.GET, 'http://127.0.0.1:8080/peers?fullkeys=true', json=json.load(peers_json), status=404)
+    responses.add(responses.GET, 'http://127.0.0.1:8080/surveytopology?duration=25&node=GA52O3SMLSF7NI2L2Q2GG6KIOGZHAHIIRBWKOL2NWN6WUJ7U3PYDG4TS', json={}, status=404)
+    responses.add(responses.GET, 'http://127.0.0.1:8080/surveytopology?duration=25&node=GB54X4OZVHLN5J3ILF5UZBIXJSBR4M23WBQRUFFL7DDFJIZ5FKIBLP7Y', json={}, status=404)
+    with open('mock/getsurveyresult.json') as result_json:
+        responses.add(responses.GET, 'http://127.0.0.1:8080/getsurveyresult', json=json.load(result_json), status=404)
+    run_survey(args)
 
 def main():
     # construct the argument parse and parse the arguments
@@ -205,6 +219,12 @@ def main():
     parser_survey.add_argument("-gmlw", "--graphmlWrite", required=True, help="output file for graphml file")
     parser_survey.add_argument("-nl", "--nodeList", help="optional list of seed nodes")
     parser_survey.set_defaults(func=run_survey)
+
+    parser_survey = subparsers.add_parser('mocksurvey', help="run survey and analyze results on a mock network")
+    parser_survey.add_argument("-sr", "--surveyResult", required=True, help="output file for survey results")
+    parser_survey.add_argument("-gmlw", "--graphmlWrite", required=True, help="output file for graphml file")
+    parser_survey.add_argument("-nl", "--nodeList", help="optional list of seed nodes")
+    parser_survey.set_defaults(func=run_surey_on_mock_network)
 
     parser_analyze = subparsers.add_parser('analyze', help="write stats for the graphml input graph")
     parser_analyze.add_argument("-gmla", "--graphmlAnalyze", help="input graphml file")

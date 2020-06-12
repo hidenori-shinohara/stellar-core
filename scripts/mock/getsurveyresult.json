@@ -1,0 +1,48 @@
+{
+    "backlog" : null,
+        "badResponseNodes" : null,
+        "surveyInProgress" : false,
+        "topology" : {
+            "GA52O3SMLSF7NI2L2Q2GG6KIOGZHAHIIRBWKOL2NWN6WUJ7U3PYDG4TS" : {
+                "inboundPeers" : null,
+                "numTotalInboundPeers" : 0,
+                "numTotalOutboundPeers" : 2,
+                "outboundPeers" : [
+                {
+                    "bytesRead" : 7849932,
+                    "bytesWritten" : 7885236,
+                    "duplicateFetchBytesRecv" : 0,
+                    "duplicateFetchMessageRecv" : 0,
+                    "duplicateFloodBytesRecv" : 3134476,
+                    "duplicateFloodMessageRecv" : 12964,
+                    "messagesRead" : 29709,
+                    "messagesWritten" : 29822,
+                    "nodeId" : "GBX5MO2ODEI4OEZMOG6CYGX7KRI7XZAWEZM2XSETC7RODINVX5EHY3PS",
+                    "secondsConnected" : 9321,
+                    "uniqueFetchBytesRecv" : 0,
+                    "uniqueFetchMessageRecv" : 0,
+                    "uniqueFloodBytesRecv" : 3148136,
+                    "uniqueFloodMessageRecv" : 13030,
+                    "version" : "version:v13.1.0-17-g9f46f7e8-dirty id:GBX5M"
+                },
+                {
+                    "bytesRead" : 7981568,
+                    "bytesWritten" : 7988232,
+                    "duplicateFetchBytesRecv" : 0,
+                    "duplicateFetchMessageRecv" : 0,
+                    "duplicateFloodBytesRecv" : 3233440,
+                    "duplicateFloodMessageRecv" : 13383,
+                    "messagesRead" : 30174,
+                    "messagesWritten" : 30197,
+                    "nodeId" : "GB54X4OZVHLN5J3ILF5UZBIXJSBR4M23WBQRUFFL7DDFJIZ5FKIBLP7Y",
+                    "secondsConnected" : 9333,
+                    "uniqueFetchBytesRecv" : 40,
+                    "uniqueFetchMessageRecv" : 1,
+                    "uniqueFloodBytesRecv" : 3158256,
+                    "uniqueFloodMessageRecv" : 13066,
+                    "version" : "version:v13.1.0-17-g9f46f7e8-dirty id:GB54X"
+                }
+                ]
+            }
+        }
+}

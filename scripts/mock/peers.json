@@ -1,0 +1,28 @@
+{
+    "authenticated_peers" : {
+        "inbound" : [
+        {
+            "address" : "127.0.0.1:11627",
+                "elapsed" : 10148,
+                "id" : "GA52O3SMLSF7NI2L2Q2GG6KIOGZHAHIIRBWKOL2NWN6WUJ7U3PYDG4TS",
+                "latency" : 1,
+                "olver" : 13,
+                "ver" : "v13.1.0-17-g9f46f7e8-dirty"
+        }
+        ],
+        "outbound" : [
+        {
+            "address" : "127.0.0.1:11626",
+            "elapsed" : 10136,
+            "id" : "GB54X4OZVHLN5J3ILF5UZBIXJSBR4M23WBQRUFFL7DDFJIZ5FKIBLP7Y",
+            "latency" : 1,
+            "olver" : 13,
+            "ver" : "v13.1.0-17-g9f46f7e8-dirty"
+        }
+        ]
+    },
+        "pending_peers" : {
+            "inbound" : null,
+            "outbound" : null
+        }
+}

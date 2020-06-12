@@ -17,3 +17,7 @@ This folder is for storing any scripts that may be helpful for using stellar-cor
         - `-sr SURVEYRESULT`, `--surveyResult SURVEYRESULT` - output file for survey results
     - sub command `analyze` - analyze an existing graph
         - `-gmla GRAPHMLANALYZE`, `--graphmlAnalyze GRAPHMLANALYZE` - input graphml file
+- Testing
+    -  The code performs a survey on a mock network with the command `python3 OverlaySurvey.py -gs gs.json mocksurvey -sr sr.json -gmlw gmlw.graphml`.
+       This is not meant to be a comprehensive test.
+       It is there to allow faster development. (e.g., This will likely help you catch syntax errors quickly.)
