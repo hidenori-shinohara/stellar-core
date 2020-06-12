@@ -10,7 +10,7 @@ import sys
 import time
 
 
-def add_new_node(graph, label, version = ""):
+def add_new_node(graph, label, version=""):
     if graph.has_node(label) and version == "":
         return
     graph.add_node(label, label=label, version=version)
@@ -69,7 +69,8 @@ def send_requests(peer_list, params, requestUrl):
 
 def check_results(data, graph, merged_results):
     if "topology" not in data:
-        raise ValueError("stellar-core is missing survey nodes. Are the public keys surveyed valid?")
+        raise ValueError("stellar-core is missing survey nodes."
+                         "Are the public keys surveyed valid?")
 
     topology = data["topology"]
 
@@ -89,7 +90,9 @@ def check_results(data, graph, merged_results):
 
 def write_graph_stats(graph, outputFile):
     stats = {}
-    stats["average_shortest_path_length"] = nx.average_shortest_path_length(graph)
+    stats[
+        "average_shortest_path_length"
+    ] = nx.average_shortest_path_length(graph)
     stats["average_clustering"] = nx.average_clustering(graph)
     stats["clustering"] = nx.clustering(graph)
     stats["degree"] = dict(nx.degree(graph))
@@ -106,11 +109,11 @@ def analyze(args):
 def run_survey(args):
     G = nx.Graph()
     merged_results = defaultdict(lambda: {
-                    "totalInbound": 0,
-                    "totalOutbound": 0,
-                    "inboundPeers": {},
-                    "outboundPeers": {}
-                    })
+        "totalInbound": 0,
+        "totalOutbound": 0,
+        "inboundPeers": {},
+        "outboundPeers": {}
+    })
 
     URL = args.node
 
@@ -164,7 +167,7 @@ def run_survey(args):
 
         result_node_list = check_results(data, G, merged_results)
 
-        if "surveyInProgress" in data and data["surveyInProgress"] == False:
+        if "surveyInProgress" in data and data["surveyInProgress"] is False:
             break
 
         # try new nodes
@@ -175,9 +178,9 @@ def run_survey(args):
         # retry for incomplete nodes
         for key in merged_results:
             node = merged_results[key]
-            if(node["totalInbound"] > len(node["inboundPeers"])):
+            if node["totalInbound"] > len(node["inboundPeers"]):
                 peer_list.append(key)
-            if(node["totalOutbound"] > len(node["outboundPeers"])):
+            if node["totalOutbound"] > len(node["outboundPeers"]):
                 peer_list.append(key)
 
     if nx.is_empty(G):
@@ -191,43 +194,98 @@ def run_survey(args):
     with open(args.surveyResult, 'w') as outfile:
         json.dump(merged_results, outfile)
 
+
 @responses.activate
 def run_surey_on_mock_network(args):
     # Mock network has three nodes.
     args.node = "http://127.0.0.1:8080"
     args.duration = 25
-    responses.add(responses.GET, 'http://127.0.0.1:8080/stopsurvey', json={}, status=404)
-    with open('mock/peers.json') as peers_json:
-        responses.add(responses.GET, 'http://127.0.0.1:8080/peers?fullkeys=true', json=json.load(peers_json), status=404)
-    responses.add(responses.GET, 'http://127.0.0.1:8080/surveytopology?duration=25&node=GA52O3SMLSF7NI2L2Q2GG6KIOGZHAHIIRBWKOL2NWN6WUJ7U3PYDG4TS', json={}, status=404)
-    responses.add(responses.GET, 'http://127.0.0.1:8080/surveytopology?duration=25&node=GB54X4OZVHLN5J3ILF5UZBIXJSBR4M23WBQRUFFL7DDFJIZ5FKIBLP7Y', json={}, status=404)
+    responses.add(responses.GET,
+                  "http://127.0.0.1:8080/stopsurvey",
+                  json={},
+                  status=404)
+    with open("mock/peers.json") as peers_json:
+        responses.add(responses.GET,
+                      "http://127.0.0.1:8080/peers?fullkeys=true",
+                      json=json.load(peers_json),
+                      status=404)
+    responses.add(responses.GET,
+                  "http://127.0.0.1:8080/surveytopology?duration=25&"
+                  "node="
+                  "GA52O3SMLSF7NI2L2Q2GG6KIOGZHAHIIRBWKOL2NWN6WUJ7U3PYDG4TS",
+                  json={},
+                  status=404)
+    responses.add(responses.GET,
+                  "http://127.0.0.1:8080/surveytopology?duration=25&"
+                  "node="
+                  "GB54X4OZVHLN5J3ILF5UZBIXJSBR4M23WBQRUFFL7DDFJIZ5FKIBLP7Y",
+                  json={},
+                  status=404)
     with open('mock/getsurveyresult.json') as result_json:
-        responses.add(responses.GET, 'http://127.0.0.1:8080/getsurveyresult', json=json.load(result_json), status=404)
+        responses.add(responses.GET,
+                      'http://127.0.0.1:8080/getsurveyresult',
+                      json=json.load(result_json),
+                      status=404)
     run_survey(args)
+
 
 def main():
     # construct the argument parse and parse the arguments
     ap = argparse.ArgumentParser()
-    ap.add_argument("-gs", "--graphStats", required=True, help="output file for graph stats")
+    ap.add_argument("-gs",
+                    "--graphStats",
+                    required=True,
+                    help="output file for graph stats")
 
     subparsers = ap.add_subparsers()
 
-    parser_survey = subparsers.add_parser('survey', help="run survey and analyze results")
-    parser_survey.add_argument("-n", "--node", required=True, help="address of initial survey node")
-    parser_survey.add_argument("-d", "--duration", required=True, help="duration of survey in seconds")
-    parser_survey.add_argument("-sr", "--surveyResult", required=True, help="output file for survey results")
-    parser_survey.add_argument("-gmlw", "--graphmlWrite", required=True, help="output file for graphml file")
-    parser_survey.add_argument("-nl", "--nodeList", help="optional list of seed nodes")
+    parser_survey = subparsers.add_parser('survey',
+                                          help="run survey and "
+                                               "analyze results")
+    parser_survey.add_argument("-n",
+                               "--node",
+                               required=True,
+                               help="address of initial survey node")
+    parser_survey.add_argument("-d",
+                               "--duration",
+                               required=True,
+                               help="duration of survey in seconds")
+    parser_survey.add_argument("-sr",
+                               "--surveyResult",
+                               required=True,
+                               help="output file for survey results")
+    parser_survey.add_argument("-gmlw",
+                               "--graphmlWrite",
+                               required=True,
+                               help="output file for graphml file")
+    parser_survey.add_argument("-nl",
+                               "--nodeList",
+                               help="optional list of seed nodes")
     parser_survey.set_defaults(func=run_survey)
 
-    parser_survey = subparsers.add_parser('mocksurvey', help="run survey and analyze results on a mock network")
-    parser_survey.add_argument("-sr", "--surveyResult", required=True, help="output file for survey results")
-    parser_survey.add_argument("-gmlw", "--graphmlWrite", required=True, help="output file for graphml file")
-    parser_survey.add_argument("-nl", "--nodeList", help="optional list of seed nodes")
+    parser_survey = subparsers.add_parser('mocksurvey',
+                                          help="run survey and "
+                                               "analyze results "
+                                               "on a mock network")
+    parser_survey.add_argument("-sr",
+                               "--surveyResult",
+                               required=True,
+                               help="output file for survey results")
+    parser_survey.add_argument("-gmlw",
+                               "--graphmlWrite",
+                               required=True,
+                               help="output file for graphml file")
+    parser_survey.add_argument("-nl",
+                               "--nodeList",
+                               help="optional list of seed nodes")
     parser_survey.set_defaults(func=run_surey_on_mock_network)
 
-    parser_analyze = subparsers.add_parser('analyze', help="write stats for the graphml input graph")
-    parser_analyze.add_argument("-gmla", "--graphmlAnalyze", help="input graphml file")
+    parser_analyze = subparsers.add_parser('analyze',
+                                           help="write stats for "
+                                                "the graphml input graph")
+    parser_analyze.add_argument("-gmla",
+                                "--graphmlAnalyze",
+                                help="input graphml file")
     parser_analyze.set_defaults(func=analyze)
 
     args = ap.parse_args()
