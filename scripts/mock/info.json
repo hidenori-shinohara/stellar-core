@@ -1,0 +1,47 @@
+{
+   "info" : {
+      "build" : "version:v13.1.0-17-g9f46f7e8-dirty id: GA52O",
+      "history_failure_rate" : "1.0",
+      "ledger" : {
+         "age" : 5,
+         "baseFee" : 100,
+         "baseReserve" : 100000000,
+         "closeTime" : 1592008937,
+         "hash" : "dccc6812d57a2da145160dcecb3b58af69ddff57bee39c7aa01aaa7d0da63205",
+         "maxTxSetSize" : 100,
+         "num" : 104,
+         "version" : 0
+      },
+      "network" : "My local network",
+      "peers" : {
+         "authenticated_count" : 2,
+         "pending_count" : 0
+      },
+      "protocol_version" : 13,
+      "quorum" : {
+         "node" : "self",
+         "qset" : {
+            "agree" : 3,
+            "delayed" : 0,
+            "disagree" : 0,
+            "fail_at" : 1,
+            "hash" : "6fa6d2",
+            "ledger" : 103,
+            "missing" : 0,
+            "phase" : "EXTERNALIZE",
+            "validated" : true
+         },
+         "transitive" : {
+            "critical" : null,
+            "intersection" : true,
+            "last_check_ledger" : 2,
+            "node_count" : 3
+         }
+      },
+      "startedOn" : "2020-06-13T00:33:41Z",
+      "state" : "Synced!",
+      "status" : [
+         "Publishing 1 queued checkpoints [63-63]: update-archives-0000003f:getting archives"
+      ]
+   }
+}

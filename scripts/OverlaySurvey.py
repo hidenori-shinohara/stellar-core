@@ -125,6 +125,13 @@ def run_survey(args):
     duration = int(args.duration)
     PARAMS = {'duration': duration}
 
+    add_new_node(G,
+                 requests
+                 .get(URL + "/scp?limit=0&fullkeys=true")
+                 .json()
+                 ["you"],
+                 requests.get(URL + "/info").json()["info"]["build"])
+
     # reset survey
     r = requests.get(url=STOP_SURVEY)
 
@@ -208,6 +215,16 @@ def run_surey_on_mock_network(args):
         responses.add(responses.GET,
                       "http://127.0.0.1:8080/peers?fullkeys=true",
                       json=json.load(peers_json),
+                      status=404)
+    with open("mock/scp.json") as scp_json:
+        responses.add(responses.GET,
+                      "http://127.0.0.1:8080/scp?limit=0&fullkeys=true",
+                      json=json.load(scp_json),
+                      status=404)
+    with open("mock/info.json") as info_json:
+        responses.add(responses.GET,
+                      "http://127.0.0.1:8080/info",
+                      json=json.load(info_json),
                       status=404)
     responses.add(responses.GET,
                   "http://127.0.0.1:8080/surveytopology?duration=25&"
