@@ -116,6 +116,21 @@ def augment(args):
     sys.exit(0)
 
 
+def simplify(args):
+    simplified_graph = []
+    for node, attr in nx.read_graphml(args.graphmlInput).nodes(data=True):
+        # NetworkX doesn't allow dictionary properties,
+        # so we will turn them into strings.
+        dict_properties = ["geoData", "quorumSet", "statistics"]
+        for dict_property in dict_properties:
+            if attr[dict_property]:
+                attr[dict_property] = json.loads(attr[dict_property])
+        simplified_graph.append(attr)
+    with open(args.jsonOutput, 'w') as outfile:
+        json.dump(simplified_graph, outfile)
+    sys.exit(0)
+
+
 def run_survey(args):
     graph = nx.DiGraph()
     merged_results = defaultdict(lambda: {
@@ -264,6 +279,18 @@ def main():
                                 required=True,
                                 help="output file for the augmented graph")
     parser_augment.set_defaults(func=augment)
+
+    parser_simplify = subparsers.add_parser('simplify',
+                                            help="simplify the master graph "
+                                            "and output it as json file")
+    parser_simplify.add_argument("-gmli",
+                                 "--graphmlInput",
+                                 help="input master graph")
+    parser_simplify.add_argument("-json",
+                                 "--jsonOutput",
+                                 required=True,
+                                 help="output file for the simplified graph")
+    parser_simplify.set_defaults(func=simplify)
 
     args = argument_parser.parse_args()
     args.func(args)
