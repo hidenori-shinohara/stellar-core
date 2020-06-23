@@ -121,7 +121,7 @@ def augment(args):
                     val = obj[prop]
                     if type(val) is dict:
                         val = json.dumps(val)
-                    prop_dict[prop] = val
+                    prop_dict['sb_{}'.format(prop)] = val
             graph.add_node(obj["publicKey"], **prop_dict)
     nx.write_graphml(graph, args.graphmlOutput)
     sys.exit(0)
