@@ -34,9 +34,6 @@ def get_next_peers(topology):
 
 def update_results(graph, parent_info, parent_key, results, is_inbound):
     direction_tag = "inboundPeers" if is_inbound else "outboundPeers"
-    graph.add_node(parent_key,
-                   numTotalInboundPeers=parent_info["numTotalInboundPeers"],
-                   numTotalOutboundPeers=parent_info["numTotalOutboundPeers"])
     for peer in next_peer(direction_tag, parent_info):
         other_key = peer["nodeId"]
 
@@ -55,8 +52,16 @@ def update_results(graph, parent_info, parent_key, results, is_inbound):
 
     if "numTotalInboundPeers" in parent_info:
         results["totalInbound"] = parent_info["numTotalInboundPeers"]
+        graph.add_node(parent_key,
+                       numTotalInboundPeers=parent_info[
+                           "numTotalInboundPeers"
+                       ])
     if "numTotalOutboundPeers" in parent_info:
         results["totalOutbound"] = parent_info["numTotalOutboundPeers"]
+        graph.add_node(parent_key,
+                       numTotalOutboundPeers=parent_info[
+                           "numTotalOutboundPeers"
+                       ])
 
 
 def send_requests(peer_list, params, request_url):
