@@ -7,6 +7,7 @@ import networkx as nx
 import requests
 import sys
 import time
+from datetime import datetime
 
 
 def next_peer(direction_tag, node_info):
@@ -136,8 +137,8 @@ def run_survey(args):
     survey_result = url + "/getsurveyresult"
     stop_survey = url + "/stopsurvey"
 
-    duration = int(args.duration)
-    params = {'duration': duration}
+    # duration used in the surveytopology http request.
+    params = {'duration': 60}
 
     # reset survey
     requests.get(url=stop_survey)
@@ -171,8 +172,9 @@ def run_survey(args):
                    numTotalOutboundPeers=len(peers["outbound"] or []))
 
     sent_requests = set()
+    start_time = datetime.now()
 
-    while True:
+    while (datetime.now() - start_time).total_seconds() <= int(args.duration):
         send_requests(peer_list, params, survey_request)
 
         for peer in peer_list:
@@ -235,7 +237,7 @@ def main():
     parser_survey.add_argument("-d",
                                "--duration",
                                required=True,
-                               help="duration of survey in seconds")
+                               help="how long this survey runs in seconds")
     parser_survey.add_argument("-sr",
                                "--surveyResult",
                                required=True,
