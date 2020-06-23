@@ -42,6 +42,9 @@ def update_results(graph, parent_info, parent_key, results, is_inbound):
 
         results[direction_tag][other_key] = peer
         graph.add_node(other_key, version=peer["version"])
+        # Adding an edge that already exists updates the edge data,
+        # so we add everything except for nodeId and version
+        # which are properties of nodes, not edges.
         edge_properties = peer.copy()
         edge_properties.pop("nodeId", None)
         edge_properties.pop("version", None)
