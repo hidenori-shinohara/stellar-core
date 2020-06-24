@@ -234,7 +234,7 @@ def run_survey(args):
             print("Terminating surveys since {} seconds has passed"
                   .format(args.duration))
             break
-        elif num_missing > 0:
+        elif num_missing > 0 or len(data["backlog"] or []) > 0:
             print("Discovered {} nodes and {} edges, "
                   "missing at least {} edges and/or nodes"
                   .format(len(graph.nodes()), len(graph.edges()), num_missing))
