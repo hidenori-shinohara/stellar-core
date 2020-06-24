@@ -7,6 +7,7 @@ import networkx as nx
 import requests
 import sys
 import time
+from datetime import datetime
 
 
 def next_peer(direction_tag, node_info):
@@ -66,6 +67,7 @@ def update_results(graph, parent_info, parent_key, results, is_inbound):
 
 def send_requests(peer_list, params, request_url):
     for key in peer_list:
+        print("Sending a request for {}".format(key))
         params["node"] = key
         requests.get(url=request_url, params=params)
 
@@ -152,8 +154,7 @@ def run_survey(args):
     survey_result = url + "/getsurveyresult"
     stop_survey = url + "/stopsurvey"
 
-    duration = int(args.duration)
-    params = {'duration': duration}
+    params = {'duration': 100}
 
     # reset survey
     requests.get(url=stop_survey)
@@ -188,6 +189,7 @@ def run_survey(args):
 
     sent_requests = set()
 
+    start_time = datetime.now()
     while True:
         send_requests(peer_list, params, survey_request)
 
@@ -204,6 +206,7 @@ def run_survey(args):
         result_node_list = check_results(data, graph, merged_results)
 
         if "surveyInProgress" in data and data["surveyInProgress"] is False:
+            print("Terminating surveys since surveyInProgress = False")
             break
 
         # try new nodes
@@ -218,6 +221,26 @@ def run_survey(args):
                 peer_list.append(key)
             if node["totalOutbound"] > len(node["outboundPeers"]):
                 peer_list.append(key)
+        num_missing = 0
+        for node in graph.nodes():
+            num_missing += \
+                max(graph.nodes[node].get("numTotalInboundPeers", 0)
+                    + graph.nodes[node].get("numTotalOutboundPeers", 0)
+                    - graph.degree(node),
+                    0)
+
+        if args.duration is not None and \
+           (datetime.now() - start_time).seconds > int(args.duration):
+            print("Terminating surveys since {} seconds has passed"
+                  .format(args.duration))
+            break
+        elif num_missing > 0:
+            print("Discovered {} nodes and {} edges, "
+                  "missing at least {} edges and/or nodes"
+                  .format(len(graph.nodes()), len(graph.edges()), num_missing))
+        else:
+            print("Terminating surveys since we found all nodes and edges")
+            break
 
     if nx.is_empty(graph):
         print("Graph is empty!")
@@ -250,8 +273,7 @@ def main():
                                help="address of initial survey node")
     parser_survey.add_argument("-d",
                                "--duration",
-                               required=True,
-                               help="duration of survey in seconds")
+                               help="how long this script should run")
     parser_survey.add_argument("-sr",
                                "--surveyResult",
                                required=True,
