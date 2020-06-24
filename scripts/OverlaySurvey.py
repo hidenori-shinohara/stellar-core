@@ -195,8 +195,6 @@ def run_survey(args):
         for peer in peer_list:
             sent_requests.add(peer)
 
-        print("Found {} nodes".format(len(sent_requests)))
-
         peer_list = []
 
         # allow time for results
@@ -207,6 +205,8 @@ def run_survey(args):
         result_node_list = check_results(data, graph, merged_results)
 
         if "surveyInProgress" in data and data["surveyInProgress"] is False:
+            print("Terminating surveys since SCP "
+                  "says surveyInProgress = False")
             break
 
         # try new nodes
@@ -221,13 +221,18 @@ def run_survey(args):
                 peer_list.append(key)
             if node["totalOutbound"] > len(node["outboundPeers"]):
                 peer_list.append(key)
-        done = True
+        num_missing = 0
         for node in graph.nodes():
-            if graph.nodes[node].get("numTotalInboundPeers", 0) + \
-                    graph.nodes[node].get("numTotalOutboundPeers", 0) > \
-                    graph.degree(node):
-                done = False
-        if done:
+            target_deg = graph.nodes[node].get("numTotalInboundPeers", 0) + \
+                    graph.nodes[node].get("numTotalOutboundPeers", 0)
+            num_missing += max(target_deg - graph.degree(node), 0)
+
+        if num_missing > 0:
+            print("Discovered {} nodes and "
+                  "missing {} edges and/or nodes"
+                  .format(len(graph.nodes()), num_missing))
+        else:
+            print("Terminating surveys since we found all nodes and edges")
             break
 
     if nx.is_empty(graph):
