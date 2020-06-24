@@ -223,9 +223,9 @@ def run_survey(args):
                 peer_list.append(key)
         done = True
         for node in graph.nodes():
-            if graph.nodes[node]["numTotalInboundPeers"] + \
-                    graph.nodes[node]["numTotalOutboundPeers"] \
-                    > graph.degree(node):
+            if graph.nodes[node].get("numTotalInboundPeers", 0) + \
+                    graph.nodes[node].get("numTotalOutboundPeers", 0) > \
+                    graph.degree(node):
                 done = False
         if done:
             break
