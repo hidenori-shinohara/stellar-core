@@ -67,6 +67,7 @@ def update_results(graph, parent_info, parent_key, results, is_inbound):
 def send_requests(peer_list, params, request_url):
     for key in peer_list:
         params["node"] = key
+        print("Sending a request for {}".format(key))
         requests.get(url=request_url, params=params)
 
 
@@ -188,10 +189,13 @@ def run_survey(args):
     sent_requests = set()
 
     while True:
+
         send_requests(peer_list, params, survey_request)
 
         for peer in peer_list:
             sent_requests.add(peer)
+
+        print("Found {} nodes".format(len(sent_requests)))
 
         peer_list = []
 
@@ -217,6 +221,14 @@ def run_survey(args):
                 peer_list.append(key)
             if node["totalOutbound"] > len(node["outboundPeers"]):
                 peer_list.append(key)
+        done = True
+        for node in graph.nodes():
+            if graph.nodes[node]["numTotalInboundPeers"] + \
+                    graph.nodes[node]["numTotalOutboundPeers"] \
+                    > graph.degree(node):
+                done = False
+        if done:
+            break
 
     if nx.is_empty(graph):
         print("Graph is empty!")
