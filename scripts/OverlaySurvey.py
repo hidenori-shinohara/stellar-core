@@ -178,15 +178,15 @@ def run_survey(args):
         for peer in peers["outbound"]:
             peer_list.append(peer["id"])
 
-    sent_requests = set()
-    root = requests.get(url + "/scp?limit=0&fullkeys=true").json()["you"]
-
-    graph.add_node(root,
-                   version=requests.get(url + "/info")
-                                   .json()["info"]["build"],
+    graph.add_node(requests
+                   .get(url + "/scp?limit=0&fullkeys=true")
+                   .json()
+                   ["you"],
+                   version=requests.get(url + "/info").json()["info"]["build"],
                    numTotalInboundPeers=len(peers["inbound"] or []),
                    numTotalOutboundPeers=len(peers["outbound"] or []))
-    sent_requests.add(root)
+
+    sent_requests = set()
 
     while True:
 
