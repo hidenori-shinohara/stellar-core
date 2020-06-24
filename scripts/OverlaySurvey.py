@@ -229,7 +229,7 @@ def run_survey(args):
 
         if num_missing > 0:
             print("Discovered {} nodes and "
-                  "missing {} edges and/or nodes"
+                  "missing at least {} edges and/or nodes"
                   .format(len(graph.nodes()), num_missing))
         else:
             print("Terminating surveys since we found all nodes and edges")
