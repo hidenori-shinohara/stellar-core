@@ -228,9 +228,9 @@ def run_survey(args):
             num_missing += max(target_deg - graph.degree(node), 0)
 
         if num_missing > 0:
-            print("Discovered {} nodes and "
+            print("Discovered {} nodes and {} edges, "
                   "missing at least {} edges and/or nodes"
-                  .format(len(graph.nodes()), num_missing))
+                  .format(len(graph.nodes()), len(graph.edges()), num_missing))
         else:
             print("Terminating surveys since we found all nodes and edges")
             break
