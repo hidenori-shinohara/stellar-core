@@ -189,7 +189,6 @@ def run_survey(args):
     sent_requests = set()
 
     while True:
-
         send_requests(peer_list, params, survey_request)
 
         for peer in peer_list:
@@ -264,6 +263,9 @@ def main():
                                "--node",
                                required=True,
                                help="address of initial survey node")
+    # TODO
+    # Make this optional
+    # Terminate the survey after d seconds.
     parser_survey.add_argument("-d",
                                "--duration",
                                required=True,
