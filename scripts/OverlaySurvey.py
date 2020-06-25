@@ -232,6 +232,28 @@ def run_survey(args):
         json.dump(merged_results, outfile)
 
 
+def simplify(args):
+    simplified_graph = []
+    graph = nx.read_graphml(args.graphmlInput)
+    for node, attr in graph.nodes(data=True):
+        new_attr = {}
+        for key in attr:
+            new_key = key[3:] if key.startswith("sb_") else key
+            try:
+                new_attr[new_key] = json.loads(attr[key])
+            except Exception:
+                new_attr[new_key] = attr[key]
+        home_domains = set()
+        for target in graph.adj[node]:
+            if target in graph and "sb_homeDomain" in graph[target]:
+                home_domains.add(graph[target]["sb_homeDomain"])
+        new_attr["preferredPeers"] = list(home_domains)
+        simplified_graph.append(new_attr)
+    with open(args.jsonOutput, 'w') as output_file:
+        json.dump(simplified_graph, output_file)
+    sys.exit(0)
+
+
 def main():
     # construct the argument parse and parse the arguments
     argument_parser = argparse.ArgumentParser()
@@ -284,6 +306,18 @@ def main():
                                 required=True,
                                 help="output file for the augmented graph")
     parser_augment.set_defaults(func=augment)
+
+    parser_simplify = subparsers.add_parser('simplify',
+                                            help="simplify the master graph "
+                                            "and output it as json file")
+    parser_simplify.add_argument("-gmli",
+                                 "--graphmlInput",
+                                 help="input master graph")
+    parser_simplify.add_argument("-json",
+                                 "--jsonOutput",
+                                 required=True,
+                                 help="output file for the simplified graph")
+    parser_simplify.set_defaults(func=simplify)
 
     args = argument_parser.parse_args()
     args.func(args)
