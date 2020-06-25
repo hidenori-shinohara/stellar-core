@@ -115,15 +115,20 @@ def augment(args):
     data = requests.get("https://api.stellarbeat.io/v1/nodes").json()
     for obj in data:
         if graph.has_node(obj["publicKey"]):
-            desired_properties = ["quorumSet",
-                                  "geoData",
-                                  "isValidating",
-                                  "name",
-                                  "homeDomain",
-                                  "organizationId",
-                                  "index",
-                                  "isp",
-                                  "ip"]
+            desired_properties = [
+                "quorumSet",
+                "geoData",
+                "isValidating",
+                "name",
+                "homeDomain",
+                "organizationId",
+                "index",
+                "isp",
+                "isValidator",
+                "historyUrl",
+                "active",
+                "ip"
+            ]
             prop_dict = {}
             for prop in desired_properties:
                 if prop in obj:
@@ -232,6 +237,39 @@ def run_survey(args):
         json.dump(merged_results, outfile)
 
 
+def simplify(args):
+    simplified_graph = []
+    graph = nx.read_graphml(args.graphmlInput)
+    bidirectional_adj = {}
+    for v in graph.nodes():
+        if v not in bidirectional_adj:
+            bidirectional_adj[v] = set()
+        for w in graph.adj[v]:
+            if w not in bidirectional_adj:
+                bidirectional_adj[w] = set()
+            bidirectional_adj[v].add(w)
+            bidirectional_adj[w].add(v)
+    for node, attr in graph.nodes(data=True):
+        new_attr = {"publicKey": node}
+        appears_on_sb = False
+        for key in attr:
+            if key.startswith("sb_"):
+                new_key = key[3:]
+                appears_on_sb = True
+            else:
+                new_key = key
+            try:
+                new_attr[new_key] = json.loads(attr[key])
+            except (json.JSONDecodeError, TypeError):
+                new_attr[new_key] = attr[key]
+        new_attr["preferredPeers"] = list(bidirectional_adj[node])
+        if appears_on_sb and len(new_attr["preferredPeers"]) > 0:
+            simplified_graph.append(new_attr)
+    with open(args.jsonOutput, 'w') as output_file:
+        json.dump(simplified_graph, output_file)
+    sys.exit(0)
+
+
 def main():
     # construct the argument parse and parse the arguments
     argument_parser = argparse.ArgumentParser()
@@ -284,6 +322,20 @@ def main():
                                 required=True,
                                 help="output file for the augmented graph")
     parser_augment.set_defaults(func=augment)
+
+    parser_simplify = subparsers.add_parser('adjustForSimulation',
+                                            help="adjust the master graph"
+                                            "for simulation purposes")
+    parser_simplify.add_argument("-gmli",
+                                 "--graphmlInput",
+                                 required=True,
+                                 help="input master graph"
+                                 "(i.e., output of the augment command)")
+    parser_simplify.add_argument("-json",
+                                 "--jsonOutput",
+                                 required=True,
+                                 help="output file for the simplified graph")
+    parser_simplify.set_defaults(func=simplify)
 
     args = argument_parser.parse_args()
     args.func(args)

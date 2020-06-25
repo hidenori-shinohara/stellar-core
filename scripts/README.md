@@ -21,6 +21,9 @@ This folder is for storing any scripts that may be helpful for using stellar-cor
     - sub command `augment` - analyze an existing graph
         - `-gmli GRAPHMLINPUT` - input graphml file
         - `-gmlo GRAPHMLOUTPUT` - output graphml file
+    - sub command `simplify` - Take a graphml file containing both survey results and StellarBeat data (the output of `augment`) and adjust the data for simulation purposes.
+        - `-gmli GRAPHMLINPUT` - input graphml file
+        - `-json JSONOUTPUT` - output json file
 
 ## Style guide
 We follow [PEP-0008](https://www.python.org/dev/peps/pep-0008/).
