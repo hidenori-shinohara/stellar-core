@@ -236,18 +236,25 @@ def simplify(args):
     simplified_graph = []
     graph = nx.read_graphml(args.graphmlInput)
     for node, attr in graph.nodes(data=True):
-        new_attr = {"nodeId": node}
+        new_attr = {"publicKey": node}
+        appears_on_sb = False
         for key in attr:
-            new_key = key[3:] if key.startswith("sb_") else key
+            if key.startswith("sb_"):
+                new_key = key[3:]
+                appears_on_sb = True
+            else:
+                new_key = key
             try:
                 new_attr[new_key] = json.loads(attr[key])
             except Exception:
                 new_attr[new_key] = attr[key]
         home_domains = set()
         for target in graph.adj[node]:
-            home_domains.add(graph.nodes[target].get("sb_homeDomain", target))
+            if "sb_homeDomain" in graph.nodes[target]:
+                home_domains.add(graph.nodes[target]["sb_homeDomain"])
         new_attr["preferredPeers"] = list(home_domains)
-        simplified_graph.append(new_attr)
+        if appears_on_sb and len(home_domains) > 0:
+            simplified_graph.append(new_attr)
     with open(args.jsonOutput, 'w') as output_file:
         json.dump(simplified_graph, output_file)
     sys.exit(0)
