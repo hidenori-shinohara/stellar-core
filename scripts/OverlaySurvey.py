@@ -236,7 +236,7 @@ def simplify(args):
     simplified_graph = []
     graph = nx.read_graphml(args.graphmlInput)
     for node, attr in graph.nodes(data=True):
-        new_attr = {}
+        new_attr = {"nodeId": node}
         for key in attr:
             new_key = key[3:] if key.startswith("sb_") else key
             try:
@@ -245,8 +245,7 @@ def simplify(args):
                 new_attr[new_key] = attr[key]
         home_domains = set()
         for target in graph.adj[node]:
-            if target in graph and "sb_homeDomain" in graph[target]:
-                home_domains.add(graph[target]["sb_homeDomain"])
+            home_domains.add(graph.nodes[target].get("sb_homeDomain", target))
         new_attr["preferredPeers"] = list(home_domains)
         simplified_graph.append(new_attr)
     with open(args.jsonOutput, 'w') as output_file:
