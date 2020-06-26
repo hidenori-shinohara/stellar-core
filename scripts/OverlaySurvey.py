@@ -115,15 +115,20 @@ def augment(args):
     data = requests.get("https://api.stellarbeat.io/v1/nodes").json()
     for obj in data:
         if graph.has_node(obj["publicKey"]):
-            desired_properties = ["quorumSet",
-                                  "geoData",
-                                  "isValidating",
-                                  "name",
-                                  "homeDomain",
-                                  "organizationId",
-                                  "index",
-                                  "isp",
-                                  "ip"]
+            desired_properties = [
+                "quorumSet",
+                "geoData",
+                "isValidating",
+                "name",
+                "homeDomain",
+                "organizationId",
+                "index",
+                "isp",
+                "isValidator",
+                "historyUrl",
+                "active",
+                "ip"
+            ]
             prop_dict = {}
             for prop in desired_properties:
                 if prop in obj:
