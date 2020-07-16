@@ -7,6 +7,7 @@ import networkx as nx
 import requests
 import sys
 import time
+import random
 
 
 def next_peer(direction_tag, node_info):
@@ -36,7 +37,6 @@ def update_results(graph, parent_info, parent_key, results, is_inbound):
     direction_tag = "inboundPeers" if is_inbound else "outboundPeers"
     for peer in next_peer(direction_tag, parent_info):
         other_key = peer["nodeId"]
-
         results[direction_tag][other_key] = peer
         graph.add_node(other_key, version=peer["version"])
         # Adding an edge that already exists updates the edge data,
@@ -110,6 +110,97 @@ def analyze(args):
     sys.exit(0)
 
 
+def is_tier1(graph, node):
+    attr = graph.nodes[node]
+    if "sb_homeDomain" not in attr:
+        return False
+    return attr["sb_homeDomain"] in ["www.stellar.org",
+                                     "lobstr.co",
+                                     "keybase.io",
+                                     "satoshipay.io",
+                                     "wirexapp.com",
+                                     "stellar.blockdaemon.com",
+                                     "coinqvest.com"]
+
+
+def simplify_attributes(attr):
+    new_attr = {}
+    for key in attr:
+        # The method simplify changes connectivity,
+        # so this information won't be accurate anyway.
+        if key in ["numTotalInboundPeers",
+                   "numTotalOutboundPeers"]:
+            continue
+        if key.startswith("sb_"):
+            new_key = key[3:]
+        else:
+            new_key = key
+        try:
+            new_attr[new_key] = json.loads(attr[key])
+        except Exception:
+            new_attr[new_key] = attr[key]
+    return new_attr
+
+
+def simplify(args):
+    simplified_graph = []
+    graph = nx.read_graphml(args.graphmlInput)
+    undirected = graph.to_undirected()
+    tier1 = set()
+    non_tier1 = set()
+    cnt = 0
+    max_degree_tier1 = 0
+    for edge in graph.edges():
+        u = edge[0]
+        v = edge[1]
+        if is_tier1(graph, u) or is_tier1(graph, v):
+            for node in [u, v]:
+                if is_tier1(graph, node):
+                    tier1.add(node)
+                    max_degree_tier1 = max(max_degree_tier1,
+                                           len(undirected.adj[node]))
+                else:
+                    non_tier1.add(node)
+
+    non_tier1_list = list(non_tier1)
+    random.shuffle(non_tier1_list)
+    non_tier1_list = non_tier1_list[:max_degree_tier1]
+    for node in tier1:
+        new_attr = simplify_attributes(graph.nodes[node])
+        new_attr["publicKey"] = node
+        preferred_peers = []
+        next_non_tier1 = 0
+        random.shuffle(non_tier1_list)
+        for neighbor in undirected.adj[node]:
+            if neighbor in tier1:
+                preferred_peers.append(neighbor)
+            else:
+                preferred_peers.append(non_tier1_list[next_non_tier1])
+                next_non_tier1 += 1
+        new_attr["preferred_peers"] = preferred_peers
+        simplified_graph.append(new_attr)
+
+    # The number of peers each non-tier1 node will have.
+    # Make this an even number, so each node is connected to
+    # num_peers / 2 nodes before it and after it.
+    num_peers = 10
+    for i, node in enumerate(non_tier1_list):
+        new_attr = simplify_attributes(graph.nodes[node])
+        new_attr["publicKey"] = node
+        preferred_peers = []
+        for d in range(num_peers // 2):
+            preferred_peers.append(non_tier1_list
+                                   [(i + d + 1) % len(non_tier1_list)])
+            preferred_peers.append(non_tier1_list
+                                   [(i - d - 1) % len(non_tier1_list)])
+        new_attr["preferred_peers"] = preferred_peers
+        simplified_graph.append(new_attr)
+
+    with open(args.jsonOutput, 'w') as output_file:
+        json.dump(simplified_graph, output_file)
+    sys.exit(0)
+
+
 def augment(args):
     graph = nx.read_graphml(args.graphmlInput)
     data = requests.get("https://api.stellarbeat.io/v1/nodes").json()
@@ -118,6 +209,8 @@ def augment(args):
             desired_properties = ["quorumSet",
                                   "geoData",
                                   "isValidating",
+                                  "isValidator",
+                                  "historyUrl",
                                   "name",
                                   "homeDomain",
                                   "organizationId",
@@ -284,6 +377,18 @@ def main():
                                 required=True,
                                 help="output file for the augmented graph")
     parser_augment.set_defaults(func=augment)
+
+    parser_simplify = subparsers.add_parser('simplify',
+                                            help="simplify the master graph "
+                                            "and output it as json file")
+    parser_simplify.add_argument("-gmli",
+                                 "--graphmlInput",
+                                 help="input master graph")
+    parser_simplify.add_argument("-json",
+                                 "--jsonOutput",
+                                 required=True,
+                                 help="output file for the simplified graph")
+    parser_simplify.set_defaults(func=simplify)
 
     args = argument_parser.parse_args()
     args.func(args)
