@@ -165,6 +165,7 @@ def simplify(args):
     non_tier1_list = list(non_tier1)
     random.shuffle(non_tier1_list)
     non_tier1_list = non_tier1_list[:max_degree_tier1]
+    non_tier1_preferred_peers = {}
     for node in tier1:
         new_attr = simplify_attributes(graph.nodes[node])
         new_attr["publicKey"] = node
@@ -175,7 +176,11 @@ def simplify(args):
             if neighbor in tier1:
                 preferred_peers.append(neighbor)
             else:
-                preferred_peers.append(non_tier1_list[next_non_tier1])
+                new_neighbor = non_tier1_list[next_non_tier1]
+                preferred_peers.append(new_neighbor)
+                if new_neighbor not in non_tier1_preferred_peers:
+                    non_tier1_preferred_peers[new_neighbor] = []
+                non_tier1_preferred_peers[new_neighbor].append(node)
                 next_non_tier1 += 1
         new_attr["preferred_peers"] = preferred_peers
         simplified_graph.append(new_attr)
@@ -189,11 +194,10 @@ def simplify(args):
         new_attr["publicKey"] = node
         preferred_peers = []
         for d in range(num_peers // 2):
-            preferred_peers.append(non_tier1_list
-                                   [(i + d + 1) % len(non_tier1_list)])
-            preferred_peers.append(non_tier1_list
-                                   [(i - d - 1) % len(non_tier1_list)])
-        new_attr["preferred_peers"] = preferred_peers
+            neighbor = non_tier1_list[(i + d + 1) % len(non_tier1_list)]
+            non_tier1_preferred_peers[neighbor].append(node)
+            non_tier1_preferred_peers[node].append(neighbor)
+        new_attr["preferred_peers"] = non_tier1_preferred_peers[node]
         simplified_graph.append(new_attr)
 
     with open(args.jsonOutput, 'w') as output_file:
