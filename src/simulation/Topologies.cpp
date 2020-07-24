@@ -308,10 +308,20 @@ Topologies::customA(Simulation::Mode mode, Hash const& networkID,
         S
     };
     vector<SecretKey> keys;
+    vector<string> kidnames;
+    kidnames.push_back("A");
+    kidnames.push_back("B");
+    kidnames.push_back("C");
+    kidnames.push_back("T");
+    kidnames.push_back("I");
+    kidnames.push_back("E");
+    kidnames.push_back("S");
+
     for (int i = 0; i < 7; i++)
     {
         keys.push_back(
             SecretKey::fromSeed(sha256("NODE_SEED_" + to_string(i))));
+        std::cout << "kID = " << kidnames[i] << ", key = " << keys[i].getStrKeyPublic() << std::endl;
     }
     // A,B,C have the same qset, with all validators
     {

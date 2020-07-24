@@ -461,6 +461,8 @@ bool
 Simulation::haveAllExternalized(uint32 num, uint32 maxSpread)
 {
     uint32_t min = UINT32_MAX, max = 0;
+    LOG(DEBUG) << "================";
+    LOG(DEBUG) << "checking if all nodes have externalized up to " << num;
     for (auto it = mNodes.begin(); it != mNodes.end(); ++it)
     {
         auto app = it->second.mApp;
@@ -477,6 +479,11 @@ Simulation::haveAllExternalized(uint32 num, uint32 maxSpread)
         throw std::runtime_error(
             fmt::format("Too wide spread between nodes: {0}-{1} > {2}", max,
                         min, maxSpread));
+    }
+    if (num > min) {
+        LOG(DEBUG) << "clearly, this is not working :(";
+    } else {
+        LOG(DEBUG) << "good to go!";
     }
     return num <= min;
 }
@@ -549,6 +556,9 @@ Simulation::crankUntil(function<bool()> const& predicate,
     bool done = false;
 
     VirtualTimer checkTimer(*mIdleApp);
+
+    // This sets done = true
+    // if pedicate() = true.
     function<void()> checkDone = [&]() {
         if (predicate())
             done = true;
@@ -589,7 +599,7 @@ Simulation::crankUntil(function<bool()> const& predicate,
             return;
         }
         if (timedOut)
-            throw runtime_error("Simulation timed out");
+            throw runtime_error("Simulation timed out :(");
     }
 }
 

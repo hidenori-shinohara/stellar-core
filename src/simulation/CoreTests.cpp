@@ -3,6 +3,7 @@
 // of this distribution or at http://www.apache.org/licenses/LICENSE-2.0
 
 #include "bucket/Bucket.h"
+#include "scp/LocalNode.h"
 #include "bucket/BucketList.h"
 #include "bucket/BucketManager.h"
 #include "bucket/BucketManagerImpl.h"
@@ -141,54 +142,108 @@ resilienceTest(Simulation::pointer sim)
     auto nbNodes = nodes.size();
 
     sim->startAllNodes();
+    int index = 0;
+    for (auto node : nodes) {
+        std::cout << "index = " << index++ << ": " << KeyUtils::toShortString(node) << " = " << sim->getNode(node)->getConfig().PEER_PORT << std::endl;
+    }
 
     std::uniform_int_distribution<size_t> gen(0, nbNodes - 1);
 
     // bring network to a good place
+    // targetLedger = 2 for now.
     uint32 targetLedger = LedgerManager::GENESIS_LEDGER_SEQ + 1;
     const uint32 nbLedgerStep = 2;
 
     auto crankForward = [&](uint32 step, uint32 maxGap) {
         targetLedger += step;
+        // Herder::EXP_LEDGER_TIMESPAN_SECONDS = 5
+        // because SCP closes a ledger every 5 seconds.
+        // nbLedgerStep = 2
         sim->crankUntil(
             [&]() { return sim->haveAllExternalized(targetLedger, maxGap); },
             2 * nbLedgerStep * Herder::EXP_LEDGER_TIMESPAN_SECONDS, false);
 
+        // haveAllExternalized(targetLedger, maxSpread)
+        // checks each node's last closed ledger.
+        // If there exists a pair of nodes whose last closed ledgers are different by maxSpread, exception.
+        // Otherwise, it returns whether all the nodes have externalized targetLedger.
         REQUIRE(sim->haveAllExternalized(targetLedger, maxGap));
     };
 
     crankForward(1, 1);
+    LOG(DEBUG) << "targetLedger at L170 = " << targetLedger; // 3
+
+    int previ = -1;
 
     for (size_t rounds = 0; rounds < 2; rounds++)
     {
         // now restart a random node i, will reconnect to
         // j to join the network
-        auto i = gen(gRandomEngine);
+//        auto i = gen(gRandomEngine);
+        auto i = rounds == 0 ? 2 : 3;
         auto j = (i + 1) % nbNodes;
 
         auto victimID = nodes[i];
         auto otherID = nodes[j];
-        INFO(fmt::format("restart victim {}", i));
+        INFO(fmt::format("previ = {}, restart victim {}", previ, i));
+        previ = i;
 
         targetLedger =
             sim->getNode(otherID)->getLedgerManager().getLastClosedLedgerNum();
+        // 3 when rounds = 0
+        // 8 when rounds = 1
+        LOG(DEBUG) << "targetLedger (L188, rounds = " << rounds << ") = " << targetLedger;
 
         auto victimConfig = sim->getNode(victimID)->getConfig();
         // don't force SCP, it's just a restart
         victimConfig.FORCE_SCP = false;
         // kill instance
         sim->removeNode(victimID);
+        if (rounds <= 1) {
+            for (int i = 0; i < 10; i++) {
+                std::cout << "=============================" << std::endl;
+            }
+            std::cout << "something wrong happens below" << std::endl;
+            for (int i = 0; i < 10; i++) {
+                std::cout << "=============================" << std::endl;
+            }
+        }
         // let the rest of the network move on
-        crankForward(nbLedgerStep, 1);
+        // This fails when rounds = 1.
+        crankForward(nbLedgerStep, 1); // nbLedgerStep = 2
+        if (rounds <= 1) {
+            for (int i = 0; i < 10; i++) {
+                std::cout << "=============================" << std::endl;
+            }
+            std::cout << "something wrong happens above" << std::endl;
+            for (int i = 0; i < 10; i++) {
+                std::cout << "=============================" << std::endl;
+            }
+        }
+
+        if (rounds == 1) {
+            std::cout << "water bottle" << std::endl;
+        }
+        // 5 when rounds = 0
+        // Should be 10 when rounds = 0
+        // But we don't get here.
+        LOG(DEBUG) << "targetLedger (L196, rounds = " << rounds << ") = " << targetLedger;
+
         // start the instance
         sim->addNode(victimConfig.NODE_SEED, victimConfig.QUORUM_SET,
                      &victimConfig, false);
+        SCPQuorumSet const& qset = victimConfig.QUORUM_SET;
+        auto json = LocalNode::toJson(qset, [&](PublicKey const& k) { return stellar::KeyUtils::toShortString(k); });
+        Json::StyledWriter fw;
+        LOG(DEBUG) << "JSON quorum = " << fw.write(json);
         auto refreshedApp = sim->getNode(victimID);
         refreshedApp->start();
         // connect to another node
         sim->addConnection(victimID, otherID);
         // this crank should allow the node to rejoin the network
         crankForward(1, INT32_MAX);
+        // 6 when rounds = 0
+        LOG(DEBUG) << "targetLedger (L211, rounds = " << rounds << ") = " << targetLedger;
 
         // check that all slots were validated
         auto herderImpl = static_cast<HerderImpl*>(&refreshedApp->getHerder());
@@ -201,6 +256,8 @@ resilienceTest(Simulation::pointer sim)
 
         // network should be fully in sync now
         crankForward(nbLedgerStep, 1);
+        // 8 when rounds = 0
+        LOG(DEBUG) << "targetLedger (L245, rounds = " << rounds << ") = " << targetLedger;
 
         // reconnect to all other peers for the next iteration
         for (size_t k = 0; k < nbNodes; k++)
@@ -228,25 +285,25 @@ TEST_CASE("resilience tests", "[resilience][simulation][!hide]")
     {
         resilienceTest(Topologies::customA(mode, networkID, confGen, 2));
     }
-    SECTION("hierarchical")
-    {
-        resilienceTest(
-            Topologies::hierarchicalQuorum(2, mode, networkID, confGen, 2));
-    }
-    SECTION("simplified hierarchical")
-    {
-        resilienceTest(Topologies::hierarchicalQuorumSimplified(
-            4, 3, mode, networkID, confGen, 2));
-    }
-    SECTION("core4")
-    {
-        resilienceTest(Topologies::core(4, 0.75, mode, networkID, confGen));
-    }
-    SECTION("branched cycle")
-    {
-        resilienceTest(
-            Topologies::branchedcycle(5, 0.6, mode, networkID, confGen));
-    }
+//    SECTION("hierarchical")
+//    {
+//        resilienceTest(
+//            Topologies::hierarchicalQuorum(2, mode, networkID, confGen, 2));
+//    }
+//    SECTION("simplified hierarchical")
+//    {
+//        resilienceTest(Topologies::hierarchicalQuorumSimplified(
+//            4, 3, mode, networkID, confGen, 2));
+//    }
+//    SECTION("core4")
+//    {
+//        resilienceTest(Topologies::core(4, 0.75, mode, networkID, confGen));
+//    }
+//    SECTION("branched cycle")
+//    {
+//        resilienceTest(
+//            Topologies::branchedcycle(5, 0.6, mode, networkID, confGen));
+//    }
 }
 
 static void
