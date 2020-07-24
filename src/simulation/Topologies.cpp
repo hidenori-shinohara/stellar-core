@@ -313,10 +313,10 @@ Topologies::customA(Simulation::Mode mode, Hash const& networkID,
         keys.push_back(
             SecretKey::fromSeed(sha256("NODE_SEED_" + to_string(i))));
     }
-    // A,B,C have the same qset, with all validators
+    // A,B,C,I have the same qset, with all validators
     {
         SCPQuorumSet q;
-        q.threshold = 4;
+        q.threshold = 5;
         for (auto& k : keys)
         {
             q.validators.emplace_back(k.getPublicKey());
@@ -324,6 +324,7 @@ Topologies::customA(Simulation::Mode mode, Hash const& networkID,
         s->addNode(keys[A], q);
         s->addNode(keys[B], q);
         s->addNode(keys[C], q);
+        s->addNode(keys[I], q);
     }
     // T
     {
