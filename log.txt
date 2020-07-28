@@ -1,0 +1,804 @@
+2020-07-28T09:26:18.039 <test> [default INFO] Testing stellar-core v13.2.0-90-g9c88e734-dirty
+2020-07-28T09:26:18.040 <test> [default INFO] Logging to stellar0.log
+Filters: [resilience]
+2020-07-28T09:26:18.041 <test> [Database INFO] Connecting to: sqlite3://stellar-core-test-0-a3db40312b6a156e/test-0-5b19d5159da51d3d/test.db
+2020-07-28T09:26:18.043 <test> [SCP INFO] LocalNode::LocalNode@GCBJR qSet: 5c1ba7
+2020-07-28T09:26:18.044 <test> [default INFO] Listening on 127.0.0.1:11626 for HTTP requests
+2020-07-28T09:26:18.044 <test> [Invariant INFO] Enabled invariant 'AccountSubEntriesCountIsValid'
+2020-07-28T09:26:18.044 <test> [Invariant INFO] Enabled invariant 'BucketListIsConsistentWithDatabase'
+2020-07-28T09:26:18.044 <test> [Invariant INFO] Enabled invariant 'ConservationOfLumens'
+2020-07-28T09:26:18.044 <test> [Invariant INFO] Enabled invariant 'LedgerEntryIsValid'
+2020-07-28T09:26:18.044 <test> [Invariant INFO] Enabled invariant 'LiabilitiesMatchOffers'
+2020-07-28T09:26:18.055 <test> [default INFO] * 
+2020-07-28T09:26:18.055 <test> [default INFO] * The database has been initialized
+2020-07-28T09:26:18.055 <test> [default INFO] * 
+2020-07-28T09:26:18.056 <test> [Database INFO] Applying DB schema upgrade to version 10
+2020-07-28T09:26:18.057 <test> [Database INFO] Applying DB schema upgrade to version 11
+2020-07-28T09:26:18.057 <test> [Database INFO] Applying DB schema upgrade to version 12
+2020-07-28T09:26:18.058 <test> [Database INFO] Applying DB schema upgrade to version 13
+2020-07-28T09:26:18.058 <test> [Database INFO] Adding column 'ledgerext' to table 'accounts'
+2020-07-28T09:26:18.058 <test> [Database INFO] Adding column 'ledgerext' to table 'trustlines'
+2020-07-28T09:26:18.058 <test> [Database INFO] Adding column 'ledgerext' to table 'accountdata'
+2020-07-28T09:26:18.058 <test> [Database INFO] Adding column 'ledgerext' to table 'offers'
+2020-07-28T09:26:18.059 <test> [Database INFO] Adding column 'extension' to table 'accounts'
+2020-07-28T09:26:18.059 <test> [Database INFO] Updating extension schema for accounts
+2020-07-28T09:26:18.059 <test> [Database INFO] copyIndividualAccountExtensionFieldsToOpaqueXDR: updated 0 records(s) with liabilities in accounts table
+2020-07-28T09:26:18.059 <test> [Database INFO] Setting all cells of column 'buyingliabilities' in table 'accounts' to NULL
+2020-07-28T09:26:18.059 <test> [Database INFO] Setting all cells of column 'sellingliabilities' in table 'accounts' to NULL
+2020-07-28T09:26:18.059 <test> [Database INFO] Adding column 'extension' to table 'trustlines'
+2020-07-28T09:26:18.059 <test> [Database INFO] copyIndividualTrustLineExtensionFieldsToOpaqueXDR: updating extension schema for trustlines
+2020-07-28T09:26:18.059 <test> [Database INFO] copyIndividualTrustLineExtensionFieldsToOpaqueXDR: updated 0 records(s) with liabilities in trustlines table
+2020-07-28T09:26:18.059 <test> [Database INFO] Setting all cells of column 'buyingliabilities' in table 'trustlines' to NULL
+2020-07-28T09:26:18.059 <test> [Database INFO] Setting all cells of column 'sellingliabilities' in table 'trustlines' to NULL
+2020-07-28T09:26:18.059 <test> [Database INFO] Adding column 'extension' to table 'offers'
+2020-07-28T09:26:18.060 <test> [Database INFO] Adding column 'extension' to table 'accountdata'
+2020-07-28T09:26:18.060 <test> [Database INFO] DB schema is in current version
+2020-07-28T09:26:18.061 <test> [Ledger INFO] Established genesis ledger, closing
+2020-07-28T09:26:18.061 <test> [Ledger INFO] Root account seed: SCW37RNFVYUA4J4V4EXDNV4UJ5ITGB62II33T47JHFPQY6OZ3OENB4BP
+2020-07-28T09:26:18.065 <test> [Database INFO] Connecting to: sqlite3://stellar-core-test-0-a3db40312b6a156e/test-1-9e26b1d872ee4e5e/test.db
+2020-07-28T09:26:18.066 <test> [SCP INFO] LocalNode::LocalNode@GAOBN qSet: f9b848
+2020-07-28T09:26:18.067 <test> [default INFO] Listening on 127.0.0.1:11628 for HTTP requests
+2020-07-28T09:26:18.067 <test> [Invariant INFO] Enabled invariant 'AccountSubEntriesCountIsValid'
+2020-07-28T09:26:18.067 <test> [Invariant INFO] Enabled invariant 'BucketListIsConsistentWithDatabase'
+2020-07-28T09:26:18.067 <test> [Invariant INFO] Enabled invariant 'ConservationOfLumens'
+2020-07-28T09:26:18.067 <test> [Invariant INFO] Enabled invariant 'LedgerEntryIsValid'
+2020-07-28T09:26:18.067 <test> [Invariant INFO] Enabled invariant 'LiabilitiesMatchOffers'
+2020-07-28T09:26:18.076 <test> [default INFO] * 
+2020-07-28T09:26:18.076 <test> [default INFO] * The database has been initialized
+2020-07-28T09:26:18.076 <test> [default INFO] * 
+2020-07-28T09:26:18.076 <test> [Database INFO] Applying DB schema upgrade to version 10
+2020-07-28T09:26:18.076 <test> [Database INFO] Applying DB schema upgrade to version 11
+2020-07-28T09:26:18.077 <test> [Database INFO] Applying DB schema upgrade to version 12
+2020-07-28T09:26:18.077 <test> [Database INFO] Applying DB schema upgrade to version 13
+2020-07-28T09:26:18.077 <test> [Database INFO] Adding column 'ledgerext' to table 'accounts'
+2020-07-28T09:26:18.077 <test> [Database INFO] Adding column 'ledgerext' to table 'trustlines'
+2020-07-28T09:26:18.077 <test> [Database INFO] Adding column 'ledgerext' to table 'accountdata'
+2020-07-28T09:26:18.078 <test> [Database INFO] Adding column 'ledgerext' to table 'offers'
+2020-07-28T09:26:18.078 <test> [Database INFO] Adding column 'extension' to table 'accounts'
+2020-07-28T09:26:18.078 <test> [Database INFO] Updating extension schema for accounts
+2020-07-28T09:26:18.078 <test> [Database INFO] copyIndividualAccountExtensionFieldsToOpaqueXDR: updated 0 records(s) with liabilities in accounts table
+2020-07-28T09:26:18.078 <test> [Database INFO] Setting all cells of column 'buyingliabilities' in table 'accounts' to NULL
+2020-07-28T09:26:18.078 <test> [Database INFO] Setting all cells of column 'sellingliabilities' in table 'accounts' to NULL
+2020-07-28T09:26:18.078 <test> [Database INFO] Adding column 'extension' to table 'trustlines'
+2020-07-28T09:26:18.079 <test> [Database INFO] copyIndividualTrustLineExtensionFieldsToOpaqueXDR: updating extension schema for trustlines
+2020-07-28T09:26:18.079 <test> [Database INFO] copyIndividualTrustLineExtensionFieldsToOpaqueXDR: updated 0 records(s) with liabilities in trustlines table
+2020-07-28T09:26:18.079 <test> [Database INFO] Setting all cells of column 'buyingliabilities' in table 'trustlines' to NULL
+2020-07-28T09:26:18.079 <test> [Database INFO] Setting all cells of column 'sellingliabilities' in table 'trustlines' to NULL
+2020-07-28T09:26:18.079 <test> [Database INFO] Adding column 'extension' to table 'offers'
+2020-07-28T09:26:18.079 <test> [Database INFO] Adding column 'extension' to table 'accountdata'
+2020-07-28T09:26:18.080 <test> [Database INFO] DB schema is in current version
+2020-07-28T09:26:18.080 <test> [Ledger INFO] Established genesis ledger, closing
+2020-07-28T09:26:18.080 <test> [Ledger INFO] Root account seed: SCW37RNFVYUA4J4V4EXDNV4UJ5ITGB62II33T47JHFPQY6OZ3OENB4BP
+2020-07-28T09:26:18.083 <test> [Database INFO] Connecting to: sqlite3://stellar-core-test-0-a3db40312b6a156e/test-2-b8442f47909b6056/test.db
+2020-07-28T09:26:18.086 <test> [SCP INFO] LocalNode::LocalNode@GCSCQ qSet: f9b848
+2020-07-28T09:26:18.086 <test> [default INFO] Listening on 127.0.0.1:11630 for HTTP requests
+2020-07-28T09:26:18.087 <test> [Invariant INFO] Enabled invariant 'AccountSubEntriesCountIsValid'
+2020-07-28T09:26:18.087 <test> [Invariant INFO] Enabled invariant 'BucketListIsConsistentWithDatabase'
+2020-07-28T09:26:18.087 <test> [Invariant INFO] Enabled invariant 'ConservationOfLumens'
+2020-07-28T09:26:18.087 <test> [Invariant INFO] Enabled invariant 'LedgerEntryIsValid'
+2020-07-28T09:26:18.087 <test> [Invariant INFO] Enabled invariant 'LiabilitiesMatchOffers'
+2020-07-28T09:26:18.096 <test> [default INFO] * 
+2020-07-28T09:26:18.096 <test> [default INFO] * The database has been initialized
+2020-07-28T09:26:18.096 <test> [default INFO] * 
+2020-07-28T09:26:18.096 <test> [Database INFO] Applying DB schema upgrade to version 10
+2020-07-28T09:26:18.097 <test> [Database INFO] Applying DB schema upgrade to version 11
+2020-07-28T09:26:18.098 <test> [Database INFO] Applying DB schema upgrade to version 12
+2020-07-28T09:26:18.098 <test> [Database INFO] Applying DB schema upgrade to version 13
+2020-07-28T09:26:18.098 <test> [Database INFO] Adding column 'ledgerext' to table 'accounts'
+2020-07-28T09:26:18.098 <test> [Database INFO] Adding column 'ledgerext' to table 'trustlines'
+2020-07-28T09:26:18.099 <test> [Database INFO] Adding column 'ledgerext' to table 'accountdata'
+2020-07-28T09:26:18.099 <test> [Database INFO] Adding column 'ledgerext' to table 'offers'
+2020-07-28T09:26:18.099 <test> [Database INFO] Adding column 'extension' to table 'accounts'
+2020-07-28T09:26:18.100 <test> [Database INFO] Updating extension schema for accounts
+2020-07-28T09:26:18.100 <test> [Database INFO] copyIndividualAccountExtensionFieldsToOpaqueXDR: updated 0 records(s) with liabilities in accounts table
+2020-07-28T09:26:18.100 <test> [Database INFO] Setting all cells of column 'buyingliabilities' in table 'accounts' to NULL
+2020-07-28T09:26:18.100 <test> [Database INFO] Setting all cells of column 'sellingliabilities' in table 'accounts' to NULL
+2020-07-28T09:26:18.100 <test> [Database INFO] Adding column 'extension' to table 'trustlines'
+2020-07-28T09:26:18.100 <test> [Database INFO] copyIndividualTrustLineExtensionFieldsToOpaqueXDR: updating extension schema for trustlines
+2020-07-28T09:26:18.100 <test> [Database INFO] copyIndividualTrustLineExtensionFieldsToOpaqueXDR: updated 0 records(s) with liabilities in trustlines table
+2020-07-28T09:26:18.100 <test> [Database INFO] Setting all cells of column 'buyingliabilities' in table 'trustlines' to NULL
+2020-07-28T09:26:18.100 <test> [Database INFO] Setting all cells of column 'sellingliabilities' in table 'trustlines' to NULL
+2020-07-28T09:26:18.100 <test> [Database INFO] Adding column 'extension' to table 'offers'
+2020-07-28T09:26:18.100 <test> [Database INFO] Adding column 'extension' to table 'accountdata'
+2020-07-28T09:26:18.101 <test> [Database INFO] DB schema is in current version
+2020-07-28T09:26:18.102 <test> [Ledger INFO] Established genesis ledger, closing
+2020-07-28T09:26:18.102 <test> [Ledger INFO] Root account seed: SCW37RNFVYUA4J4V4EXDNV4UJ5ITGB62II33T47JHFPQY6OZ3OENB4BP
+2020-07-28T09:26:18.106 <test> [Database INFO] Connecting to: sqlite3://stellar-core-test-0-a3db40312b6a156e/test-3-e79ddf7d784213ff/test.db
+2020-07-28T09:26:18.107 <test> [SCP INFO] LocalNode::LocalNode@GAXSR qSet: f9b848
+2020-07-28T09:26:18.108 <test> [default INFO] Listening on 127.0.0.1:11632 for HTTP requests
+2020-07-28T09:26:18.108 <test> [Invariant INFO] Enabled invariant 'AccountSubEntriesCountIsValid'
+2020-07-28T09:26:18.108 <test> [Invariant INFO] Enabled invariant 'BucketListIsConsistentWithDatabase'
+2020-07-28T09:26:18.108 <test> [Invariant INFO] Enabled invariant 'ConservationOfLumens'
+2020-07-28T09:26:18.108 <test> [Invariant INFO] Enabled invariant 'LedgerEntryIsValid'
+2020-07-28T09:26:18.108 <test> [Invariant INFO] Enabled invariant 'LiabilitiesMatchOffers'
+2020-07-28T09:26:18.117 <test> [default INFO] * 
+2020-07-28T09:26:18.117 <test> [default INFO] * The database has been initialized
+2020-07-28T09:26:18.117 <test> [default INFO] * 
+2020-07-28T09:26:18.117 <test> [Database INFO] Applying DB schema upgrade to version 10
+2020-07-28T09:26:18.117 <test> [Database INFO] Applying DB schema upgrade to version 11
+2020-07-28T09:26:18.118 <test> [Database INFO] Applying DB schema upgrade to version 12
+2020-07-28T09:26:18.118 <test> [Database INFO] Applying DB schema upgrade to version 13
+2020-07-28T09:26:18.118 <test> [Database INFO] Adding column 'ledgerext' to table 'accounts'
+2020-07-28T09:26:18.118 <test> [Database INFO] Adding column 'ledgerext' to table 'trustlines'
+2020-07-28T09:26:18.119 <test> [Database INFO] Adding column 'ledgerext' to table 'accountdata'
+2020-07-28T09:26:18.119 <test> [Database INFO] Adding column 'ledgerext' to table 'offers'
+2020-07-28T09:26:18.119 <test> [Database INFO] Adding column 'extension' to table 'accounts'
+2020-07-28T09:26:18.119 <test> [Database INFO] Updating extension schema for accounts
+2020-07-28T09:26:18.119 <test> [Database INFO] copyIndividualAccountExtensionFieldsToOpaqueXDR: updated 0 records(s) with liabilities in accounts table
+2020-07-28T09:26:18.119 <test> [Database INFO] Setting all cells of column 'buyingliabilities' in table 'accounts' to NULL
+2020-07-28T09:26:18.119 <test> [Database INFO] Setting all cells of column 'sellingliabilities' in table 'accounts' to NULL
+2020-07-28T09:26:18.120 <test> [Database INFO] Adding column 'extension' to table 'trustlines'
+2020-07-28T09:26:18.120 <test> [Database INFO] copyIndividualTrustLineExtensionFieldsToOpaqueXDR: updating extension schema for trustlines
+2020-07-28T09:26:18.120 <test> [Database INFO] copyIndividualTrustLineExtensionFieldsToOpaqueXDR: updated 0 records(s) with liabilities in trustlines table
+2020-07-28T09:26:18.120 <test> [Database INFO] Setting all cells of column 'buyingliabilities' in table 'trustlines' to NULL
+2020-07-28T09:26:18.120 <test> [Database INFO] Setting all cells of column 'sellingliabilities' in table 'trustlines' to NULL
+2020-07-28T09:26:18.120 <test> [Database INFO] Adding column 'extension' to table 'offers'
+2020-07-28T09:26:18.120 <test> [Database INFO] Adding column 'extension' to table 'accountdata'
+2020-07-28T09:26:18.121 <test> [Database INFO] DB schema is in current version
+2020-07-28T09:26:18.122 <test> [Ledger INFO] Established genesis ledger, closing
+2020-07-28T09:26:18.122 <test> [Ledger INFO] Root account seed: SCW37RNFVYUA4J4V4EXDNV4UJ5ITGB62II33T47JHFPQY6OZ3OENB4BP
+2020-07-28T09:26:18.125 <test> [Database INFO] Connecting to: sqlite3://stellar-core-test-0-a3db40312b6a156e/test-4-f76dc4fa7560b040/test.db
+2020-07-28T09:26:18.127 <test> [SCP INFO] LocalNode::LocalNode@GAB6L qSet: 0aacb4
+2020-07-28T09:26:18.127 <test> [default INFO] Listening on 127.0.0.1:11634 for HTTP requests
+2020-07-28T09:26:18.128 <test> [Invariant INFO] Enabled invariant 'AccountSubEntriesCountIsValid'
+2020-07-28T09:26:18.128 <test> [Invariant INFO] Enabled invariant 'BucketListIsConsistentWithDatabase'
+2020-07-28T09:26:18.128 <test> [Invariant INFO] Enabled invariant 'ConservationOfLumens'
+2020-07-28T09:26:18.128 <test> [Invariant INFO] Enabled invariant 'LedgerEntryIsValid'
+2020-07-28T09:26:18.128 <test> [Invariant INFO] Enabled invariant 'LiabilitiesMatchOffers'
+2020-07-28T09:26:18.134 <test> [default INFO] * 
+2020-07-28T09:26:18.134 <test> [default INFO] * The database has been initialized
+2020-07-28T09:26:18.134 <test> [default INFO] * 
+2020-07-28T09:26:18.134 <test> [Database INFO] Applying DB schema upgrade to version 10
+2020-07-28T09:26:18.135 <test> [Database INFO] Applying DB schema upgrade to version 11
+2020-07-28T09:26:18.136 <test> [Database INFO] Applying DB schema upgrade to version 12
+2020-07-28T09:26:18.136 <test> [Database INFO] Applying DB schema upgrade to version 13
+2020-07-28T09:26:18.136 <test> [Database INFO] Adding column 'ledgerext' to table 'accounts'
+2020-07-28T09:26:18.136 <test> [Database INFO] Adding column 'ledgerext' to table 'trustlines'
+2020-07-28T09:26:18.137 <test> [Database INFO] Adding column 'ledgerext' to table 'accountdata'
+2020-07-28T09:26:18.137 <test> [Database INFO] Adding column 'ledgerext' to table 'offers'
+2020-07-28T09:26:18.137 <test> [Database INFO] Adding column 'extension' to table 'accounts'
+2020-07-28T09:26:18.137 <test> [Database INFO] Updating extension schema for accounts
+2020-07-28T09:26:18.137 <test> [Database INFO] copyIndividualAccountExtensionFieldsToOpaqueXDR: updated 0 records(s) with liabilities in accounts table
+2020-07-28T09:26:18.137 <test> [Database INFO] Setting all cells of column 'buyingliabilities' in table 'accounts' to NULL
+2020-07-28T09:26:18.137 <test> [Database INFO] Setting all cells of column 'sellingliabilities' in table 'accounts' to NULL
+2020-07-28T09:26:18.137 <test> [Database INFO] Adding column 'extension' to table 'trustlines'
+2020-07-28T09:26:18.138 <test> [Database INFO] copyIndividualTrustLineExtensionFieldsToOpaqueXDR: updating extension schema for trustlines
+2020-07-28T09:26:18.138 <test> [Database INFO] copyIndividualTrustLineExtensionFieldsToOpaqueXDR: updated 0 records(s) with liabilities in trustlines table
+2020-07-28T09:26:18.138 <test> [Database INFO] Setting all cells of column 'buyingliabilities' in table 'trustlines' to NULL
+2020-07-28T09:26:18.138 <test> [Database INFO] Setting all cells of column 'sellingliabilities' in table 'trustlines' to NULL
+2020-07-28T09:26:18.138 <test> [Database INFO] Adding column 'extension' to table 'offers'
+2020-07-28T09:26:18.138 <test> [Database INFO] Adding column 'extension' to table 'accountdata'
+2020-07-28T09:26:18.139 <test> [Database INFO] DB schema is in current version
+2020-07-28T09:26:18.139 <test> [Ledger INFO] Established genesis ledger, closing
+2020-07-28T09:26:18.139 <test> [Ledger INFO] Root account seed: SCW37RNFVYUA4J4V4EXDNV4UJ5ITGB62II33T47JHFPQY6OZ3OENB4BP
+2020-07-28T09:26:18.144 <test> [Database INFO] Connecting to: sqlite3://stellar-core-test-0-a3db40312b6a156e/test-5-2e5cc4fba2c2a92d/test.db
+2020-07-28T09:26:18.145 <test> [SCP INFO] LocalNode::LocalNode@GB3X5 qSet: 4e35e7
+2020-07-28T09:26:18.146 <test> [default INFO] Listening on 127.0.0.1:11636 for HTTP requests
+2020-07-28T09:26:18.146 <test> [Invariant INFO] Enabled invariant 'AccountSubEntriesCountIsValid'
+2020-07-28T09:26:18.146 <test> [Invariant INFO] Enabled invariant 'BucketListIsConsistentWithDatabase'
+2020-07-28T09:26:18.146 <test> [Invariant INFO] Enabled invariant 'ConservationOfLumens'
+2020-07-28T09:26:18.146 <test> [Invariant INFO] Enabled invariant 'LedgerEntryIsValid'
+2020-07-28T09:26:18.146 <test> [Invariant INFO] Enabled invariant 'LiabilitiesMatchOffers'
+2020-07-28T09:26:18.154 <test> [default INFO] * 
+2020-07-28T09:26:18.154 <test> [default INFO] * The database has been initialized
+2020-07-28T09:26:18.154 <test> [default INFO] * 
+2020-07-28T09:26:18.154 <test> [Database INFO] Applying DB schema upgrade to version 10
+2020-07-28T09:26:18.154 <test> [Database INFO] Applying DB schema upgrade to version 11
+2020-07-28T09:26:18.155 <test> [Database INFO] Applying DB schema upgrade to version 12
+2020-07-28T09:26:18.155 <test> [Database INFO] Applying DB schema upgrade to version 13
+2020-07-28T09:26:18.155 <test> [Database INFO] Adding column 'ledgerext' to table 'accounts'
+2020-07-28T09:26:18.155 <test> [Database INFO] Adding column 'ledgerext' to table 'trustlines'
+2020-07-28T09:26:18.155 <test> [Database INFO] Adding column 'ledgerext' to table 'accountdata'
+2020-07-28T09:26:18.155 <test> [Database INFO] Adding column 'ledgerext' to table 'offers'
+2020-07-28T09:26:18.156 <test> [Database INFO] Adding column 'extension' to table 'accounts'
+2020-07-28T09:26:18.156 <test> [Database INFO] Updating extension schema for accounts
+2020-07-28T09:26:18.156 <test> [Database INFO] copyIndividualAccountExtensionFieldsToOpaqueXDR: updated 0 records(s) with liabilities in accounts table
+2020-07-28T09:26:18.156 <test> [Database INFO] Setting all cells of column 'buyingliabilities' in table 'accounts' to NULL
+2020-07-28T09:26:18.156 <test> [Database INFO] Setting all cells of column 'sellingliabilities' in table 'accounts' to NULL
+2020-07-28T09:26:18.156 <test> [Database INFO] Adding column 'extension' to table 'trustlines'
+2020-07-28T09:26:18.156 <test> [Database INFO] copyIndividualTrustLineExtensionFieldsToOpaqueXDR: updating extension schema for trustlines
+2020-07-28T09:26:18.156 <test> [Database INFO] copyIndividualTrustLineExtensionFieldsToOpaqueXDR: updated 0 records(s) with liabilities in trustlines table
+2020-07-28T09:26:18.156 <test> [Database INFO] Setting all cells of column 'buyingliabilities' in table 'trustlines' to NULL
+2020-07-28T09:26:18.156 <test> [Database INFO] Setting all cells of column 'sellingliabilities' in table 'trustlines' to NULL
+2020-07-28T09:26:18.156 <test> [Database INFO] Adding column 'extension' to table 'offers'
+2020-07-28T09:26:18.157 <test> [Database INFO] Adding column 'extension' to table 'accountdata'
+2020-07-28T09:26:18.157 <test> [Database INFO] DB schema is in current version
+2020-07-28T09:26:18.158 <test> [Ledger INFO] Established genesis ledger, closing
+2020-07-28T09:26:18.158 <test> [Ledger INFO] Root account seed: SCW37RNFVYUA4J4V4EXDNV4UJ5ITGB62II33T47JHFPQY6OZ3OENB4BP
+2020-07-28T09:26:18.161 <test> [Database INFO] Connecting to: sqlite3://stellar-core-test-0-a3db40312b6a156e/test-6-80ba1c3d9c7ba05a/test.db
+2020-07-28T09:26:18.163 <test> [SCP INFO] LocalNode::LocalNode@GDWYI qSet: d49ec6
+2020-07-28T09:26:18.163 <test> [default INFO] Listening on 127.0.0.1:11638 for HTTP requests
+2020-07-28T09:26:18.164 <test> [Invariant INFO] Enabled invariant 'AccountSubEntriesCountIsValid'
+2020-07-28T09:26:18.164 <test> [Invariant INFO] Enabled invariant 'BucketListIsConsistentWithDatabase'
+2020-07-28T09:26:18.164 <test> [Invariant INFO] Enabled invariant 'ConservationOfLumens'
+2020-07-28T09:26:18.164 <test> [Invariant INFO] Enabled invariant 'LedgerEntryIsValid'
+2020-07-28T09:26:18.164 <test> [Invariant INFO] Enabled invariant 'LiabilitiesMatchOffers'
+2020-07-28T09:26:18.171 <test> [default INFO] * 
+2020-07-28T09:26:18.171 <test> [default INFO] * The database has been initialized
+2020-07-28T09:26:18.171 <test> [default INFO] * 
+2020-07-28T09:26:18.171 <test> [Database INFO] Applying DB schema upgrade to version 10
+2020-07-28T09:26:18.172 <test> [Database INFO] Applying DB schema upgrade to version 11
+2020-07-28T09:26:18.173 <test> [Database INFO] Applying DB schema upgrade to version 12
+2020-07-28T09:26:18.173 <test> [Database INFO] Applying DB schema upgrade to version 13
+2020-07-28T09:26:18.173 <test> [Database INFO] Adding column 'ledgerext' to table 'accounts'
+2020-07-28T09:26:18.173 <test> [Database INFO] Adding column 'ledgerext' to table 'trustlines'
+2020-07-28T09:26:18.174 <test> [Database INFO] Adding column 'ledgerext' to table 'accountdata'
+2020-07-28T09:26:18.174 <test> [Database INFO] Adding column 'ledgerext' to table 'offers'
+2020-07-28T09:26:18.175 <test> [Database INFO] Adding column 'extension' to table 'accounts'
+2020-07-28T09:26:18.175 <test> [Database INFO] Updating extension schema for accounts
+2020-07-28T09:26:18.175 <test> [Database INFO] copyIndividualAccountExtensionFieldsToOpaqueXDR: updated 0 records(s) with liabilities in accounts table
+2020-07-28T09:26:18.175 <test> [Database INFO] Setting all cells of column 'buyingliabilities' in table 'accounts' to NULL
+2020-07-28T09:26:18.175 <test> [Database INFO] Setting all cells of column 'sellingliabilities' in table 'accounts' to NULL
+2020-07-28T09:26:18.175 <test> [Database INFO] Adding column 'extension' to table 'trustlines'
+2020-07-28T09:26:18.175 <test> [Database INFO] copyIndividualTrustLineExtensionFieldsToOpaqueXDR: updating extension schema for trustlines
+2020-07-28T09:26:18.175 <test> [Database INFO] copyIndividualTrustLineExtensionFieldsToOpaqueXDR: updated 0 records(s) with liabilities in trustlines table
+2020-07-28T09:26:18.175 <test> [Database INFO] Setting all cells of column 'buyingliabilities' in table 'trustlines' to NULL
+2020-07-28T09:26:18.175 <test> [Database INFO] Setting all cells of column 'sellingliabilities' in table 'trustlines' to NULL
+2020-07-28T09:26:18.175 <test> [Database INFO] Adding column 'extension' to table 'offers'
+2020-07-28T09:26:18.176 <test> [Database INFO] Adding column 'extension' to table 'accountdata'
+2020-07-28T09:26:18.176 <test> [Database INFO] DB schema is in current version
+2020-07-28T09:26:18.177 <test> [Ledger INFO] Established genesis ledger, closing
+2020-07-28T09:26:18.177 <test> [Ledger INFO] Root account seed: SCW37RNFVYUA4J4V4EXDNV4UJ5ITGB62II33T47JHFPQY6OZ3OENB4BP
+2020-07-28T09:26:18.179 <test> [Ledger INFO] Starting up application
+2020-07-28T09:26:18.180 <test> [Herder INFO] Armed with network upgrades: upgradetime=1970-01-01T00:00:01Z, protocolversion=14, basefee=100, basereserve=100000000, maxtxsize=50
+2020-07-28T09:26:18.180 <test> [default INFO] Connection effective settings:
+2020-07-28T09:26:18.180 <test> [default INFO] TARGET_PEER_CONNECTIONS: 8
+2020-07-28T09:26:18.180 <test> [default INFO] MAX_ADDITIONAL_PEER_CONNECTIONS: 64
+2020-07-28T09:26:18.180 <test> [default INFO] MAX_PENDING_CONNECTIONS: 500
+2020-07-28T09:26:18.180 <test> [default INFO] MAX_OUTBOUND_PENDING_CONNECTIONS: 56
+2020-07-28T09:26:18.180 <test> [default INFO] MAX_INBOUND_PENDING_CONNECTIONS: 444
+2020-07-28T09:26:18.180 <test> [Ledger INFO] Last closed ledger (LCL) hash is 3d4cdb81dddec1162c0fa4805f62f90dbc6c74e5ba87dfbc4dd73822f354a3f6
+2020-07-28T09:26:18.180 <test> [Ledger INFO] Loaded LCL header from database: [seq=1, hash=3d4cdb]
+2020-07-28T09:26:18.180 <test> [Ledger INFO] Assumed bucket-state for LCL: [seq=1, hash=3d4cdb]
+2020-07-28T09:26:18.181 <test> [default INFO] * 
+2020-07-28T09:26:18.181 <test> [default INFO] * Force-starting scp from the current db state.
+2020-07-28T09:26:18.181 <test> [default INFO] * 
+2020-07-28T09:26:18.181 <test> [Herder INFO] Force joining SCP with local state
+2020-07-28T09:26:18.181 <test> [Ledger INFO] Changing state LM_BOOTING_STATE -> LM_SYNCED_STATE
+2020-07-28T09:26:18.181 <test> [Ledger INFO] Starting up application
+2020-07-28T09:26:18.181 <test> [Herder INFO] Armed with network upgrades: upgradetime=1970-01-01T00:00:01Z, protocolversion=14, basefee=100, basereserve=100000000, maxtxsize=50
+2020-07-28T09:26:18.181 <test> [default INFO] Connection effective settings:
+2020-07-28T09:26:18.181 <test> [default INFO] TARGET_PEER_CONNECTIONS: 8
+2020-07-28T09:26:18.181 <test> [default INFO] MAX_ADDITIONAL_PEER_CONNECTIONS: 64
+2020-07-28T09:26:18.181 <test> [default INFO] MAX_PENDING_CONNECTIONS: 500
+2020-07-28T09:26:18.181 <test> [default INFO] MAX_OUTBOUND_PENDING_CONNECTIONS: 56
+2020-07-28T09:26:18.181 <test> [default INFO] MAX_INBOUND_PENDING_CONNECTIONS: 444
+2020-07-28T09:26:18.181 <test> [Ledger INFO] Last closed ledger (LCL) hash is 3d4cdb81dddec1162c0fa4805f62f90dbc6c74e5ba87dfbc4dd73822f354a3f6
+2020-07-28T09:26:18.181 <test> [Ledger INFO] Loaded LCL header from database: [seq=1, hash=3d4cdb]
+2020-07-28T09:26:18.182 <test> [Ledger INFO] Assumed bucket-state for LCL: [seq=1, hash=3d4cdb]
+2020-07-28T09:26:18.182 <test> [default INFO] * 
+2020-07-28T09:26:18.182 <test> [default INFO] * Force-starting scp from the current db state.
+2020-07-28T09:26:18.182 <test> [default INFO] * 
+2020-07-28T09:26:18.182 <test> [Herder INFO] Force joining SCP with local state
+2020-07-28T09:26:18.182 <test> [Ledger INFO] Changing state LM_BOOTING_STATE -> LM_SYNCED_STATE
+2020-07-28T09:26:18.182 <test> [Ledger INFO] Starting up application
+2020-07-28T09:26:18.182 <test> [Herder INFO] Armed with network upgrades: upgradetime=1970-01-01T00:00:01Z, protocolversion=14, basefee=100, basereserve=100000000, maxtxsize=50
+2020-07-28T09:26:18.182 <test> [default INFO] Connection effective settings:
+2020-07-28T09:26:18.182 <test> [default INFO] TARGET_PEER_CONNECTIONS: 8
+2020-07-28T09:26:18.182 <test> [default INFO] MAX_ADDITIONAL_PEER_CONNECTIONS: 64
+2020-07-28T09:26:18.182 <test> [default INFO] MAX_PENDING_CONNECTIONS: 500
+2020-07-28T09:26:18.182 <test> [default INFO] MAX_OUTBOUND_PENDING_CONNECTIONS: 56
+2020-07-28T09:26:18.182 <test> [default INFO] MAX_INBOUND_PENDING_CONNECTIONS: 444
+2020-07-28T09:26:18.182 <test> [Ledger INFO] Last closed ledger (LCL) hash is 3d4cdb81dddec1162c0fa4805f62f90dbc6c74e5ba87dfbc4dd73822f354a3f6
+2020-07-28T09:26:18.183 <test> [Ledger INFO] Loaded LCL header from database: [seq=1, hash=3d4cdb]
+2020-07-28T09:26:18.183 <test> [Ledger INFO] Assumed bucket-state for LCL: [seq=1, hash=3d4cdb]
+2020-07-28T09:26:18.183 <test> [default INFO] * 
+2020-07-28T09:26:18.183 <test> [default INFO] * Force-starting scp from the current db state.
+2020-07-28T09:26:18.183 <test> [default INFO] * 
+2020-07-28T09:26:18.183 <test> [Herder INFO] Force joining SCP with local state
+2020-07-28T09:26:18.183 <test> [Ledger INFO] Changing state LM_BOOTING_STATE -> LM_SYNCED_STATE
+2020-07-28T09:26:18.183 <test> [Ledger INFO] Starting up application
+2020-07-28T09:26:18.183 <test> [Herder INFO] Armed with network upgrades: upgradetime=1970-01-01T00:00:01Z, protocolversion=14, basefee=100, basereserve=100000000, maxtxsize=50
+2020-07-28T09:26:18.183 <test> [default INFO] Connection effective settings:
+2020-07-28T09:26:18.183 <test> [default INFO] TARGET_PEER_CONNECTIONS: 8
+2020-07-28T09:26:18.183 <test> [default INFO] MAX_ADDITIONAL_PEER_CONNECTIONS: 64
+2020-07-28T09:26:18.183 <test> [default INFO] MAX_PENDING_CONNECTIONS: 500
+2020-07-28T09:26:18.184 <test> [default INFO] MAX_OUTBOUND_PENDING_CONNECTIONS: 56
+2020-07-28T09:26:18.184 <test> [default INFO] MAX_INBOUND_PENDING_CONNECTIONS: 444
+2020-07-28T09:26:18.184 <test> [Ledger INFO] Last closed ledger (LCL) hash is 3d4cdb81dddec1162c0fa4805f62f90dbc6c74e5ba87dfbc4dd73822f354a3f6
+2020-07-28T09:26:18.184 <test> [Ledger INFO] Loaded LCL header from database: [seq=1, hash=3d4cdb]
+2020-07-28T09:26:18.184 <test> [Ledger INFO] Assumed bucket-state for LCL: [seq=1, hash=3d4cdb]
+2020-07-28T09:26:18.184 <test> [default INFO] * 
+2020-07-28T09:26:18.184 <test> [default INFO] * Force-starting scp from the current db state.
+2020-07-28T09:26:18.184 <test> [default INFO] * 
+2020-07-28T09:26:18.184 <test> [Herder INFO] Force joining SCP with local state
+2020-07-28T09:26:18.184 <test> [Ledger INFO] Changing state LM_BOOTING_STATE -> LM_SYNCED_STATE
+2020-07-28T09:26:18.184 <test> [Ledger INFO] Starting up application
+2020-07-28T09:26:18.184 <test> [Herder INFO] Armed with network upgrades: upgradetime=1970-01-01T00:00:01Z, protocolversion=14, basefee=100, basereserve=100000000, maxtxsize=50
+2020-07-28T09:26:18.184 <test> [default INFO] Connection effective settings:
+2020-07-28T09:26:18.184 <test> [default INFO] TARGET_PEER_CONNECTIONS: 8
+2020-07-28T09:26:18.184 <test> [default INFO] MAX_ADDITIONAL_PEER_CONNECTIONS: 64
+2020-07-28T09:26:18.184 <test> [default INFO] MAX_PENDING_CONNECTIONS: 500
+2020-07-28T09:26:18.184 <test> [default INFO] MAX_OUTBOUND_PENDING_CONNECTIONS: 56
+2020-07-28T09:26:18.184 <test> [default INFO] MAX_INBOUND_PENDING_CONNECTIONS: 444
+2020-07-28T09:26:18.185 <test> [Ledger INFO] Last closed ledger (LCL) hash is 3d4cdb81dddec1162c0fa4805f62f90dbc6c74e5ba87dfbc4dd73822f354a3f6
+2020-07-28T09:26:18.185 <test> [Ledger INFO] Loaded LCL header from database: [seq=1, hash=3d4cdb]
+2020-07-28T09:26:18.185 <test> [Ledger INFO] Assumed bucket-state for LCL: [seq=1, hash=3d4cdb]
+2020-07-28T09:26:18.185 <test> [default INFO] * 
+2020-07-28T09:26:18.185 <test> [default INFO] * Force-starting scp from the current db state.
+2020-07-28T09:26:18.185 <test> [default INFO] * 
+2020-07-28T09:26:18.185 <test> [Herder INFO] Force joining SCP with local state
+2020-07-28T09:26:18.185 <test> [Ledger INFO] Changing state LM_BOOTING_STATE -> LM_SYNCED_STATE
+2020-07-28T09:26:18.185 <test> [Ledger INFO] Starting up application
+2020-07-28T09:26:18.185 <test> [Herder INFO] Armed with network upgrades: upgradetime=1970-01-01T00:00:01Z, protocolversion=14, basefee=100, basereserve=100000000, maxtxsize=50
+2020-07-28T09:26:18.185 <test> [default INFO] Connection effective settings:
+2020-07-28T09:26:18.185 <test> [default INFO] TARGET_PEER_CONNECTIONS: 8
+2020-07-28T09:26:18.185 <test> [default INFO] MAX_ADDITIONAL_PEER_CONNECTIONS: 64
+2020-07-28T09:26:18.185 <test> [default INFO] MAX_PENDING_CONNECTIONS: 500
+2020-07-28T09:26:18.185 <test> [default INFO] MAX_OUTBOUND_PENDING_CONNECTIONS: 56
+2020-07-28T09:26:18.185 <test> [default INFO] MAX_INBOUND_PENDING_CONNECTIONS: 444
+2020-07-28T09:26:18.186 <test> [Ledger INFO] Last closed ledger (LCL) hash is 3d4cdb81dddec1162c0fa4805f62f90dbc6c74e5ba87dfbc4dd73822f354a3f6
+2020-07-28T09:26:18.186 <test> [Ledger INFO] Loaded LCL header from database: [seq=1, hash=3d4cdb]
+2020-07-28T09:26:18.186 <test> [Ledger INFO] Assumed bucket-state for LCL: [seq=1, hash=3d4cdb]
+2020-07-28T09:26:18.186 <test> [default INFO] * 
+2020-07-28T09:26:18.186 <test> [default INFO] * Force-starting scp from the current db state.
+2020-07-28T09:26:18.186 <test> [default INFO] * 
+2020-07-28T09:26:18.186 <test> [Herder INFO] Force joining SCP with local state
+2020-07-28T09:26:18.186 <test> [Ledger INFO] Changing state LM_BOOTING_STATE -> LM_SYNCED_STATE
+2020-07-28T09:26:18.196 <test> [Overlay INFO] Connected to 127.0.0.1:11633
+2020-07-28T09:26:18.197 <test> [Overlay INFO] Connected to 127.0.0.1:11633
+2020-07-28T09:26:18.197 <test> [Overlay INFO] Connected to 127.0.0.1:11627
+2020-07-28T09:26:18.198 <test> [Overlay INFO] Connected to 127.0.0.1:11627
+2020-07-28T09:26:18.198 <test> [Overlay INFO] Connected to 127.0.0.1:11631
+2020-07-28T09:26:18.199 <test> [Overlay INFO] Connected to 127.0.0.1:11631
+2020-07-28T09:26:18.199 <test> [Overlay INFO] Connected to 127.0.0.1:11635
+2020-07-28T09:26:18.200 <test> [Overlay INFO] Connected to 127.0.0.1:11635
+2020-07-28T09:26:18.200 <test> [Overlay INFO] Connected to 127.0.0.1:11629
+2020-07-28T09:26:18.200 <test> [Overlay INFO] Connected to 127.0.0.1:11627
+2020-07-28T09:26:18.201 <test> [Overlay INFO] Connected to 127.0.0.1:11631
+2020-07-28T09:26:18.201 <test> [Overlay INFO] Connected to 127.0.0.1:11629
+2020-07-28T09:26:18.201 <test> [Overlay INFO] Connected to 127.0.0.1:11637
+2020-07-28T09:26:18.201 <test> [Overlay INFO] Connected to 127.0.0.1:11631
+2020-07-28T09:26:18.202 <test> [Overlay INFO] Connected to 127.0.0.1:11635
+2020-07-28T09:26:18.202 <test> [Overlay INFO] Connected to 127.0.0.1:11637
+2020-07-28T09:26:18.202 <test> [Overlay INFO] Connected to 127.0.0.1:11635
+2020-07-28T09:26:18.203 <test> [Overlay INFO] Connected to 127.0.0.1:11629
+2020-07-28T09:26:18.203 <test> [Overlay INFO] Connected to 127.0.0.1:11629
+2020-07-28T09:26:18.204 <test> [Overlay INFO] Connected to 127.0.0.1:11637
+2020-07-28T09:26:18.204 <test> [Overlay INFO] Connected to 127.0.0.1:11637
+2020-07-28T09:26:18.205 <test> [Overlay INFO] Connected to 127.0.0.1:11633
+2020-07-28T09:26:18.206 <test> [Overlay INFO] Connected to 127.0.0.1:11633
+2020-07-28T09:26:18.206 <test> [Overlay INFO] Connected to 127.0.0.1:11627
+2020-07-28T09:26:18.281 <test> [Ledger INFO] Got consensus: [seq=2, prev=3d4cdb, txs=0, ops=0, sv: [ txH: 6f25ea, ct: 1, upgrades: [ ] ]]
+2020-07-28T09:26:18.283 <test> [Ledger INFO] Closed ledger: [seq=2, hash=59a014]
+2020-07-28T09:26:18.286 <test> [Ledger INFO] Got consensus: [seq=2, prev=3d4cdb, txs=0, ops=0, sv: [ txH: 6f25ea, ct: 1, upgrades: [ ] ]]
+2020-07-28T09:26:18.289 <test> [Ledger INFO] Closed ledger: [seq=2, hash=59a014]
+2020-07-28T09:26:18.292 <test> [Ledger INFO] Got consensus: [seq=2, prev=3d4cdb, txs=0, ops=0, sv: [ txH: 6f25ea, ct: 1, upgrades: [ ] ]]
+2020-07-28T09:26:18.295 <test> [Ledger INFO] Closed ledger: [seq=2, hash=59a014]
+2020-07-28T09:26:18.298 <test> [Ledger INFO] Got consensus: [seq=2, prev=3d4cdb, txs=0, ops=0, sv: [ txH: 6f25ea, ct: 1, upgrades: [ ] ]]
+2020-07-28T09:26:18.300 <test> [Ledger INFO] Closed ledger: [seq=2, hash=59a014]
+2020-07-28T09:26:18.304 <test> [Ledger INFO] Got consensus: [seq=2, prev=3d4cdb, txs=0, ops=0, sv: [ txH: 6f25ea, ct: 1, upgrades: [ ] ]]
+2020-07-28T09:26:18.306 <test> [Ledger INFO] Closed ledger: [seq=2, hash=59a014]
+2020-07-28T09:26:18.309 <test> [Ledger INFO] Got consensus: [seq=2, prev=3d4cdb, txs=0, ops=0, sv: [ txH: 6f25ea, ct: 1, upgrades: [ ] ]]
+2020-07-28T09:26:18.312 <test> [Ledger INFO] Closed ledger: [seq=2, hash=59a014]
+2020-07-28T09:26:18.365 <test> [Ledger INFO] Got consensus: [seq=3, prev=59a014, txs=0, ops=0, sv: [ txH: 0d80ec, ct: 8, upgrades: [ ] ]]
+2020-07-28T09:26:18.367 <test> [Ledger INFO] Closed ledger: [seq=3, hash=dbdbba]
+2020-07-28T09:26:18.370 <test> [Ledger INFO] Got consensus: [seq=3, prev=59a014, txs=0, ops=0, sv: [ txH: 0d80ec, ct: 8, upgrades: [ ] ]]
+2020-07-28T09:26:18.372 <test> [Ledger INFO] Closed ledger: [seq=3, hash=dbdbba]
+2020-07-28T09:26:18.375 <test> [Ledger INFO] Got consensus: [seq=3, prev=59a014, txs=0, ops=0, sv: [ txH: 0d80ec, ct: 8, upgrades: [ ] ]]
+2020-07-28T09:26:18.378 <test> [Ledger INFO] Closed ledger: [seq=3, hash=dbdbba]
+2020-07-28T09:26:18.380 <test> [Ledger INFO] Got consensus: [seq=3, prev=59a014, txs=0, ops=0, sv: [ txH: 0d80ec, ct: 8, upgrades: [ ] ]]
+2020-07-28T09:26:18.383 <test> [Ledger INFO] Closed ledger: [seq=3, hash=dbdbba]
+2020-07-28T09:26:18.385 <test> [Ledger INFO] Got consensus: [seq=3, prev=59a014, txs=0, ops=0, sv: [ txH: 0d80ec, ct: 8, upgrades: [ ] ]]
+2020-07-28T09:26:18.387 <test> [Ledger INFO] Closed ledger: [seq=3, hash=dbdbba]
+2020-07-28T09:26:18.389 <test> [Ledger INFO] Got consensus: [seq=3, prev=59a014, txs=0, ops=0, sv: [ txH: 0d80ec, ct: 8, upgrades: [ ] ]]
+2020-07-28T09:26:18.391 <test> [Ledger INFO] Closed ledger: [seq=3, hash=dbdbba]
+2020-07-28T09:26:18.398 <test> [default INFO] Application destructing
+2020-07-28T09:26:18.399 <test> [default INFO] Application destroyed
+2020-07-28T09:26:18.435 <test> [Herder INFO] Quorum information for 2 : {"agree":6,"delayed":0,"disagree":0,"fail_at":3,"hash":"f9b848","ledger":2,"missing":1,"phase":"EXTERNALIZE","validated":true}
+
+2020-07-28T09:26:18.436 <test> [Ledger INFO] Got consensus: [seq=4, prev=dbdbba, txs=0, ops=0, sv: [ txH: 9cb6b1, ct: 13, upgrades: [ ] ]]
+2020-07-28T09:26:18.437 <test> [Ledger INFO] Closed ledger: [seq=4, hash=c10bc6]
+2020-07-28T09:26:18.439 <test> [Herder INFO] Quorum information for 2 : {"agree":4,"delayed":0,"disagree":0,"fail_at":2,"hash":"4e35e7","ledger":2,"missing":0,"phase":"EXTERNALIZE","validated":true}
+
+2020-07-28T09:26:18.439 <test> [Ledger INFO] Got consensus: [seq=4, prev=dbdbba, txs=0, ops=0, sv: [ txH: 9cb6b1, ct: 13, upgrades: [ ] ]]
+2020-07-28T09:26:18.441 <test> [Ledger INFO] Closed ledger: [seq=4, hash=c10bc6]
+2020-07-28T09:26:18.442 <test> [Herder INFO] Quorum information for 2 : {"agree":6,"delayed":0,"disagree":0,"fail_at":3,"hash":"f9b848","ledger":2,"missing":1,"phase":"EXTERNALIZE","validated":true}
+
+2020-07-28T09:26:18.443 <test> [Ledger INFO] Got consensus: [seq=4, prev=dbdbba, txs=0, ops=0, sv: [ txH: 9cb6b1, ct: 13, upgrades: [ ] ]]
+2020-07-28T09:26:18.445 <test> [Ledger INFO] Closed ledger: [seq=4, hash=c10bc6]
+2020-07-28T09:26:18.446 <test> [Herder INFO] Quorum information for 2 : {"agree":5,"delayed":0,"disagree":0,"fail_at":2,"hash":"d49ec6","ledger":2,"missing":0,"phase":"EXTERNALIZE","validated":true}
+
+2020-07-28T09:26:18.446 <test> [Ledger INFO] Got consensus: [seq=4, prev=dbdbba, txs=0, ops=0, sv: [ txH: 9cb6b1, ct: 13, upgrades: [ ] ]]
+2020-07-28T09:26:18.448 <test> [Ledger INFO] Closed ledger: [seq=4, hash=c10bc6]
+2020-07-28T09:26:18.449 <test> [Herder INFO] Quorum information for 2 : {"agree":5,"delayed":0,"disagree":0,"fail_at":2,"hash":"0aacb4","ledger":2,"missing":0,"phase":"EXTERNALIZE","validated":true}
+
+2020-07-28T09:26:18.450 <test> [Ledger INFO] Got consensus: [seq=4, prev=dbdbba, txs=0, ops=0, sv: [ txH: 9cb6b1, ct: 13, upgrades: [ ] ]]
+2020-07-28T09:26:18.451 <test> [Ledger INFO] Closed ledger: [seq=4, hash=c10bc6]
+2020-07-28T09:26:18.490 <test> [Herder INFO] Quorum information for 3 : {"agree":6,"delayed":0,"disagree":0,"fail_at":3,"hash":"f9b848","ledger":3,"missing":1,"phase":"EXTERNALIZE","validated":true}
+
+2020-07-28T09:26:18.491 <test> [Ledger INFO] Got consensus: [seq=5, prev=c10bc6, txs=0, ops=0, sv: [ txH: 38e9c8, ct: 18, upgrades: [ ] ]]
+2020-07-28T09:26:18.493 <test> [Ledger INFO] Closed ledger: [seq=5, hash=9d2007]
+2020-07-28T09:26:18.494 <test> [Herder INFO] Quorum information for 3 : {"agree":4,"delayed":0,"disagree":0,"fail_at":2,"hash":"4e35e7","ledger":3,"missing":0,"phase":"EXTERNALIZE","validated":true}
+
+2020-07-28T09:26:18.495 <test> [Ledger INFO] Got consensus: [seq=5, prev=c10bc6, txs=0, ops=0, sv: [ txH: 38e9c8, ct: 18, upgrades: [ ] ]]
+2020-07-28T09:26:18.496 <test> [Ledger INFO] Closed ledger: [seq=5, hash=9d2007]
+2020-07-28T09:26:18.498 <test> [Herder INFO] Quorum information for 3 : {"agree":6,"delayed":0,"disagree":0,"fail_at":3,"hash":"f9b848","ledger":3,"missing":1,"phase":"EXTERNALIZE","validated":true}
+
+2020-07-28T09:26:18.499 <test> [Ledger INFO] Got consensus: [seq=5, prev=c10bc6, txs=0, ops=0, sv: [ txH: 38e9c8, ct: 18, upgrades: [ ] ]]
+2020-07-28T09:26:18.500 <test> [Ledger INFO] Closed ledger: [seq=5, hash=9d2007]
+2020-07-28T09:26:18.501 <test> [Herder INFO] Quorum information for 3 : {"agree":5,"delayed":0,"disagree":0,"fail_at":2,"hash":"d49ec6","ledger":3,"missing":0,"phase":"EXTERNALIZE","validated":true}
+
+2020-07-28T09:26:18.502 <test> [Ledger INFO] Got consensus: [seq=5, prev=c10bc6, txs=0, ops=0, sv: [ txH: 38e9c8, ct: 18, upgrades: [ ] ]]
+2020-07-28T09:26:18.504 <test> [Ledger INFO] Closed ledger: [seq=5, hash=9d2007]
+2020-07-28T09:26:18.506 <test> [Herder INFO] Quorum information for 3 : {"agree":5,"delayed":0,"disagree":0,"fail_at":2,"hash":"0aacb4","ledger":3,"missing":0,"phase":"EXTERNALIZE","validated":true}
+
+2020-07-28T09:26:18.507 <test> [Ledger INFO] Got consensus: [seq=5, prev=c10bc6, txs=0, ops=0, sv: [ txH: 38e9c8, ct: 18, upgrades: [ ] ]]
+2020-07-28T09:26:18.509 <test> [Ledger INFO] Closed ledger: [seq=5, hash=9d2007]
+2020-07-28T09:26:18.514 <test> [Database INFO] Connecting to: sqlite3://stellar-core-test-0-a3db40312b6a156e/test-3-e79ddf7d784213ff/test.db
+2020-07-28T09:26:18.516 <test> [SCP INFO] LocalNode::LocalNode@GAXSR qSet: f9b848
+2020-07-28T09:26:18.516 <test> [default INFO] Listening on 127.0.0.1:11632 for HTTP requests
+2020-07-28T09:26:18.516 <test> [Invariant INFO] Enabled invariant 'AccountSubEntriesCountIsValid'
+2020-07-28T09:26:18.516 <test> [Invariant INFO] Enabled invariant 'BucketListIsConsistentWithDatabase'
+2020-07-28T09:26:18.516 <test> [Invariant INFO] Enabled invariant 'ConservationOfLumens'
+2020-07-28T09:26:18.516 <test> [Invariant INFO] Enabled invariant 'LedgerEntryIsValid'
+2020-07-28T09:26:18.516 <test> [Invariant INFO] Enabled invariant 'LiabilitiesMatchOffers'
+2020-07-28T09:26:18.517 <test> [Database INFO] DB schema is in current version
+2020-07-28T09:26:18.517 <test> [Ledger INFO] Starting up application
+2020-07-28T09:26:18.517 <test> [Herder INFO] Armed with network upgrades: upgradetime=1970-01-01T00:00:01Z, protocolversion=14, basefee=100, basereserve=100000000, maxtxsize=50
+2020-07-28T09:26:18.517 <test> [default INFO] Connection effective settings:
+2020-07-28T09:26:18.517 <test> [default INFO] TARGET_PEER_CONNECTIONS: 8
+2020-07-28T09:26:18.517 <test> [default INFO] MAX_ADDITIONAL_PEER_CONNECTIONS: 64
+2020-07-28T09:26:18.517 <test> [default INFO] MAX_PENDING_CONNECTIONS: 500
+2020-07-28T09:26:18.517 <test> [default INFO] MAX_OUTBOUND_PENDING_CONNECTIONS: 56
+2020-07-28T09:26:18.517 <test> [default INFO] MAX_INBOUND_PENDING_CONNECTIONS: 444
+2020-07-28T09:26:18.517 <test> [Ledger INFO] Last closed ledger (LCL) hash is dbdbbabd348f9afcb910140893139ca19d2ba577b23c117a427dd692a906e11c
+2020-07-28T09:26:18.517 <test> [Ledger INFO] Loaded LCL header from database: [seq=3, hash=dbdbba]
+2020-07-28T09:26:18.518 <test> [Ledger INFO] Assumed bucket-state for LCL: [seq=3, hash=dbdbba]
+2020-07-28T09:26:18.520 <test> [Overlay INFO] Connected to 127.0.0.1:11631
+2020-07-28T09:26:18.520 <test> [Overlay INFO] Connected to 127.0.0.1:11635
+2020-07-28T09:26:18.524 <test> [Herder INFO] Quorum information for 2 : {"agree":6,"delayed":0,"disagree":0,"fail_at":3,"hash":"f9b848","ledger":2,"missing":1,"phase":"EXTERNALIZE","validated":true}
+
+2020-07-28T09:26:18.524 <test> [Ledger INFO] Got consensus: [seq=4, prev=dbdbba, txs=0, ops=0, sv: [ txH: 9cb6b1, ct: 13, upgrades: [ ] ]]
+2020-07-28T09:26:18.527 <test> [Ledger INFO] Closed ledger: [seq=4, hash=c10bc6]
+2020-07-28T09:26:18.527 <test> [Ledger INFO] Changing state LM_BOOTING_STATE -> LM_SYNCED_STATE
+2020-07-28T09:26:18.528 <test> [Herder INFO] Quorum information for 3 : {"agree":6,"delayed":0,"disagree":0,"fail_at":3,"hash":"f9b848","ledger":3,"missing":1,"phase":"EXTERNALIZE","validated":true}
+
+2020-07-28T09:26:18.529 <test> [Ledger INFO] Got consensus: [seq=5, prev=c10bc6, txs=0, ops=0, sv: [ txH: 38e9c8, ct: 18, upgrades: [ ] ]]
+2020-07-28T09:26:18.531 <test> [Ledger INFO] Closed ledger: [seq=5, hash=9d2007]
+2020-07-28T09:26:18.579 <test> [Herder INFO] Quorum information for 4 : {"agree":6,"delayed":0,"disagree":0,"fail_at":3,"hash":"f9b848","ledger":4,"missing":1,"phase":"EXTERNALIZE","validated":true}
+
+2020-07-28T09:26:18.580 <test> [Ledger INFO] Got consensus: [seq=6, prev=9d2007, txs=0, ops=0, sv: [ txH: cc8971, ct: 23, upgrades: [ ] ]]
+2020-07-28T09:26:18.581 <test> [Ledger INFO] Closed ledger: [seq=6, hash=f213e7]
+2020-07-28T09:26:18.583 <test> [Herder INFO] Quorum information for 4 : {"agree":5,"delayed":0,"disagree":0,"fail_at":2,"hash":"d49ec6","ledger":4,"missing":0,"phase":"EXTERNALIZE","validated":true}
+
+2020-07-28T09:26:18.584 <test> [Ledger INFO] Got consensus: [seq=6, prev=9d2007, txs=0, ops=0, sv: [ txH: cc8971, ct: 23, upgrades: [ ] ]]
+2020-07-28T09:26:18.585 <test> [Ledger INFO] Closed ledger: [seq=6, hash=f213e7]
+2020-07-28T09:26:18.587 <test> [Herder INFO] Quorum information for 4 : {"agree":5,"delayed":0,"disagree":0,"fail_at":2,"hash":"0aacb4","ledger":4,"missing":0,"phase":"EXTERNALIZE","validated":true}
+
+2020-07-28T09:26:18.588 <test> [Ledger INFO] Got consensus: [seq=6, prev=9d2007, txs=0, ops=0, sv: [ txH: cc8971, ct: 23, upgrades: [ ] ]]
+2020-07-28T09:26:18.589 <test> [Ledger INFO] Closed ledger: [seq=6, hash=f213e7]
+2020-07-28T09:26:18.591 <test> [Herder INFO] Quorum information for 4 : {"agree":6,"delayed":0,"disagree":0,"fail_at":3,"hash":"f9b848","ledger":4,"missing":1,"phase":"EXTERNALIZE","validated":true}
+
+2020-07-28T09:26:18.591 <test> [Ledger INFO] Got consensus: [seq=6, prev=9d2007, txs=0, ops=0, sv: [ txH: cc8971, ct: 23, upgrades: [ ] ]]
+2020-07-28T09:26:18.593 <test> [Ledger INFO] Closed ledger: [seq=6, hash=f213e7]
+2020-07-28T09:26:18.595 <test> [Herder INFO] Quorum information for 4 : {"agree":6,"delayed":0,"disagree":0,"fail_at":3,"hash":"f9b848","ledger":4,"missing":1,"phase":"EXTERNALIZE","validated":true}
+
+2020-07-28T09:26:18.595 <test> [Ledger INFO] Got consensus: [seq=6, prev=9d2007, txs=0, ops=0, sv: [ txH: cc8971, ct: 23, upgrades: [ ] ]]
+2020-07-28T09:26:18.597 <test> [Ledger INFO] Closed ledger: [seq=6, hash=f213e7]
+2020-07-28T09:26:18.598 <test> [Herder INFO] Quorum information for 4 : {"agree":4,"delayed":0,"disagree":0,"fail_at":2,"hash":"4e35e7","ledger":4,"missing":0,"phase":"EXTERNALIZE","validated":true}
+
+2020-07-28T09:26:18.598 <test> [Ledger INFO] Got consensus: [seq=6, prev=9d2007, txs=0, ops=0, sv: [ txH: cc8971, ct: 23, upgrades: [ ] ]]
+2020-07-28T09:26:18.600 <test> [Ledger INFO] Closed ledger: [seq=6, hash=f213e7]
+2020-07-28T09:26:18.650 <test> [Herder INFO] Quorum information for 5 : {"agree":6,"delayed":0,"disagree":0,"fail_at":3,"hash":"f9b848","ledger":5,"missing":1,"phase":"EXTERNALIZE","validated":true}
+
+2020-07-28T09:26:18.650 <test> [Ledger INFO] Got consensus: [seq=7, prev=f213e7, txs=0, ops=0, sv: [ txH: 223215, ct: 29, upgrades: [ ] ]]
+2020-07-28T09:26:18.652 <test> [Ledger INFO] Closed ledger: [seq=7, hash=876683]
+2020-07-28T09:26:18.654 <test> [Herder INFO] Quorum information for 5 : {"agree":5,"delayed":0,"disagree":0,"fail_at":2,"hash":"d49ec6","ledger":5,"missing":0,"phase":"EXTERNALIZE","validated":true}
+
+2020-07-28T09:26:18.655 <test> [Ledger INFO] Got consensus: [seq=7, prev=f213e7, txs=0, ops=0, sv: [ txH: 223215, ct: 29, upgrades: [ ] ]]
+2020-07-28T09:26:18.656 <test> [Ledger INFO] Closed ledger: [seq=7, hash=876683]
+2020-07-28T09:26:18.658 <test> [Herder INFO] Quorum information for 5 : {"agree":5,"delayed":0,"disagree":0,"fail_at":2,"hash":"0aacb4","ledger":5,"missing":0,"phase":"EXTERNALIZE","validated":true}
+
+2020-07-28T09:26:18.658 <test> [Ledger INFO] Got consensus: [seq=7, prev=f213e7, txs=0, ops=0, sv: [ txH: 223215, ct: 29, upgrades: [ ] ]]
+2020-07-28T09:26:18.660 <test> [Ledger INFO] Closed ledger: [seq=7, hash=876683]
+2020-07-28T09:26:18.662 <test> [Herder INFO] Quorum information for 5 : {"agree":6,"delayed":0,"disagree":0,"fail_at":3,"hash":"f9b848","ledger":5,"missing":1,"phase":"EXTERNALIZE","validated":true}
+
+2020-07-28T09:26:18.663 <test> [Ledger INFO] Got consensus: [seq=7, prev=f213e7, txs=0, ops=0, sv: [ txH: 223215, ct: 29, upgrades: [ ] ]]
+2020-07-28T09:26:18.664 <test> [Ledger INFO] Closed ledger: [seq=7, hash=876683]
+2020-07-28T09:26:18.666 <test> [Herder INFO] Quorum information for 5 : {"agree":6,"delayed":0,"disagree":0,"fail_at":3,"hash":"f9b848","ledger":5,"missing":1,"phase":"EXTERNALIZE","validated":true}
+
+2020-07-28T09:26:18.667 <test> [Ledger INFO] Got consensus: [seq=7, prev=f213e7, txs=0, ops=0, sv: [ txH: 223215, ct: 29, upgrades: [ ] ]]
+2020-07-28T09:26:18.669 <test> [Ledger INFO] Closed ledger: [seq=7, hash=876683]
+2020-07-28T09:26:18.670 <test> [Herder INFO] Quorum information for 5 : {"agree":4,"delayed":0,"disagree":0,"fail_at":2,"hash":"4e35e7","ledger":5,"missing":0,"phase":"EXTERNALIZE","validated":true}
+
+2020-07-28T09:26:18.670 <test> [Ledger INFO] Got consensus: [seq=7, prev=f213e7, txs=0, ops=0, sv: [ txH: 223215, ct: 29, upgrades: [ ] ]]
+2020-07-28T09:26:18.672 <test> [Ledger INFO] Closed ledger: [seq=7, hash=876683]
+2020-07-28T09:26:18.730 <test> [Herder INFO] Quorum information for 6 : {"agree":6,"delayed":0,"disagree":0,"fail_at":3,"hash":"f9b848","ledger":6,"missing":1,"phase":"EXTERNALIZE","validated":true}
+
+2020-07-28T09:26:18.730 <test> [Ledger INFO] Got consensus: [seq=8, prev=876683, txs=0, ops=0, sv: [ txH: e799f1, ct: 34, upgrades: [ ] ]]
+2020-07-28T09:26:18.732 <test> [Ledger INFO] Closed ledger: [seq=8, hash=049103]
+2020-07-28T09:26:18.734 <test> [Herder INFO] Quorum information for 6 : {"agree":4,"delayed":0,"disagree":0,"fail_at":2,"hash":"4e35e7","ledger":6,"missing":0,"phase":"EXTERNALIZE","validated":true}
+
+2020-07-28T09:26:18.735 <test> [Ledger INFO] Got consensus: [seq=8, prev=876683, txs=0, ops=0, sv: [ txH: e799f1, ct: 34, upgrades: [ ] ]]
+2020-07-28T09:26:18.736 <test> [Ledger INFO] Closed ledger: [seq=8, hash=049103]
+2020-07-28T09:26:18.738 <test> [Herder INFO] Quorum information for 6 : {"agree":6,"delayed":0,"disagree":0,"fail_at":3,"hash":"f9b848","ledger":6,"missing":1,"phase":"EXTERNALIZE","validated":true}
+
+2020-07-28T09:26:18.738 <test> [Ledger INFO] Got consensus: [seq=8, prev=876683, txs=0, ops=0, sv: [ txH: e799f1, ct: 34, upgrades: [ ] ]]
+2020-07-28T09:26:18.740 <test> [Ledger INFO] Closed ledger: [seq=8, hash=049103]
+2020-07-28T09:26:18.741 <test> [Herder INFO] Quorum information for 6 : {"agree":5,"delayed":0,"disagree":0,"fail_at":2,"hash":"d49ec6","ledger":6,"missing":0,"phase":"EXTERNALIZE","validated":true}
+
+2020-07-28T09:26:18.742 <test> [Ledger INFO] Got consensus: [seq=8, prev=876683, txs=0, ops=0, sv: [ txH: e799f1, ct: 34, upgrades: [ ] ]]
+2020-07-28T09:26:18.743 <test> [Ledger INFO] Closed ledger: [seq=8, hash=049103]
+2020-07-28T09:26:18.745 <test> [Herder INFO] Quorum information for 6 : {"agree":5,"delayed":0,"disagree":0,"fail_at":2,"hash":"0aacb4","ledger":6,"missing":0,"phase":"EXTERNALIZE","validated":true}
+
+2020-07-28T09:26:18.745 <test> [Ledger INFO] Got consensus: [seq=8, prev=876683, txs=0, ops=0, sv: [ txH: e799f1, ct: 34, upgrades: [ ] ]]
+2020-07-28T09:26:18.747 <test> [Ledger INFO] Closed ledger: [seq=8, hash=049103]
+2020-07-28T09:26:18.749 <test> [Herder INFO] Quorum information for 6 : {"agree":6,"delayed":0,"disagree":0,"fail_at":3,"hash":"f9b848","ledger":6,"missing":1,"phase":"EXTERNALIZE","validated":true}
+
+2020-07-28T09:26:18.749 <test> [Ledger INFO] Got consensus: [seq=8, prev=876683, txs=0, ops=0, sv: [ txH: e799f1, ct: 34, upgrades: [ ] ]]
+2020-07-28T09:26:18.751 <test> [Ledger INFO] Closed ledger: [seq=8, hash=049103]
+2020-07-28T09:26:18.758 <test> [Overlay INFO] Connected to 127.0.0.1:11631
+2020-07-28T09:26:18.758 <test> [Overlay INFO] Connected to 127.0.0.1:11631
+2020-07-28T09:26:18.758 <test> [Overlay INFO] Connected to 127.0.0.1:11631
+2020-07-28T09:26:18.759 <test> [Overlay INFO] Connected to 127.0.0.1:11631
+2020-07-28T09:26:18.759 <test> [Overlay INFO] Connected to 127.0.0.1:11629
+2020-07-28T09:26:18.760 <test> [Overlay INFO] Connected to 127.0.0.1:11637
+2020-07-28T09:26:18.761 <test> [Overlay INFO] Connected to 127.0.0.1:11633
+2020-07-28T09:26:18.762 <test> [Overlay INFO] Connected to 127.0.0.1:11627
+2020-07-28T09:26:18.839 <test> [Herder INFO] Quorum information for 7 : {"agree":5,"delayed":0,"disagree":0,"fail_at":2,"hash":"d49ec6","ledger":7,"missing":0,"phase":"EXTERNALIZE","validated":true}
+
+2020-07-28T09:26:18.839 <test> [Ledger INFO] Got consensus: [seq=9, prev=049103, txs=0, ops=0, sv: [ txH: 500b54, ct: 40, upgrades: [ ] ]]
+2020-07-28T09:26:18.841 <test> [Ledger INFO] Closed ledger: [seq=9, hash=75c398]
+2020-07-28T09:26:18.844 <test> [Herder INFO] Quorum information for 7 : {"agree":5,"delayed":0,"disagree":0,"fail_at":2,"hash":"0aacb4","ledger":7,"missing":0,"phase":"EXTERNALIZE","validated":true}
+
+2020-07-28T09:26:18.844 <test> [Ledger INFO] Got consensus: [seq=9, prev=049103, txs=0, ops=0, sv: [ txH: 500b54, ct: 40, upgrades: [ ] ]]
+2020-07-28T09:26:18.846 <test> [Ledger INFO] Closed ledger: [seq=9, hash=75c398]
+2020-07-28T09:26:18.848 <test> [Herder INFO] Quorum information for 7 : {"agree":6,"delayed":0,"disagree":0,"fail_at":3,"hash":"f9b848","ledger":7,"missing":1,"phase":"EXTERNALIZE","validated":true}
+
+2020-07-28T09:26:18.849 <test> [Ledger INFO] Got consensus: [seq=9, prev=049103, txs=0, ops=0, sv: [ txH: 500b54, ct: 40, upgrades: [ ] ]]
+2020-07-28T09:26:18.851 <test> [Ledger INFO] Closed ledger: [seq=9, hash=75c398]
+2020-07-28T09:26:18.853 <test> [Herder INFO] Quorum information for 7 : {"agree":6,"delayed":0,"disagree":0,"fail_at":3,"hash":"f9b848","ledger":7,"missing":1,"phase":"EXTERNALIZE","validated":true}
+
+2020-07-28T09:26:18.854 <test> [Ledger INFO] Got consensus: [seq=9, prev=049103, txs=0, ops=0, sv: [ txH: 500b54, ct: 40, upgrades: [ ] ]]
+2020-07-28T09:26:18.855 <test> [Ledger INFO] Closed ledger: [seq=9, hash=75c398]
+2020-07-28T09:26:18.858 <test> [Herder INFO] Quorum information for 7 : {"agree":4,"delayed":0,"disagree":0,"fail_at":2,"hash":"4e35e7","ledger":7,"missing":0,"phase":"EXTERNALIZE","validated":true}
+
+2020-07-28T09:26:18.858 <test> [Ledger INFO] Got consensus: [seq=9, prev=049103, txs=0, ops=0, sv: [ txH: 500b54, ct: 40, upgrades: [ ] ]]
+2020-07-28T09:26:18.860 <test> [Ledger INFO] Closed ledger: [seq=9, hash=75c398]
+2020-07-28T09:26:18.862 <test> [Herder INFO] Quorum information for 7 : {"agree":6,"delayed":0,"disagree":0,"fail_at":3,"hash":"f9b848","ledger":7,"missing":1,"phase":"EXTERNALIZE","validated":true}
+
+2020-07-28T09:26:18.862 <test> [Ledger INFO] Got consensus: [seq=9, prev=049103, txs=0, ops=0, sv: [ txH: 500b54, ct: 40, upgrades: [ ] ]]
+2020-07-28T09:26:18.864 <test> [Ledger INFO] Closed ledger: [seq=9, hash=75c398]
+2020-07-28T09:26:18.919 <test> [Herder INFO] Quorum information for 8 : {"agree":6,"delayed":0,"disagree":0,"fail_at":3,"hash":"f9b848","ledger":8,"missing":1,"phase":"EXTERNALIZE","validated":true}
+
+2020-07-28T09:26:18.919 <test> [Ledger INFO] Got consensus: [seq=10, prev=75c398, txs=0, ops=0, sv: [ txH: 9ed0e9, ct: 48, upgrades: [ ] ]]
+2020-07-28T09:26:18.921 <test> [Ledger INFO] Closed ledger: [seq=10, hash=f332f2]
+2020-07-28T09:26:18.924 <test> [Herder INFO] Quorum information for 8 : {"agree":6,"delayed":0,"disagree":0,"fail_at":3,"hash":"f9b848","ledger":8,"missing":1,"phase":"EXTERNALIZE","validated":true}
+
+2020-07-28T09:26:18.924 <test> [Ledger INFO] Got consensus: [seq=10, prev=75c398, txs=0, ops=0, sv: [ txH: 9ed0e9, ct: 48, upgrades: [ ] ]]
+2020-07-28T09:26:18.926 <test> [Ledger INFO] Closed ledger: [seq=10, hash=f332f2]
+2020-07-28T09:26:18.928 <test> [Herder INFO] Quorum information for 8 : {"agree":4,"delayed":0,"disagree":0,"fail_at":2,"hash":"4e35e7","ledger":8,"missing":0,"phase":"EXTERNALIZE","validated":true}
+
+2020-07-28T09:26:18.929 <test> [Ledger INFO] Got consensus: [seq=10, prev=75c398, txs=0, ops=0, sv: [ txH: 9ed0e9, ct: 48, upgrades: [ ] ]]
+2020-07-28T09:26:18.931 <test> [Ledger INFO] Closed ledger: [seq=10, hash=f332f2]
+2020-07-28T09:26:18.933 <test> [Herder INFO] Quorum information for 8 : {"agree":6,"delayed":0,"disagree":0,"fail_at":3,"hash":"f9b848","ledger":8,"missing":1,"phase":"EXTERNALIZE","validated":true}
+
+2020-07-28T09:26:18.933 <test> [Ledger INFO] Got consensus: [seq=10, prev=75c398, txs=0, ops=0, sv: [ txH: 9ed0e9, ct: 48, upgrades: [ ] ]]
+2020-07-28T09:26:18.935 <test> [Ledger INFO] Closed ledger: [seq=10, hash=f332f2]
+2020-07-28T09:26:18.937 <test> [Herder INFO] Quorum information for 8 : {"agree":5,"delayed":0,"disagree":0,"fail_at":2,"hash":"d49ec6","ledger":8,"missing":0,"phase":"EXTERNALIZE","validated":true}
+
+2020-07-28T09:26:18.937 <test> [Ledger INFO] Got consensus: [seq=10, prev=75c398, txs=0, ops=0, sv: [ txH: 9ed0e9, ct: 48, upgrades: [ ] ]]
+2020-07-28T09:26:18.939 <test> [Ledger INFO] Closed ledger: [seq=10, hash=f332f2]
+2020-07-28T09:26:18.941 <test> [Herder INFO] Quorum information for 8 : {"agree":5,"delayed":0,"disagree":0,"fail_at":2,"hash":"0aacb4","ledger":8,"missing":0,"phase":"EXTERNALIZE","validated":true}
+
+2020-07-28T09:26:18.942 <test> [Ledger INFO] Got consensus: [seq=10, prev=75c398, txs=0, ops=0, sv: [ txH: 9ed0e9, ct: 48, upgrades: [ ] ]]
+2020-07-28T09:26:18.943 <test> [Ledger INFO] Closed ledger: [seq=10, hash=f332f2]
+2020-07-28T09:26:18.951 <test> [default INFO] Application destructing
+2020-07-28T09:26:18.951 <test> [default INFO] Application destroyed
+2020-07-28T09:26:19.013 <test> [Herder INFO] Quorum information for 9 : {"agree":6,"delayed":0,"disagree":0,"fail_at":3,"hash":"f9b848","ledger":9,"missing":1,"phase":"EXTERNALIZE","validated":true}
+
+2020-07-28T09:26:19.014 <test> [Ledger INFO] Got consensus: [seq=11, prev=f332f2, txs=0, ops=0, sv: [ txH: c5b15c, ct: 53, upgrades: [ ] ]]
+2020-07-28T09:26:19.015 <test> [Ledger INFO] Closed ledger: [seq=11, hash=00a715]
+2020-07-28T09:26:19.018 <test> [Herder INFO] Quorum information for 9 : {"agree":5,"delayed":0,"disagree":0,"fail_at":2,"hash":"0aacb4","ledger":9,"missing":0,"phase":"EXTERNALIZE","validated":true}
+
+2020-07-28T09:26:19.018 <test> [Ledger INFO] Got consensus: [seq=11, prev=f332f2, txs=0, ops=0, sv: [ txH: c5b15c, ct: 53, upgrades: [ ] ]]
+2020-07-28T09:26:19.020 <test> [Ledger INFO] Closed ledger: [seq=11, hash=00a715]
+2020-07-28T09:26:19.021 <test> [Herder INFO] Quorum information for 9 : {"agree":6,"delayed":0,"disagree":0,"fail_at":3,"hash":"f9b848","ledger":9,"missing":1,"phase":"EXTERNALIZE","validated":true}
+
+2020-07-28T09:26:19.022 <test> [Ledger INFO] Got consensus: [seq=11, prev=f332f2, txs=0, ops=0, sv: [ txH: c5b15c, ct: 53, upgrades: [ ] ]]
+2020-07-28T09:26:19.023 <test> [Ledger INFO] Closed ledger: [seq=11, hash=00a715]
+2020-07-28T09:26:19.025 <test> [Herder INFO] Quorum information for 9 : {"agree":6,"delayed":0,"disagree":0,"fail_at":3,"hash":"f9b848","ledger":9,"missing":1,"phase":"EXTERNALIZE","validated":true}
+
+2020-07-28T09:26:19.025 <test> [Ledger INFO] Got consensus: [seq=11, prev=f332f2, txs=0, ops=0, sv: [ txH: c5b15c, ct: 53, upgrades: [ ] ]]
+2020-07-28T09:26:19.027 <test> [Ledger INFO] Closed ledger: [seq=11, hash=00a715]
+2020-07-28T09:26:19.029 <test> [Herder INFO] Quorum information for 9 : {"agree":4,"delayed":0,"disagree":0,"fail_at":2,"hash":"4e35e7","ledger":9,"missing":0,"phase":"EXTERNALIZE","validated":true}
+
+2020-07-28T09:26:19.029 <test> [Ledger INFO] Got consensus: [seq=11, prev=f332f2, txs=0, ops=0, sv: [ txH: c5b15c, ct: 53, upgrades: [ ] ]]
+2020-07-28T09:26:19.031 <test> [Ledger INFO] Closed ledger: [seq=11, hash=00a715]
+2020-07-28T09:26:19.068 <test> [Herder INFO] Quorum information for 10 : {"agree":6,"delayed":0,"disagree":0,"fail_at":3,"hash":"f9b848","ledger":10,"missing":1,"phase":"EXTERNALIZE","validated":true}
+
+2020-07-28T09:26:19.069 <test> [Ledger INFO] Got consensus: [seq=12, prev=00a715, txs=0, ops=0, sv: [ txH: 559fec, ct: 68, upgrades: [ ] ]]
+2020-07-28T09:26:19.071 <test> [Ledger INFO] Closed ledger: [seq=12, hash=a027b9]
+2020-07-28T09:26:19.073 <test> [Herder INFO] Quorum information for 10 : {"agree":5,"delayed":0,"disagree":0,"fail_at":2,"hash":"0aacb4","ledger":10,"missing":0,"phase":"EXTERNALIZE","validated":true}
+
+2020-07-28T09:26:19.073 <test> [Ledger INFO] Got consensus: [seq=12, prev=00a715, txs=0, ops=0, sv: [ txH: 559fec, ct: 68, upgrades: [ ] ]]
+2020-07-28T09:26:19.075 <test> [Ledger INFO] Closed ledger: [seq=12, hash=a027b9]
+2020-07-28T09:26:19.077 <test> [Herder INFO] Quorum information for 10 : {"agree":6,"delayed":0,"disagree":0,"fail_at":3,"hash":"f9b848","ledger":10,"missing":1,"phase":"EXTERNALIZE","validated":true}
+
+2020-07-28T09:26:19.077 <test> [Ledger INFO] Got consensus: [seq=12, prev=00a715, txs=0, ops=0, sv: [ txH: 559fec, ct: 68, upgrades: [ ] ]]
+2020-07-28T09:26:19.079 <test> [Ledger INFO] Closed ledger: [seq=12, hash=a027b9]
+2020-07-28T09:26:19.080 <test> [Herder INFO] Quorum information for 10 : {"agree":6,"delayed":0,"disagree":0,"fail_at":3,"hash":"f9b848","ledger":10,"missing":1,"phase":"EXTERNALIZE","validated":true}
+
+2020-07-28T09:26:19.081 <test> [Ledger INFO] Got consensus: [seq=12, prev=00a715, txs=0, ops=0, sv: [ txH: 559fec, ct: 68, upgrades: [ ] ]]
+2020-07-28T09:26:19.082 <test> [Ledger INFO] Closed ledger: [seq=12, hash=a027b9]
+2020-07-28T09:26:19.084 <test> [Herder INFO] Quorum information for 10 : {"agree":4,"delayed":0,"disagree":0,"fail_at":2,"hash":"4e35e7","ledger":10,"missing":0,"phase":"EXTERNALIZE","validated":true}
+
+2020-07-28T09:26:19.085 <test> [Ledger INFO] Got consensus: [seq=12, prev=00a715, txs=0, ops=0, sv: [ txH: 559fec, ct: 68, upgrades: [ ] ]]
+2020-07-28T09:26:19.086 <test> [Ledger INFO] Closed ledger: [seq=12, hash=a027b9]
+2020-07-28T09:26:19.091 <test> [Database INFO] Connecting to: sqlite3://stellar-core-test-0-a3db40312b6a156e/test-6-80ba1c3d9c7ba05a/test.db
+2020-07-28T09:26:19.093 <test> [SCP INFO] LocalNode::LocalNode@GDWYI qSet: d49ec6
+2020-07-28T09:26:19.093 <test> [default INFO] Listening on 127.0.0.1:11638 for HTTP requests
+2020-07-28T09:26:19.093 <test> [Invariant INFO] Enabled invariant 'AccountSubEntriesCountIsValid'
+2020-07-28T09:26:19.093 <test> [Invariant INFO] Enabled invariant 'BucketListIsConsistentWithDatabase'
+2020-07-28T09:26:19.093 <test> [Invariant INFO] Enabled invariant 'ConservationOfLumens'
+2020-07-28T09:26:19.093 <test> [Invariant INFO] Enabled invariant 'LedgerEntryIsValid'
+2020-07-28T09:26:19.093 <test> [Invariant INFO] Enabled invariant 'LiabilitiesMatchOffers'
+2020-07-28T09:26:19.093 <test> [Database INFO] DB schema is in current version
+2020-07-28T09:26:19.093 <test> [Ledger INFO] Starting up application
+2020-07-28T09:26:19.093 <test> [Herder INFO] Armed with network upgrades: upgradetime=1970-01-01T00:00:01Z, protocolversion=14, basefee=100, basereserve=100000000, maxtxsize=50
+2020-07-28T09:26:19.093 <test> [default INFO] Connection effective settings:
+2020-07-28T09:26:19.093 <test> [default INFO] TARGET_PEER_CONNECTIONS: 8
+2020-07-28T09:26:19.093 <test> [default INFO] MAX_ADDITIONAL_PEER_CONNECTIONS: 64
+2020-07-28T09:26:19.093 <test> [default INFO] MAX_PENDING_CONNECTIONS: 500
+2020-07-28T09:26:19.093 <test> [default INFO] MAX_OUTBOUND_PENDING_CONNECTIONS: 56
+2020-07-28T09:26:19.093 <test> [default INFO] MAX_INBOUND_PENDING_CONNECTIONS: 444
+2020-07-28T09:26:19.094 <test> [Ledger INFO] Last closed ledger (LCL) hash is f332f22249d1ef4b26f7ade40c89a0de1e4fa4561849ee0067812fdaa6587045
+2020-07-28T09:26:19.094 <test> [Ledger INFO] Loaded LCL header from database: [seq=10, hash=f332f2]
+2020-07-28T09:26:19.094 <test> [Ledger INFO] Assumed bucket-state for LCL: [seq=10, hash=f332f2]
+2020-07-28T09:26:19.097 <test> [Overlay INFO] Connected to 127.0.0.1:11637
+2020-07-28T09:26:19.098 <test> [Overlay INFO] Connected to 127.0.0.1:11633
+2020-07-28T09:26:19.107 <test> [Herder INFO] Quorum information for 9 : {"agree":5,"delayed":0,"disagree":0,"fail_at":2,"hash":"d49ec6","ledger":9,"missing":0,"phase":"EXTERNALIZE","validated":true}
+
+2020-07-28T09:26:19.107 <test> [Ledger INFO] Got consensus: [seq=11, prev=f332f2, txs=0, ops=0, sv: [ txH: c5b15c, ct: 53, upgrades: [ ] ]]
+2020-07-28T09:26:19.110 <test> [Ledger INFO] Closed ledger: [seq=11, hash=00a715]
+2020-07-28T09:26:19.110 <test> [Ledger INFO] Changing state LM_BOOTING_STATE -> LM_SYNCED_STATE
+2020-07-28T09:26:19.111 <test> [Herder INFO] Quorum information for 10 : {"agree":5,"delayed":0,"disagree":0,"fail_at":2,"hash":"d49ec6","ledger":10,"missing":0,"phase":"EXTERNALIZE","validated":true}
+
+2020-07-28T09:26:19.112 <test> [Ledger INFO] Got consensus: [seq=12, prev=00a715, txs=0, ops=0, sv: [ txH: 559fec, ct: 68, upgrades: [ ] ]]
+2020-07-28T09:26:19.114 <test> [Ledger INFO] Closed ledger: [seq=12, hash=a027b9]
+2020-07-28T09:26:19.173 <test> [Herder INFO] Quorum information for 11 : {"agree":6,"delayed":0,"disagree":0,"fail_at":3,"hash":"f9b848","ledger":11,"missing":1,"phase":"EXTERNALIZE","validated":true}
+
+2020-07-28T09:26:19.174 <test> [Ledger INFO] Got consensus: [seq=13, prev=a027b9, txs=0, ops=0, sv: [ txH: 3d15af, ct: 73, upgrades: [ ] ]]
+2020-07-28T09:26:19.176 <test> [Ledger INFO] Closed ledger: [seq=13, hash=306615]
+2020-07-28T09:26:19.179 <test> [Herder INFO] Quorum information for 11 : {"agree":5,"delayed":0,"disagree":0,"fail_at":2,"hash":"0aacb4","ledger":11,"missing":0,"phase":"EXTERNALIZE","validated":true}
+
+2020-07-28T09:26:19.180 <test> [Ledger INFO] Got consensus: [seq=13, prev=a027b9, txs=0, ops=0, sv: [ txH: 3d15af, ct: 73, upgrades: [ ] ]]
+2020-07-28T09:26:19.182 <test> [Ledger INFO] Closed ledger: [seq=13, hash=306615]
+2020-07-28T09:26:19.184 <test> [Herder INFO] Quorum information for 11 : {"agree":6,"delayed":0,"disagree":0,"fail_at":3,"hash":"f9b848","ledger":11,"missing":1,"phase":"EXTERNALIZE","validated":true}
+
+2020-07-28T09:26:19.184 <test> [Ledger INFO] Got consensus: [seq=13, prev=a027b9, txs=0, ops=0, sv: [ txH: 3d15af, ct: 73, upgrades: [ ] ]]
+2020-07-28T09:26:19.186 <test> [Ledger INFO] Closed ledger: [seq=13, hash=306615]
+2020-07-28T09:26:19.188 <test> [Herder INFO] Quorum information for 11 : {"agree":6,"delayed":0,"disagree":0,"fail_at":3,"hash":"f9b848","ledger":11,"missing":1,"phase":"EXTERNALIZE","validated":true}
+
+2020-07-28T09:26:19.189 <test> [Ledger INFO] Got consensus: [seq=13, prev=a027b9, txs=0, ops=0, sv: [ txH: 3d15af, ct: 73, upgrades: [ ] ]]
+2020-07-28T09:26:19.190 <test> [Ledger INFO] Closed ledger: [seq=13, hash=306615]
+2020-07-28T09:26:19.192 <test> [Herder INFO] Quorum information for 11 : {"agree":4,"delayed":0,"disagree":0,"fail_at":2,"hash":"4e35e7","ledger":11,"missing":0,"phase":"EXTERNALIZE","validated":true}
+
+2020-07-28T09:26:19.193 <test> [Ledger INFO] Got consensus: [seq=13, prev=a027b9, txs=0, ops=0, sv: [ txH: 3d15af, ct: 73, upgrades: [ ] ]]
+2020-07-28T09:26:19.194 <test> [Ledger INFO] Closed ledger: [seq=13, hash=306615]
+2020-07-28T09:26:19.198 <test> [Herder INFO] Quorum information for 11 : {"agree":5,"delayed":0,"disagree":0,"fail_at":2,"hash":"d49ec6","ledger":11,"missing":0,"phase":"EXTERNALIZE","validated":true}
+
+2020-07-28T09:26:19.199 <test> [Ledger INFO] Got consensus: [seq=13, prev=a027b9, txs=0, ops=0, sv: [ txH: 3d15af, ct: 73, upgrades: [ ] ]]
+2020-07-28T09:26:19.201 <test> [Ledger INFO] Closed ledger: [seq=13, hash=306615]
+2020-07-28T09:26:19.264 <test> [Herder INFO] Quorum information for 12 : {"agree":6,"delayed":0,"disagree":0,"fail_at":3,"hash":"f9b848","ledger":12,"missing":1,"phase":"EXTERNALIZE","validated":true}
+
+2020-07-28T09:26:19.265 <test> [Ledger INFO] Got consensus: [seq=14, prev=306615, txs=0, ops=0, sv: [ txH: eae95b, ct: 82, upgrades: [ ] ]]
+2020-07-28T09:26:19.266 <test> [Ledger INFO] Closed ledger: [seq=14, hash=70964c]
+2020-07-28T09:26:19.270 <test> [Herder INFO] Quorum information for 12 : {"agree":5,"delayed":0,"disagree":0,"fail_at":2,"hash":"0aacb4","ledger":12,"missing":0,"phase":"EXTERNALIZE","validated":true}
+
+2020-07-28T09:26:19.271 <test> [Ledger INFO] Got consensus: [seq=14, prev=306615, txs=0, ops=0, sv: [ txH: eae95b, ct: 82, upgrades: [ ] ]]
+2020-07-28T09:26:19.273 <test> [Ledger INFO] Closed ledger: [seq=14, hash=70964c]
+2020-07-28T09:26:19.275 <test> [Herder INFO] Quorum information for 12 : {"agree":6,"delayed":0,"disagree":0,"fail_at":3,"hash":"f9b848","ledger":12,"missing":1,"phase":"EXTERNALIZE","validated":true}
+
+2020-07-28T09:26:19.275 <test> [Ledger INFO] Got consensus: [seq=14, prev=306615, txs=0, ops=0, sv: [ txH: eae95b, ct: 82, upgrades: [ ] ]]
+2020-07-28T09:26:19.277 <test> [Ledger INFO] Closed ledger: [seq=14, hash=70964c]
+2020-07-28T09:26:19.279 <test> [Herder INFO] Quorum information for 12 : {"agree":6,"delayed":0,"disagree":0,"fail_at":3,"hash":"f9b848","ledger":12,"missing":1,"phase":"EXTERNALIZE","validated":true}
+
+2020-07-28T09:26:19.279 <test> [Ledger INFO] Got consensus: [seq=14, prev=306615, txs=0, ops=0, sv: [ txH: eae95b, ct: 82, upgrades: [ ] ]]
+2020-07-28T09:26:19.281 <test> [Ledger INFO] Closed ledger: [seq=14, hash=70964c]
+2020-07-28T09:26:19.283 <test> [Herder INFO] Quorum information for 12 : {"agree":4,"delayed":0,"disagree":0,"fail_at":2,"hash":"4e35e7","ledger":12,"missing":0,"phase":"EXTERNALIZE","validated":true}
+
+2020-07-28T09:26:19.283 <test> [Ledger INFO] Got consensus: [seq=14, prev=306615, txs=0, ops=0, sv: [ txH: eae95b, ct: 82, upgrades: [ ] ]]
+2020-07-28T09:26:19.285 <test> [Ledger INFO] Closed ledger: [seq=14, hash=70964c]
+2020-07-28T09:26:19.289 <test> [Herder INFO] Quorum information for 12 : {"agree":5,"delayed":0,"disagree":0,"fail_at":2,"hash":"d49ec6","ledger":12,"missing":0,"phase":"EXTERNALIZE","validated":true}
+
+2020-07-28T09:26:19.289 <test> [Ledger INFO] Got consensus: [seq=14, prev=306615, txs=0, ops=0, sv: [ txH: eae95b, ct: 82, upgrades: [ ] ]]
+2020-07-28T09:26:19.291 <test> [Ledger INFO] Closed ledger: [seq=14, hash=70964c]
+2020-07-28T09:26:19.333 <test> [Herder INFO] Quorum information for 13 : {"agree":6,"delayed":0,"disagree":0,"fail_at":3,"hash":"f9b848","ledger":13,"missing":1,"phase":"EXTERNALIZE","validated":true}
+
+2020-07-28T09:26:19.333 <test> [Ledger INFO] Got consensus: [seq=15, prev=70964c, txs=0, ops=0, sv: [ txH: f9c33d, ct: 88, upgrades: [ ] ]]
+2020-07-28T09:26:19.335 <test> [Ledger INFO] Closed ledger: [seq=15, hash=d0ebf8]
+2020-07-28T09:26:19.337 <test> [Herder INFO] Quorum information for 13 : {"agree":6,"delayed":0,"disagree":0,"fail_at":3,"hash":"f9b848","ledger":13,"missing":1,"phase":"EXTERNALIZE","validated":true}
+
+2020-07-28T09:26:19.338 <test> [Ledger INFO] Got consensus: [seq=15, prev=70964c, txs=0, ops=0, sv: [ txH: f9c33d, ct: 88, upgrades: [ ] ]]
+2020-07-28T09:26:19.339 <test> [Ledger INFO] Closed ledger: [seq=15, hash=d0ebf8]
+2020-07-28T09:26:19.341 <test> [Herder INFO] Quorum information for 13 : {"agree":4,"delayed":0,"disagree":0,"fail_at":2,"hash":"4e35e7","ledger":13,"missing":0,"phase":"EXTERNALIZE","validated":true}
+
+2020-07-28T09:26:19.341 <test> [Ledger INFO] Got consensus: [seq=15, prev=70964c, txs=0, ops=0, sv: [ txH: f9c33d, ct: 88, upgrades: [ ] ]]
+2020-07-28T09:26:19.343 <test> [Ledger INFO] Closed ledger: [seq=15, hash=d0ebf8]
+2020-07-28T09:26:19.345 <test> [Herder INFO] Quorum information for 13 : {"agree":6,"delayed":0,"disagree":0,"fail_at":3,"hash":"f9b848","ledger":13,"missing":1,"phase":"EXTERNALIZE","validated":true}
+
+2020-07-28T09:26:19.346 <test> [Ledger INFO] Got consensus: [seq=15, prev=70964c, txs=0, ops=0, sv: [ txH: f9c33d, ct: 88, upgrades: [ ] ]]
+2020-07-28T09:26:19.348 <test> [Ledger INFO] Closed ledger: [seq=15, hash=d0ebf8]
+2020-07-28T09:26:19.350 <test> [Herder INFO] Quorum information for 13 : {"agree":5,"delayed":0,"disagree":0,"fail_at":2,"hash":"0aacb4","ledger":13,"missing":0,"phase":"EXTERNALIZE","validated":true}
+
+2020-07-28T09:26:19.351 <test> [Ledger INFO] Got consensus: [seq=15, prev=70964c, txs=0, ops=0, sv: [ txH: f9c33d, ct: 88, upgrades: [ ] ]]
+2020-07-28T09:26:19.352 <test> [Ledger INFO] Closed ledger: [seq=15, hash=d0ebf8]
+2020-07-28T09:26:19.356 <test> [Herder INFO] Quorum information for 13 : {"agree":5,"delayed":0,"disagree":0,"fail_at":2,"hash":"d49ec6","ledger":13,"missing":0,"phase":"EXTERNALIZE","validated":true}
+
+2020-07-28T09:26:19.357 <test> [Ledger INFO] Got consensus: [seq=15, prev=70964c, txs=0, ops=0, sv: [ txH: f9c33d, ct: 88, upgrades: [ ] ]]
+2020-07-28T09:26:19.359 <test> [Ledger INFO] Closed ledger: [seq=15, hash=d0ebf8]
+2020-07-28T09:26:19.364 <test> [Overlay INFO] Connected to 127.0.0.1:11637
+2020-07-28T09:26:19.365 <test> [Overlay INFO] Connected to 127.0.0.1:11637
+2020-07-28T09:26:19.365 <test> [Overlay INFO] Connected to 127.0.0.1:11637
+2020-07-28T09:26:19.365 <test> [Overlay INFO] Connected to 127.0.0.1:11637
+2020-07-28T09:26:19.365 <test> [Overlay INFO] Connected to 127.0.0.1:11627
+2020-07-28T09:26:19.367 <test> [Overlay INFO] Connected to 127.0.0.1:11631
+2020-07-28T09:26:19.368 <test> [Overlay INFO] Connected to 127.0.0.1:11635
+2020-07-28T09:26:19.370 <test> [Overlay INFO] Connected to 127.0.0.1:11629
+2020-07-28T09:26:19.451 <test> [Herder INFO] Quorum information for 14 : {"agree":6,"delayed":0,"disagree":0,"fail_at":3,"hash":"f9b848","ledger":14,"missing":1,"phase":"EXTERNALIZE","validated":true}
+
+2020-07-28T09:26:19.452 <test> [Ledger INFO] Got consensus: [seq=16, prev=d0ebf8, txs=0, ops=0, sv: [ txH: 93c04d, ct: 93, upgrades: [ ] ]]
+2020-07-28T09:26:19.454 <test> [Ledger INFO] Closed ledger: [seq=16, hash=d16cd5]
+2020-07-28T09:26:19.456 <test> [Herder INFO] Quorum information for 14 : {"agree":5,"delayed":0,"disagree":0,"fail_at":2,"hash":"d49ec6","ledger":14,"missing":0,"phase":"EXTERNALIZE","validated":true}
+
+2020-07-28T09:26:19.456 <test> [Ledger INFO] Got consensus: [seq=16, prev=d0ebf8, txs=0, ops=0, sv: [ txH: 93c04d, ct: 93, upgrades: [ ] ]]
+2020-07-28T09:26:19.458 <test> [Ledger INFO] Closed ledger: [seq=16, hash=d16cd5]
+2020-07-28T09:26:19.461 <test> [Herder INFO] Quorum information for 14 : {"agree":5,"delayed":0,"disagree":0,"fail_at":2,"hash":"0aacb4","ledger":14,"missing":0,"phase":"EXTERNALIZE","validated":true}
+
+2020-07-28T09:26:19.461 <test> [Ledger INFO] Got consensus: [seq=16, prev=d0ebf8, txs=0, ops=0, sv: [ txH: 93c04d, ct: 93, upgrades: [ ] ]]
+2020-07-28T09:26:19.463 <test> [Ledger INFO] Closed ledger: [seq=16, hash=d16cd5]
+2020-07-28T09:26:19.466 <test> [Herder INFO] Quorum information for 14 : {"agree":6,"delayed":0,"disagree":0,"fail_at":3,"hash":"f9b848","ledger":14,"missing":1,"phase":"EXTERNALIZE","validated":true}
+
+2020-07-28T09:26:19.467 <test> [Ledger INFO] Got consensus: [seq=16, prev=d0ebf8, txs=0, ops=0, sv: [ txH: 93c04d, ct: 93, upgrades: [ ] ]]
+2020-07-28T09:26:19.469 <test> [Ledger INFO] Closed ledger: [seq=16, hash=d16cd5]
+2020-07-28T09:26:19.471 <test> [Herder INFO] Quorum information for 14 : {"agree":6,"delayed":0,"disagree":0,"fail_at":3,"hash":"f9b848","ledger":14,"missing":1,"phase":"EXTERNALIZE","validated":true}
+
+2020-07-28T09:26:19.472 <test> [Ledger INFO] Got consensus: [seq=16, prev=d0ebf8, txs=0, ops=0, sv: [ txH: 93c04d, ct: 93, upgrades: [ ] ]]
+2020-07-28T09:26:19.473 <test> [Ledger INFO] Closed ledger: [seq=16, hash=d16cd5]
+2020-07-28T09:26:19.475 <test> [Herder INFO] Quorum information for 14 : {"agree":4,"delayed":0,"disagree":0,"fail_at":2,"hash":"4e35e7","ledger":14,"missing":0,"phase":"EXTERNALIZE","validated":true}
+
+2020-07-28T09:26:19.476 <test> [Ledger INFO] Got consensus: [seq=16, prev=d0ebf8, txs=0, ops=0, sv: [ txH: 93c04d, ct: 93, upgrades: [ ] ]]
+2020-07-28T09:26:19.478 <test> [Ledger INFO] Closed ledger: [seq=16, hash=d16cd5]
+2020-07-28T09:26:19.536 <test> [Herder INFO] Quorum information for 15 : {"agree":6,"delayed":0,"disagree":0,"fail_at":3,"hash":"f9b848","ledger":15,"missing":1,"phase":"EXTERNALIZE","validated":true}
+
+2020-07-28T09:26:19.537 <test> [Ledger INFO] Got consensus: [seq=17, prev=d16cd5, txs=0, ops=0, sv: [ txH: f001d4, ct: 98, upgrades: [ ] ]]
+2020-07-28T09:26:19.538 <test> [Ledger INFO] Closed ledger: [seq=17, hash=89c7ca]
+2020-07-28T09:26:19.541 <test> [Herder INFO] Quorum information for 15 : {"agree":5,"delayed":0,"disagree":0,"fail_at":2,"hash":"d49ec6","ledger":15,"missing":0,"phase":"EXTERNALIZE","validated":true}
+
+2020-07-28T09:26:19.542 <test> [Ledger INFO] Got consensus: [seq=17, prev=d16cd5, txs=0, ops=0, sv: [ txH: f001d4, ct: 98, upgrades: [ ] ]]
+2020-07-28T09:26:19.543 <test> [Ledger INFO] Closed ledger: [seq=17, hash=89c7ca]
+2020-07-28T09:26:19.546 <test> [Herder INFO] Quorum information for 15 : {"agree":5,"delayed":0,"disagree":0,"fail_at":2,"hash":"0aacb4","ledger":15,"missing":0,"phase":"EXTERNALIZE","validated":true}
+
+2020-07-28T09:26:19.547 <test> [Ledger INFO] Got consensus: [seq=17, prev=d16cd5, txs=0, ops=0, sv: [ txH: f001d4, ct: 98, upgrades: [ ] ]]
+2020-07-28T09:26:19.548 <test> [Ledger INFO] Closed ledger: [seq=17, hash=89c7ca]
+2020-07-28T09:26:19.550 <test> [Herder INFO] Quorum information for 15 : {"agree":6,"delayed":0,"disagree":0,"fail_at":3,"hash":"f9b848","ledger":15,"missing":1,"phase":"EXTERNALIZE","validated":true}
+
+2020-07-28T09:26:19.551 <test> [Ledger INFO] Got consensus: [seq=17, prev=d16cd5, txs=0, ops=0, sv: [ txH: f001d4, ct: 98, upgrades: [ ] ]]
+2020-07-28T09:26:19.553 <test> [Ledger INFO] Closed ledger: [seq=17, hash=89c7ca]
+2020-07-28T09:26:19.555 <test> [Herder INFO] Quorum information for 15 : {"agree":6,"delayed":0,"disagree":0,"fail_at":3,"hash":"f9b848","ledger":15,"missing":1,"phase":"EXTERNALIZE","validated":true}
+
+2020-07-28T09:26:19.555 <test> [Ledger INFO] Got consensus: [seq=17, prev=d16cd5, txs=0, ops=0, sv: [ txH: f001d4, ct: 98, upgrades: [ ] ]]
+2020-07-28T09:26:19.557 <test> [Ledger INFO] Closed ledger: [seq=17, hash=89c7ca]
+2020-07-28T09:26:19.559 <test> [Herder INFO] Quorum information for 15 : {"agree":4,"delayed":0,"disagree":0,"fail_at":2,"hash":"4e35e7","ledger":15,"missing":0,"phase":"EXTERNALIZE","validated":true}
+
+2020-07-28T09:26:19.559 <test> [Ledger INFO] Got consensus: [seq=17, prev=d16cd5, txs=0, ops=0, sv: [ txH: f001d4, ct: 98, upgrades: [ ] ]]
+2020-07-28T09:26:19.561 <test> [Ledger INFO] Closed ledger: [seq=17, hash=89c7ca]
+2020-07-28T09:26:19.568 <test> [default INFO] Application destructing
+2020-07-28T09:26:19.569 <test> [default INFO] Application destroyed
+2020-07-28T09:26:19.575 <test> [default INFO] Application destructing
+2020-07-28T09:26:19.576 <test> [default INFO] Application destroyed
+2020-07-28T09:26:19.582 <test> [default INFO] Application destructing
+2020-07-28T09:26:19.582 <test> [default INFO] Application destroyed
+2020-07-28T09:26:19.589 <test> [default INFO] Application destructing
+2020-07-28T09:26:19.589 <test> [default INFO] Application destroyed
+2020-07-28T09:26:19.594 <test> [default INFO] Application destructing
+2020-07-28T09:26:19.594 <test> [default INFO] Application destroyed
+2020-07-28T09:26:19.601 <test> [default INFO] Application destructing
+2020-07-28T09:26:19.602 <test> [default INFO] Application destroyed
+2020-07-28T09:26:19.609 <test> [default INFO] Application destructing
+2020-07-28T09:26:19.610 <test> [default INFO] Application destroyed
+===============================================================================
+All tests passed (26 assertions in 1 test case)
+

@@ -210,6 +210,7 @@ resilienceTest(Simulation::pointer sim)
                 sim->addConnection(victimID, nodes[k]);
             }
         }
+        crankForward(nbLedgerStep, 1);
     }
 }
 TEST_CASE("resilience tests", "[resilience][simulation][!hide]")
@@ -228,25 +229,25 @@ TEST_CASE("resilience tests", "[resilience][simulation][!hide]")
     {
         resilienceTest(Topologies::customA(mode, networkID, confGen, 2));
     }
-    SECTION("hierarchical")
-    {
-        resilienceTest(
-            Topologies::hierarchicalQuorum(2, mode, networkID, confGen, 2));
-    }
-    SECTION("simplified hierarchical")
-    {
-        resilienceTest(Topologies::hierarchicalQuorumSimplified(
-            4, 3, mode, networkID, confGen, 2));
-    }
-    SECTION("core4")
-    {
-        resilienceTest(Topologies::core(4, 0.75, mode, networkID, confGen));
-    }
-    SECTION("branched cycle")
-    {
-        resilienceTest(
-            Topologies::branchedcycle(5, 0.6, mode, networkID, confGen));
-    }
+//    SECTION("hierarchical")
+//    {
+//        resilienceTest(
+//            Topologies::hierarchicalQuorum(2, mode, networkID, confGen, 2));
+//    }
+//    SECTION("simplified hierarchical")
+//    {
+//        resilienceTest(Topologies::hierarchicalQuorumSimplified(
+//            4, 3, mode, networkID, confGen, 2));
+//    }
+//    SECTION("core4")
+//    {
+//        resilienceTest(Topologies::core(4, 0.75, mode, networkID, confGen));
+//    }
+//    SECTION("branched cycle")
+//    {
+//        resilienceTest(
+//            Topologies::branchedcycle(5, 0.6, mode, networkID, confGen));
+//    }
 }
 
 static void
