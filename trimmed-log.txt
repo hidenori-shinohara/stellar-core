@@ -1,0 +1,602 @@
+remove a node
+recvSCPEnvelope (ready) from: GCSCQ s:3 i:11 a:Synced! current virtual time = Wed Dec 31 19:00:54 1969
+recvSCPEnvelope (ready) from: GCSCQ s:3 i:11 a:Synced! current virtual time = Wed Dec 31 19:00:54 1969
+recvSCPEnvelope (ready) from: GCSCQ s:3 i:11 a:Synced! current virtual time = Wed Dec 31 19:00:54 1969
+recvSCPEnvelope (ready) from: GAOBN s:3 i:11 a:Synced! current virtual time = Wed Dec 31 19:00:54 1969
+recvSCPEnvelope (ready) from: GCSCQ s:3 i:11 a:Synced! current virtual time = Wed Dec 31 19:00:54 1969
+recvSCPEnvelope (ready) from: GAOBN s:3 i:11 a:Synced! current virtual time = Wed Dec 31 19:00:54 1969
+recvSCPEnvelope (ready) from: GAXSR s:3 i:11 a:Synced! current virtual time = Wed Dec 31 19:00:54 1969
+recvSCPEnvelope (ready) from: GAOBN s:3 i:11 a:Synced! current virtual time = Wed Dec 31 19:00:54 1969
+recvSCPEnvelope (ready) from: GAXSR s:3 i:11 a:Synced! current virtual time = Wed Dec 31 19:00:54 1969
+recvSCPEnvelope (ready) from: GB3X5 s:3 i:11 a:Synced! current virtual time = Wed Dec 31 19:00:54 1969
+recvSCPEnvelope (ready) from: GB3X5 s:3 i:11 a:Synced! current virtual time = Wed Dec 31 19:00:54 1969
+recvSCPEnvelope (ready) from: GAOBN s:3 i:11 a:Synced! current virtual time = Wed Dec 31 19:00:54 1969
+recvSCPEnvelope (ready) from: GAXSR s:3 i:11 a:Synced! current virtual time = Wed Dec 31 19:00:54 1969
+recvSCPEnvelope (ready) from: GB3X5 s:3 i:11 a:Synced! current virtual time = Wed Dec 31 19:00:54 1969
+recvSCPEnvelope (ready) from: GB3X5 s:3 i:11 a:Synced! current virtual time = Wed Dec 31 19:00:54 1969
+recvSCPEnvelope (ready) from: GAXSR s:3 i:11 a:Synced! current virtual time = Wed Dec 31 19:00:54 1969
+recvSCPEnvelope (ready) from: GB3X5 s:3 i:11 a:Synced! current virtual time = Wed Dec 31 19:00:54 1969
+recvSCPEnvelope (ready) from: GB3X5 s:3 i:11 a:Synced! current virtual time = Wed Dec 31 19:00:54 1969
+recvSCPEnvelope (ready) from: GAB6L s:3 i:11 a:Synced! current virtual time = Wed Dec 31 19:00:54 1969
+recvSCPEnvelope (ready) from: GAB6L s:3 i:11 a:Synced! current virtual time = Wed Dec 31 19:00:54 1969
+recvSCPEnvelope (ready) from: GB3X5 s:3 i:11 a:Synced! current virtual time = Wed Dec 31 19:00:54 1969
+recvSCPEnvelope (ready) from: GB3X5 s:3 i:11 a:Synced! current virtual time = Wed Dec 31 19:00:54 1969
+recvSCPEnvelope (ready) from: GAB6L s:3 i:11 a:Synced! current virtual time = Wed Dec 31 19:00:54 1969
+recvSCPEnvelope (ready) from: GAB6L s:3 i:11 a:Synced! current virtual time = Wed Dec 31 19:00:54 1969
+recvSCPEnvelope (ready) from: GAB6L s:3 i:11 a:Synced! current virtual time = Wed Dec 31 19:00:54 1969
+recvSCPEnvelope (ready) from: GAB6L s:3 i:11 a:Synced! current virtual time = Wed Dec 31 19:00:54 1969
+recvSCPEnvelope (ready) from: GAB6L s:3 i:11 a:Synced! current virtual time = Wed Dec 31 19:00:54 1969
+recvSCPEnvelope (ready) from: GAB6L s:3 i:11 a:Synced! current virtual time = Wed Dec 31 19:00:54 1969
+recvSCPEnvelope (ready) from: GAXSR s:3 i:11 a:Synced! current virtual time = Wed Dec 31 19:00:56 1969
+recvSCPEnvelope (ready) from: GAXSR s:3 i:11 a:Synced! current virtual time = Wed Dec 31 19:00:56 1969
+recvSCPEnvelope (ready) from: GAXSR s:3 i:11 a:Synced! current virtual time = Wed Dec 31 19:00:56 1969
+recvSCPEnvelope (ready) from: GAXSR s:3 i:11 a:Synced! current virtual time = Wed Dec 31 19:00:56 1969
+recvSCPEnvelope (ready) from: GAB6L s:3 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:03 1969
+recvSCPEnvelope (ready) from: GAB6L s:3 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:03 1969
+recvSCPEnvelope (ready) from: GAOBN s:3 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:03 1969
+recvSCPEnvelope (ready) from: GAB6L s:3 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:03 1969
+recvSCPEnvelope (ready) from: GAOBN s:3 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:03 1969
+recvSCPEnvelope (ready) from: GAXSR s:3 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:03 1969
+recvSCPEnvelope (ready) from: GAB6L s:3 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:03 1969
+recvSCPEnvelope (ready) from: GAOBN s:3 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:03 1969
+recvSCPEnvelope (ready) from: GAXSR s:3 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:03 1969
+recvSCPEnvelope (ready) from: GB3X5 s:3 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:03 1969
+recvSCPEnvelope (ready) from: GB3X5 s:3 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:03 1969
+recvSCPEnvelope (ready) from: GAOBN s:3 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:03 1969
+recvSCPEnvelope (ready) from: GAXSR s:3 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:03 1969
+recvSCPEnvelope (ready) from: GB3X5 s:3 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:03 1969
+recvSCPEnvelope (ready) from: GCSCQ s:3 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:03 1969
+recvSCPEnvelope (ready) from: GB3X5 s:3 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:03 1969
+recvSCPEnvelope (ready) from: GAXSR s:3 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:03 1969
+recvSCPEnvelope (ready) from: GB3X5 s:3 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:03 1969
+recvSCPEnvelope (ready) from: GB3X5 s:3 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:03 1969
+recvSCPEnvelope (ready) from: GAB6L s:3 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:03 1969
+recvSCPEnvelope (ready) from: GCSCQ s:3 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:03 1969
+recvSCPEnvelope (ready) from: GAB6L s:3 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:03 1969
+recvSCPEnvelope (ready) from: GB3X5 s:3 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:03 1969
+recvSCPEnvelope (ready) from: GB3X5 s:3 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:03 1969
+recvSCPEnvelope (ready) from: GCSCQ s:3 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:03 1969
+recvSCPEnvelope (ready) from: GAB6L s:3 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:03 1969
+recvSCPEnvelope (ready) from: GAB6L s:3 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:03 1969
+recvSCPEnvelope (ready) from: GAOBN s:3 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:03 1969
+recvSCPEnvelope (ready) from: GAOBN s:0 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:03 1969
+recvSCPEnvelope (ready) from: GCSCQ s:3 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:03 1969
+recvSCPEnvelope (ready) from: GAOBN s:3 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:03 1969
+recvSCPEnvelope (ready) from: GAB6L s:3 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:03 1969
+recvSCPEnvelope (ready) from: GAOBN s:0 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:03 1969
+recvSCPEnvelope (ready) from: GAB6L s:3 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:03 1969
+recvSCPEnvelope (ready) from: GAXSR s:3 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:03 1969
+recvSCPEnvelope (ready) from: GAXSR s:0 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:03 1969
+recvSCPEnvelope (ready) from: GAB6L s:3 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:03 1969
+recvSCPEnvelope (ready) from: GAB6L s:3 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:03 1969
+recvSCPEnvelope (ready) from: GAXSR s:3 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:03 1969
+recvSCPEnvelope (ready) from: GAOBN s:3 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:03 1969
+recvSCPEnvelope (ready) from: GAXSR s:0 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:03 1969
+recvSCPEnvelope (ready) from: GAOBN s:0 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:03 1969
+recvSCPEnvelope (ready) from: GB3X5 s:0 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:03 1969
+recvSCPEnvelope (ready) from: GAOBN s:3 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:03 1969
+recvSCPEnvelope (ready) from: GAOBN s:0 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:03 1969
+recvSCPEnvelope (ready) from: GAXSR s:3 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:03 1969
+recvSCPEnvelope (ready) from: GAXSR s:0 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:03 1969
+recvSCPEnvelope (ready) from: GCSCQ s:0 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:03 1969
+recvSCPEnvelope (ready) from: GB3X5 s:0 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:03 1969
+recvSCPEnvelope (ready) from: GCSCQ s:0 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:03 1969
+recvSCPEnvelope (ready) from: GAXSR s:3 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:03 1969
+recvSCPEnvelope (ready) from: GAXSR s:0 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:03 1969
+recvSCPEnvelope (ready) from: GB3X5 s:0 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:03 1969
+recvSCPEnvelope (ready) from: GAB6L s:0 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:03 1969
+recvSCPEnvelope (ready) from: GCSCQ s:0 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:03 1969
+recvSCPEnvelope (ready) from: GAB6L s:0 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:03 1969
+recvSCPEnvelope (ready) from: GCSCQ s:0 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:03 1969
+recvSCPEnvelope (ready) from: GB3X5 s:0 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:03 1969
+recvSCPEnvelope (ready) from: GCSCQ s:0 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:03 1969
+recvSCPEnvelope (ready) from: GCSCQ s:0 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:03 1969
+recvSCPEnvelope (ready) from: GAB6L s:0 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:03 1969
+recvSCPEnvelope (ready) from: GAB6L s:0 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:03 1969
+recvSCPEnvelope (ready) from: GAOBN s:0 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:03 1969
+recvSCPEnvelope (ready) from: GCSCQ s:0 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:03 1969
+recvSCPEnvelope (ready) from: GCSCQ s:0 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:03 1969
+recvSCPEnvelope (ready) from: GAB6L s:0 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:03 1969
+recvSCPEnvelope (ready) from: GAOBN s:0 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:03 1969
+recvSCPEnvelope (ready) from: GAB6L s:0 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:03 1969
+recvSCPEnvelope (ready) from: GAXSR s:0 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:03 1969
+recvSCPEnvelope (ready) from: GAB6L s:0 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:03 1969
+recvSCPEnvelope (ready) from: GAB6L s:0 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:03 1969
+recvSCPEnvelope (ready) from: GAXSR s:0 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:03 1969
+recvSCPEnvelope (ready) from: GAOBN s:0 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:03 1969
+recvSCPEnvelope (ready) from: GB3X5 s:0 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:03 1969
+recvSCPEnvelope (ready) from: GB3X5 s:0 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:03 1969
+recvSCPEnvelope (ready) from: GAOBN s:0 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:04 1969
+recvSCPEnvelope (ready) from: GAXSR s:0 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:04 1969
+recvSCPEnvelope (ready) from: GB3X5 s:0 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:04 1969
+recvSCPEnvelope (ready) from: GCSCQ s:0 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:04 1969
+recvSCPEnvelope (ready) from: GB3X5 s:0 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:04 1969
+recvSCPEnvelope (ready) from: GAXSR s:0 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:04 1969
+recvSCPEnvelope (ready) from: GB3X5 s:0 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:04 1969
+recvSCPEnvelope (ready) from: GB3X5 s:0 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:04 1969
+recvSCPEnvelope (ready) from: GAB6L s:0 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:04 1969
+recvSCPEnvelope (ready) from: GCSCQ s:0 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:04 1969
+recvSCPEnvelope (ready) from: GB3X5 s:0 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:04 1969
+recvSCPEnvelope (ready) from: GB3X5 s:0 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:04 1969
+recvSCPEnvelope (ready) from: GCSCQ s:0 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:04 1969
+recvSCPEnvelope (ready) from: GAB6L s:0 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:04 1969
+recvSCPEnvelope (ready) from: GAOBN s:0 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:04 1969
+recvSCPEnvelope (ready) from: GAOBN s:1 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:04 1969
+recvSCPEnvelope (ready) from: GCSCQ s:0 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:04 1969
+recvSCPEnvelope (ready) from: GAOBN s:0 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:04 1969
+recvSCPEnvelope (ready) from: GAB6L s:0 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:04 1969
+recvSCPEnvelope (ready) from: GAOBN s:1 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:04 1969
+recvSCPEnvelope (ready) from: GAXSR s:0 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:04 1969
+recvSCPEnvelope (ready) from: GAXSR s:1 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:04 1969
+recvSCPEnvelope (ready) from: GAB6L s:0 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:04 1969
+recvSCPEnvelope (ready) from: GAXSR s:0 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:04 1969
+recvSCPEnvelope (ready) from: GAOBN s:0 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:04 1969
+recvSCPEnvelope (ready) from: GAXSR s:1 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:04 1969
+recvSCPEnvelope (ready) from: GAOBN s:1 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:04 1969
+recvSCPEnvelope (ready) from: GB3X5 s:1 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:04 1969
+2020-07-28T17:49:22.164 <test> [Herder INFO] Quorum information for 9 : {"agree":6,"delayed":0,"disagree":0,"fail_at":3,"hash":"f9b848","ledger":9,"missing":1,"phase":"EXTERNALIZE","validated":true}
+
+externalize lag delta for slot 11 is 0 ms
+Nominate delta for slot 11 is 10100 ms
+Prepare delta for slot 11 is 200 ms
+2020-07-28T17:49:22.165 <test> [Ledger INFO] Got consensus: [seq=11, prev=f332f2, txs=0, ops=0, sv: [ txH: c5b15c, ct: 53, upgrades: [ ] ]]
+2020-07-28T17:49:22.167 <test> [Ledger INFO] Closed ledger: [seq=11, hash=00a715]
+recvSCPEnvelope (ready) from: GAOBN s:0 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:04 1969
+recvSCPEnvelope (ready) from: GAOBN s:1 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:04 1969
+recvSCPEnvelope (ready) from: GAXSR s:0 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:04 1969
+recvSCPEnvelope (ready) from: GAXSR s:1 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:04 1969
+recvSCPEnvelope (ready) from: GCSCQ s:1 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:04 1969
+recvSCPEnvelope (ready) from: GB3X5 s:1 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:04 1969
+2020-07-28T17:49:22.169 <test> [Herder INFO] Quorum information for 9 : {"agree":5,"delayed":0,"disagree":0,"fail_at":2,"hash":"0aacb4","ledger":9,"missing":0,"phase":"EXTERNALIZE","validated":true}
+
+externalize lag delta for slot 11 is 0 ms
+Nominate delta for slot 11 is 10100 ms
+Prepare delta for slot 11 is 200 ms
+2020-07-28T17:49:22.170 <test> [Ledger INFO] Got consensus: [seq=11, prev=f332f2, txs=0, ops=0, sv: [ txH: c5b15c, ct: 53, upgrades: [ ] ]]
+2020-07-28T17:49:22.172 <test> [Ledger INFO] Closed ledger: [seq=11, hash=00a715]
+recvSCPEnvelope (ready) from: GCSCQ s:2 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:04 1969
+externalize delay (GCSCQ) delta for slot 11 is 0 ms
+recvSCPEnvelope (ready) from: GAXSR s:0 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:04 1969
+recvSCPEnvelope (ready) from: GAXSR s:1 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:04 1969
+recvSCPEnvelope (ready) from: GB3X5 s:1 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:04 1969
+recvSCPEnvelope (ready) from: GAB6L s:1 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:04 1969
+recvSCPEnvelope (ready) from: GCSCQ s:1 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:04 1969
+2020-07-28T17:49:22.173 <test> [Herder INFO] Quorum information for 9 : {"agree":6,"delayed":0,"disagree":0,"fail_at":3,"hash":"f9b848","ledger":9,"missing":1,"phase":"EXTERNALIZE","validated":true}
+
+externalize lag delta for slot 11 is 0 ms
+Nominate delta for slot 11 is 10000 ms
+Prepare delta for slot 11 is 300 ms
+2020-07-28T17:49:22.174 <test> [Ledger INFO] Got consensus: [seq=11, prev=f332f2, txs=0, ops=0, sv: [ txH: c5b15c, ct: 53, upgrades: [ ] ]]
+2020-07-28T17:49:22.175 <test> [Ledger INFO] Closed ledger: [seq=11, hash=00a715]
+recvSCPEnvelope (ready) from: GAB6L s:2 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:04 1969
+externalize delay (GAB6L) delta for slot 11 is 0 ms
+recvSCPEnvelope (ready) from: GCSCQ s:2 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:04 1969
+externalize delay (GCSCQ) delta for slot 11 is 0 ms
+recvSCPEnvelope (ready) from: GB3X5 s:1 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:04 1969
+recvSCPEnvelope (ready) from: GCSCQ s:1 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:04 1969
+2020-07-28T17:49:22.176 <test> [Herder INFO] Quorum information for 9 : {"agree":6,"delayed":0,"disagree":0,"fail_at":3,"hash":"f9b848","ledger":9,"missing":1,"phase":"EXTERNALIZE","validated":true}
+
+externalize lag delta for slot 11 is 0 ms
+Nominate delta for slot 11 is 10000 ms
+Prepare delta for slot 11 is 300 ms
+2020-07-28T17:49:22.177 <test> [Ledger INFO] Got consensus: [seq=11, prev=f332f2, txs=0, ops=0, sv: [ txH: c5b15c, ct: 53, upgrades: [ ] ]]
+2020-07-28T17:49:22.179 <test> [Ledger INFO] Closed ledger: [seq=11, hash=00a715]
+recvSCPEnvelope (ready) from: GCSCQ s:2 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:04 1969
+externalize delay (GCSCQ) delta for slot 11 is 0 ms
+recvSCPEnvelope (ready) from: GAB6L s:1 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:04 1969
+recvSCPEnvelope (ready) from: GAB6L s:2 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:04 1969
+externalize delay (GAB6L) delta for slot 11 is 0 ms
+recvSCPEnvelope (ready) from: GAOBN s:2 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:04 1969
+externalize delay (GAOBN) delta for slot 11 is 0 ms
+recvSCPEnvelope (ready) from: GCSCQ s:1 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:04 1969
+2020-07-28T17:49:22.180 <test> [Herder INFO] Quorum information for 9 : {"agree":4,"delayed":0,"disagree":0,"fail_at":2,"hash":"4e35e7","ledger":9,"missing":0,"phase":"EXTERNALIZE","validated":true}
+
+externalize lag delta for slot 11 is 0 ms
+Nominate delta for slot 11 is 10000 ms
+Prepare delta for slot 11 is 300 ms
+2020-07-28T17:49:22.181 <test> [Ledger INFO] Got consensus: [seq=11, prev=f332f2, txs=0, ops=0, sv: [ txH: c5b15c, ct: 53, upgrades: [ ] ]]
+2020-07-28T17:49:22.182 <test> [Ledger INFO] Closed ledger: [seq=11, hash=00a715]
+recvSCPEnvelope (ready) from: GCSCQ s:2 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:04 1969
+externalize delay (GCSCQ) delta for slot 11 is 0 ms
+recvSCPEnvelope (ready) from: GAB6L s:1 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:04 1969
+recvSCPEnvelope (ready) from: GAOBN s:2 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:04 1969
+externalize delay (GAOBN) delta for slot 11 is 0 ms
+recvSCPEnvelope (ready) from: GAB6L s:2 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:04 1969
+externalize delay (GAB6L) delta for slot 11 is 0 ms
+recvSCPEnvelope (ready) from: GAXSR s:2 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:04 1969
+externalize delay (GAXSR) delta for slot 11 is 0 ms
+recvSCPEnvelope (ready) from: GAB6L s:1 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:04 1969
+recvSCPEnvelope (ready) from: GAB6L s:2 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:04 1969
+externalize delay (GAB6L) delta for slot 11 is 100 ms
+recvSCPEnvelope (ready) from: GAXSR s:2 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:04 1969
+externalize delay (GAXSR) delta for slot 11 is 100 ms
+recvSCPEnvelope (ready) from: GAOBN s:2 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:04 1969
+externalize delay (GAOBN) delta for slot 11 is 100 ms
+recvSCPEnvelope (ready) from: GB3X5 s:2 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:04 1969
+externalize delay (GB3X5) delta for slot 11 is 100 ms
+recvSCPEnvelope (ready) from: GAOBN s:2 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:04 1969
+externalize delay (GAOBN) delta for slot 11 is 100 ms
+recvSCPEnvelope (ready) from: GAXSR s:2 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:04 1969
+externalize delay (GAXSR) delta for slot 11 is 100 ms
+recvSCPEnvelope (ready) from: GB3X5 s:2 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:04 1969
+externalize delay (GB3X5) delta for slot 11 is 100 ms
+recvSCPEnvelope (ready) from: GAXSR s:2 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:04 1969
+externalize delay (GAXSR) delta for slot 11 is 100 ms
+recvSCPEnvelope (ready) from: GB3X5 s:2 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:04 1969
+externalize delay (GB3X5) delta for slot 11 is 100 ms
+recvSCPEnvelope (ready) from: GB3X5 s:2 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:04 1969
+externalize delay (GB3X5) delta for slot 11 is 100 ms
+recvSCPEnvelope (ready) from: GCSCQ s:3 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:08 1969
+recvSCPEnvelope (ready) from: GCSCQ s:3 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:08 1969
+recvSCPEnvelope (ready) from: GAB6L s:3 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:08 1969
+recvSCPEnvelope (ready) from: GCSCQ s:3 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:08 1969
+recvSCPEnvelope (ready) from: GAB6L s:3 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:08 1969
+recvSCPEnvelope (ready) from: GAOBN s:3 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:08 1969
+recvSCPEnvelope (ready) from: GCSCQ s:3 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:08 1969
+recvSCPEnvelope (ready) from: GAOBN s:3 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:08 1969
+recvSCPEnvelope (ready) from: GAB6L s:3 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:08 1969
+recvSCPEnvelope (ready) from: GAXSR s:3 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:08 1969
+recvSCPEnvelope (ready) from: GAB6L s:3 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:08 1969
+recvSCPEnvelope (ready) from: GAXSR s:3 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:08 1969
+recvSCPEnvelope (ready) from: GAOBN s:3 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:08 1969
+recvSCPEnvelope (ready) from: GB3X5 s:3 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:08 1969
+recvSCPEnvelope (ready) from: GB3X5 s:3 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:08 1969
+recvSCPEnvelope (ready) from: GAOBN s:3 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:08 1969
+recvSCPEnvelope (ready) from: GAXSR s:3 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:08 1969
+recvSCPEnvelope (ready) from: GB3X5 s:3 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:08 1969
+recvSCPEnvelope (ready) from: GCSCQ s:3 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:08 1969
+recvSCPEnvelope (ready) from: GB3X5 s:3 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:08 1969
+recvSCPEnvelope (ready) from: GAXSR s:3 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:08 1969
+recvSCPEnvelope (ready) from: GB3X5 s:3 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:08 1969
+recvSCPEnvelope (ready) from: GB3X5 s:3 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:08 1969
+recvSCPEnvelope (ready) from: GCSCQ s:3 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:08 1969
+recvSCPEnvelope (ready) from: GAB6L s:3 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:08 1969
+recvSCPEnvelope (ready) from: GB3X5 s:3 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:08 1969
+recvSCPEnvelope (ready) from: GB3X5 s:3 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:08 1969
+recvSCPEnvelope (ready) from: GCSCQ s:3 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:08 1969
+recvSCPEnvelope (ready) from: GAB6L s:3 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:08 1969
+recvSCPEnvelope (ready) from: GAOBN s:3 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:08 1969
+recvSCPEnvelope (ready) from: GAOBN s:0 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:08 1969
+recvSCPEnvelope (ready) from: GCSCQ s:3 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:08 1969
+recvSCPEnvelope (ready) from: GAOBN s:3 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:08 1969
+recvSCPEnvelope (ready) from: GAB6L s:3 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:08 1969
+recvSCPEnvelope (ready) from: GAOBN s:0 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:08 1969
+recvSCPEnvelope (ready) from: GAXSR s:3 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:08 1969
+recvSCPEnvelope (ready) from: GAXSR s:0 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:08 1969
+recvSCPEnvelope (ready) from: GAB6L s:3 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:08 1969
+recvSCPEnvelope (ready) from: GAXSR s:3 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:08 1969
+recvSCPEnvelope (ready) from: GAOBN s:3 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:08 1969
+recvSCPEnvelope (ready) from: GAXSR s:0 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:08 1969
+recvSCPEnvelope (ready) from: GAOBN s:0 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:08 1969
+recvSCPEnvelope (ready) from: GB3X5 s:0 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:08 1969
+recvSCPEnvelope (ready) from: GAOBN s:3 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+recvSCPEnvelope (ready) from: GAOBN s:0 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+recvSCPEnvelope (ready) from: GAXSR s:3 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+recvSCPEnvelope (ready) from: GAXSR s:0 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+recvSCPEnvelope (ready) from: GCSCQ s:0 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+recvSCPEnvelope (ready) from: GB3X5 s:0 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+recvSCPEnvelope (ready) from: GCSCQ s:0 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+recvSCPEnvelope (ready) from: GAXSR s:3 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+recvSCPEnvelope (ready) from: GAXSR s:0 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+recvSCPEnvelope (ready) from: GB3X5 s:0 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+recvSCPEnvelope (ready) from: GAB6L s:0 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+recvSCPEnvelope (ready) from: GCSCQ s:0 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+recvSCPEnvelope (ready) from: GAB6L s:0 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+recvSCPEnvelope (ready) from: GCSCQ s:0 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+recvSCPEnvelope (ready) from: GB3X5 s:0 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+recvSCPEnvelope (ready) from: GCSCQ s:0 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+recvSCPEnvelope (ready) from: GCSCQ s:0 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+recvSCPEnvelope (ready) from: GAB6L s:0 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+recvSCPEnvelope (ready) from: GAB6L s:0 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+recvSCPEnvelope (ready) from: GAOBN s:0 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+recvSCPEnvelope (ready) from: GCSCQ s:0 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+recvSCPEnvelope (ready) from: GCSCQ s:0 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+recvSCPEnvelope (ready) from: GAB6L s:0 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+recvSCPEnvelope (ready) from: GAOBN s:0 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+recvSCPEnvelope (ready) from: GAB6L s:0 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+recvSCPEnvelope (ready) from: GAXSR s:0 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+recvSCPEnvelope (ready) from: GAB6L s:0 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+recvSCPEnvelope (ready) from: GAB6L s:0 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+recvSCPEnvelope (ready) from: GAXSR s:0 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+recvSCPEnvelope (ready) from: GAOBN s:0 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+recvSCPEnvelope (ready) from: GB3X5 s:0 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+recvSCPEnvelope (ready) from: GB3X5 s:0 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+recvSCPEnvelope (ready) from: GAOBN s:0 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+recvSCPEnvelope (ready) from: GAXSR s:0 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+recvSCPEnvelope (ready) from: GB3X5 s:0 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+recvSCPEnvelope (ready) from: GCSCQ s:0 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+recvSCPEnvelope (ready) from: GB3X5 s:0 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+recvSCPEnvelope (ready) from: GAXSR s:0 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+recvSCPEnvelope (ready) from: GB3X5 s:0 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+recvSCPEnvelope (ready) from: GB3X5 s:0 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+recvSCPEnvelope (ready) from: GAB6L s:0 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+recvSCPEnvelope (ready) from: GCSCQ s:0 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+recvSCPEnvelope (ready) from: GB3X5 s:0 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+recvSCPEnvelope (ready) from: GB3X5 s:0 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+recvSCPEnvelope (ready) from: GCSCQ s:0 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+recvSCPEnvelope (ready) from: GAB6L s:0 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+recvSCPEnvelope (ready) from: GAOBN s:0 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+recvSCPEnvelope (ready) from: GAOBN s:1 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+recvSCPEnvelope (ready) from: GCSCQ s:0 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+recvSCPEnvelope (ready) from: GAOBN s:0 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+recvSCPEnvelope (ready) from: GAB6L s:0 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+recvSCPEnvelope (ready) from: GAOBN s:1 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+recvSCPEnvelope (ready) from: GAXSR s:0 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+recvSCPEnvelope (ready) from: GAXSR s:1 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+recvSCPEnvelope (ready) from: GAB6L s:0 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+recvSCPEnvelope (ready) from: GAXSR s:0 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+recvSCPEnvelope (ready) from: GAOBN s:0 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+recvSCPEnvelope (ready) from: GAXSR s:1 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+recvSCPEnvelope (ready) from: GAOBN s:1 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+recvSCPEnvelope (ready) from: GB3X5 s:1 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+2020-07-28T17:49:22.219 <test> [Herder INFO] Quorum information for 10 : {"agree":6,"delayed":0,"disagree":0,"fail_at":3,"hash":"f9b848","ledger":10,"missing":1,"phase":"EXTERNALIZE","validated":true}
+
+externalize lag delta for slot 12 is 0 ms
+Nominate delta for slot 12 is 100 ms
+Prepare delta for slot 12 is 200 ms
+2020-07-28T17:49:22.219 <test> [Ledger INFO] Got consensus: [seq=12, prev=00a715, txs=0, ops=0, sv: [ txH: 559fec, ct: 68, upgrades: [ ] ]]
+2020-07-28T17:49:22.221 <test> [Ledger INFO] Closed ledger: [seq=12, hash=a027b9]
+recvSCPEnvelope (ready) from: GAOBN s:0 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+recvSCPEnvelope (ready) from: GAOBN s:1 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+recvSCPEnvelope (ready) from: GAXSR s:0 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+recvSCPEnvelope (ready) from: GAXSR s:1 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+recvSCPEnvelope (ready) from: GCSCQ s:1 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+recvSCPEnvelope (ready) from: GB3X5 s:1 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+2020-07-28T17:49:22.223 <test> [Herder INFO] Quorum information for 10 : {"agree":5,"delayed":0,"disagree":0,"fail_at":2,"hash":"0aacb4","ledger":10,"missing":0,"phase":"EXTERNALIZE","validated":true}
+
+externalize lag delta for slot 12 is 0 ms
+Nominate delta for slot 12 is 100 ms
+Prepare delta for slot 12 is 200 ms
+2020-07-28T17:49:22.223 <test> [Ledger INFO] Got consensus: [seq=12, prev=00a715, txs=0, ops=0, sv: [ txH: 559fec, ct: 68, upgrades: [ ] ]]
+2020-07-28T17:49:22.225 <test> [Ledger INFO] Closed ledger: [seq=12, hash=a027b9]
+recvSCPEnvelope (ready) from: GCSCQ s:2 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+externalize delay (GCSCQ) delta for slot 12 is 0 ms
+recvSCPEnvelope (ready) from: GAXSR s:0 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+recvSCPEnvelope (ready) from: GAXSR s:1 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+recvSCPEnvelope (ready) from: GB3X5 s:1 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+recvSCPEnvelope (ready) from: GAB6L s:1 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+recvSCPEnvelope (ready) from: GCSCQ s:1 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+2020-07-28T17:49:22.227 <test> [Herder INFO] Quorum information for 10 : {"agree":6,"delayed":0,"disagree":0,"fail_at":3,"hash":"f9b848","ledger":10,"missing":1,"phase":"EXTERNALIZE","validated":true}
+
+externalize lag delta for slot 12 is 0 ms
+Nominate delta for slot 12 is 100 ms
+Prepare delta for slot 12 is 300 ms
+2020-07-28T17:49:22.227 <test> [Ledger INFO] Got consensus: [seq=12, prev=00a715, txs=0, ops=0, sv: [ txH: 559fec, ct: 68, upgrades: [ ] ]]
+2020-07-28T17:49:22.228 <test> [Ledger INFO] Closed ledger: [seq=12, hash=a027b9]
+recvSCPEnvelope (ready) from: GAB6L s:2 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+externalize delay (GAB6L) delta for slot 12 is 0 ms
+recvSCPEnvelope (ready) from: GCSCQ s:2 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+externalize delay (GCSCQ) delta for slot 12 is 0 ms
+recvSCPEnvelope (ready) from: GB3X5 s:1 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+recvSCPEnvelope (ready) from: GCSCQ s:1 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+2020-07-28T17:49:22.230 <test> [Herder INFO] Quorum information for 10 : {"agree":6,"delayed":0,"disagree":0,"fail_at":3,"hash":"f9b848","ledger":10,"missing":1,"phase":"EXTERNALIZE","validated":true}
+
+externalize lag delta for slot 12 is 0 ms
+Nominate delta for slot 12 is 100 ms
+Prepare delta for slot 12 is 300 ms
+2020-07-28T17:49:22.231 <test> [Ledger INFO] Got consensus: [seq=12, prev=00a715, txs=0, ops=0, sv: [ txH: 559fec, ct: 68, upgrades: [ ] ]]
+2020-07-28T17:49:22.232 <test> [Ledger INFO] Closed ledger: [seq=12, hash=a027b9]
+recvSCPEnvelope (ready) from: GCSCQ s:2 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+externalize delay (GCSCQ) delta for slot 12 is 0 ms
+recvSCPEnvelope (ready) from: GAB6L s:1 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+recvSCPEnvelope (ready) from: GAB6L s:2 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+externalize delay (GAB6L) delta for slot 12 is 0 ms
+recvSCPEnvelope (ready) from: GAOBN s:2 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+externalize delay (GAOBN) delta for slot 12 is 0 ms
+recvSCPEnvelope (ready) from: GCSCQ s:1 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+2020-07-28T17:49:22.234 <test> [Herder INFO] Quorum information for 10 : {"agree":4,"delayed":0,"disagree":0,"fail_at":2,"hash":"4e35e7","ledger":10,"missing":0,"phase":"EXTERNALIZE","validated":true}
+
+externalize lag delta for slot 12 is 0 ms
+Nominate delta for slot 12 is 100 ms
+Prepare delta for slot 12 is 300 ms
+2020-07-28T17:49:22.234 <test> [Ledger INFO] Got consensus: [seq=12, prev=00a715, txs=0, ops=0, sv: [ txH: 559fec, ct: 68, upgrades: [ ] ]]
+2020-07-28T17:49:22.236 <test> [Ledger INFO] Closed ledger: [seq=12, hash=a027b9]
+recvSCPEnvelope (ready) from: GCSCQ s:2 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+externalize delay (GCSCQ) delta for slot 12 is 0 ms
+recvSCPEnvelope (ready) from: GAB6L s:1 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+recvSCPEnvelope (ready) from: GAOBN s:2 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+externalize delay (GAOBN) delta for slot 12 is 0 ms
+recvSCPEnvelope (ready) from: GAB6L s:2 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+externalize delay (GAB6L) delta for slot 12 is 0 ms
+recvSCPEnvelope (ready) from: GAXSR s:2 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+externalize delay (GAXSR) delta for slot 12 is 0 ms
+recvSCPEnvelope (ready) from: GAB6L s:1 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+recvSCPEnvelope (ready) from: GAB6L s:2 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+externalize delay (GAB6L) delta for slot 12 is 100 ms
+recvSCPEnvelope (ready) from: GAXSR s:2 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+externalize delay (GAXSR) delta for slot 12 is 100 ms
+recvSCPEnvelope (ready) from: GAOBN s:2 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+externalize delay (GAOBN) delta for slot 12 is 100 ms
+recvSCPEnvelope (ready) from: GB3X5 s:2 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+externalize delay (GB3X5) delta for slot 12 is 100 ms
+recvSCPEnvelope (ready) from: GAOBN s:2 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+externalize delay (GAOBN) delta for slot 12 is 100 ms
+recvSCPEnvelope (ready) from: GAXSR s:2 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+externalize delay (GAXSR) delta for slot 12 is 100 ms
+recvSCPEnvelope (ready) from: GB3X5 s:2 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+externalize delay (GB3X5) delta for slot 12 is 100 ms
+recvSCPEnvelope (ready) from: GAXSR s:2 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+externalize delay (GAXSR) delta for slot 12 is 100 ms
+recvSCPEnvelope (ready) from: GB3X5 s:2 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+externalize delay (GB3X5) delta for slot 12 is 100 ms
+recvSCPEnvelope (ready) from: GB3X5 s:2 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:09 1969
+externalize delay (GB3X5) delta for slot 12 is 100 ms
+2020-07-28T17:49:22.241 <test> [Database INFO] Connecting to: sqlite3://stellar-core-test-0-6a7c2af2ddfa35f4/test-6-e7aa9abab011b001/test.db
+2020-07-28T17:49:22.243 <test> [SCP INFO] LocalNode::LocalNode@GDWYI qSet: d49ec6
+2020-07-28T17:49:22.243 <test> [default INFO] Listening on 127.0.0.1:11638 for HTTP requests
+2020-07-28T17:49:22.243 <test> [Invariant INFO] Enabled invariant 'AccountSubEntriesCountIsValid'
+2020-07-28T17:49:22.243 <test> [Invariant INFO] Enabled invariant 'BucketListIsConsistentWithDatabase'
+2020-07-28T17:49:22.243 <test> [Invariant INFO] Enabled invariant 'ConservationOfLumens'
+2020-07-28T17:49:22.243 <test> [Invariant INFO] Enabled invariant 'LedgerEntryIsValid'
+2020-07-28T17:49:22.243 <test> [Invariant INFO] Enabled invariant 'LiabilitiesMatchOffers'
+2020-07-28T17:49:22.243 <test> [Database INFO] DB schema is in current version
+2020-07-28T17:49:22.243 <test> [Ledger INFO] Starting up application
+2020-07-28T17:49:22.244 <test> [Herder INFO] Armed with network upgrades: upgradetime=1970-01-01T00:00:01Z, protocolversion=14, basefee=100, basereserve=100000000, maxtxsize=50
+2020-07-28T17:49:22.244 <test> [default INFO] Connection effective settings:
+2020-07-28T17:49:22.244 <test> [default INFO] TARGET_PEER_CONNECTIONS: 8
+2020-07-28T17:49:22.244 <test> [default INFO] MAX_ADDITIONAL_PEER_CONNECTIONS: 64
+2020-07-28T17:49:22.244 <test> [default INFO] MAX_PENDING_CONNECTIONS: 500
+2020-07-28T17:49:22.244 <test> [default INFO] MAX_OUTBOUND_PENDING_CONNECTIONS: 56
+2020-07-28T17:49:22.244 <test> [default INFO] MAX_INBOUND_PENDING_CONNECTIONS: 444
+2020-07-28T17:49:22.244 <test> [Ledger INFO] Last closed ledger (LCL) hash is f332f22249d1ef4b26f7ade40c89a0de1e4fa4561849ee0067812fdaa6587045
+2020-07-28T17:49:22.244 <test> [Ledger INFO] Loaded LCL header from database: [seq=10, hash=f332f2]
+2020-07-28T17:49:22.244 <test> [Ledger INFO] Assumed bucket-state for LCL: [seq=10, hash=f332f2]
+2020-07-28T17:49:22.247 <test> [Overlay INFO] Connected to 127.0.0.1:11637
+2020-07-28T17:49:22.248 <test> [Overlay INFO] Connected to 127.0.0.1:11633
+recvSCPEnvelope (ready) from: GAB6L s:3 i:2 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GAOBN s:3 i:2 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GAXSR s:3 i:2 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GB3X5 s:3 i:2 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GCSCQ s:3 i:2 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GAB6L s:2 i:2 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GAOBN s:2 i:2 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GAXSR s:2 i:2 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GB3X5 s:2 i:2 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GCSCQ s:2 i:2 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GAB6L s:3 i:3 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GAOBN s:3 i:3 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GAXSR s:3 i:3 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GB3X5 s:3 i:3 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GCSCQ s:3 i:3 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GAB6L s:2 i:3 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GAOBN s:2 i:3 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GAXSR s:2 i:3 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GB3X5 s:2 i:3 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GCSCQ s:2 i:3 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GAB6L s:3 i:4 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GAOBN s:3 i:4 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GB3X5 s:3 i:4 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GCSCQ s:3 i:4 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GAB6L s:2 i:4 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GAOBN s:2 i:4 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GAXSR s:2 i:4 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GB3X5 s:2 i:4 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GCSCQ s:2 i:4 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GAB6L s:3 i:5 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GAOBN s:3 i:5 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GB3X5 s:3 i:5 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GCSCQ s:3 i:5 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GAB6L s:2 i:5 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GAOBN s:2 i:5 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GAXSR s:2 i:5 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GB3X5 s:2 i:5 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GCSCQ s:2 i:5 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GAB6L s:3 i:6 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GAOBN s:3 i:6 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GAXSR s:3 i:6 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GB3X5 s:3 i:6 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GCSCQ s:3 i:6 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GAB6L s:2 i:6 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GAOBN s:2 i:6 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GAXSR s:2 i:6 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GB3X5 s:2 i:6 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GCSCQ s:2 i:6 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GAB6L s:3 i:7 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GAOBN s:3 i:7 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GAXSR s:3 i:7 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GB3X5 s:3 i:7 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GCSCQ s:3 i:7 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GAB6L s:2 i:7 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GAOBN s:2 i:7 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GAXSR s:2 i:7 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GB3X5 s:2 i:7 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GCSCQ s:2 i:7 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GAB6L s:3 i:8 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GAOBN s:3 i:8 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GAXSR s:3 i:8 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GB3X5 s:3 i:8 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GCSCQ s:3 i:8 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GAB6L s:2 i:8 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GAOBN s:2 i:8 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GAXSR s:2 i:8 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GB3X5 s:2 i:8 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GCSCQ s:2 i:8 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GAB6L s:3 i:9 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GAOBN s:3 i:9 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GAXSR s:3 i:9 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GB3X5 s:3 i:9 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GCSCQ s:3 i:9 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GAB6L s:2 i:9 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GAOBN s:2 i:9 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GAXSR s:2 i:9 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GB3X5 s:2 i:9 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GCSCQ s:2 i:9 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GAB6L s:3 i:10 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GAOBN s:3 i:10 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GAXSR s:3 i:10 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GB3X5 s:3 i:10 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GCSCQ s:3 i:10 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GAB6L s:2 i:10 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GAOBN s:2 i:10 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GAXSR s:2 i:10 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GB3X5 s:2 i:10 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GCSCQ s:2 i:10 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GCSCQ s:2 i:11 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GB3X5 s:2 i:11 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GAXSR s:2 i:11 a:Joining SCP current virtual time = Wed Dec 31 19:01:10 1969
+2020-07-28T17:49:22.257 <test> [Herder INFO] Quorum information for 9 : {"agree":5,"delayed":0,"disagree":0,"fail_at":2,"hash":"d49ec6","ledger":9,"missing":0,"phase":"EXTERNALIZE","validated":true}
+
+externalize lag delta for slot 11 is 0 ms
+Prepare delta for slot 11 is 0 ms
+2020-07-28T17:49:22.258 <test> [Ledger INFO] Got consensus: [seq=11, prev=f332f2, txs=0, ops=0, sv: [ txH: c5b15c, ct: 53, upgrades: [ ] ]]
+2020-07-28T17:49:22.260 <test> [Ledger INFO] Closed ledger: [seq=11, hash=00a715]
+2020-07-28T17:49:22.260 <test> [Ledger INFO] Changing state LM_BOOTING_STATE -> LM_SYNCED_STATE
+externalize delay (GAXSR) delta for slot 11 is 0 ms
+recvSCPEnvelope (ready) from: GAOBN s:2 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:10 1969
+externalize delay (GAOBN) delta for slot 11 is 0 ms
+recvSCPEnvelope (ready) from: GAB6L s:2 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:10 1969
+externalize delay (GAB6L) delta for slot 11 is 0 ms
+recvSCPEnvelope (ready) from: GCSCQ s:3 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GB3X5 s:3 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GAXSR s:3 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GAOBN s:3 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GAB6L s:3 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GCSCQ s:2 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GB3X5 s:2 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GAXSR s:2 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:10 1969
+2020-07-28T17:49:22.262 <test> [Herder INFO] Quorum information for 10 : {"agree":5,"delayed":0,"disagree":0,"fail_at":2,"hash":"d49ec6","ledger":10,"missing":0,"phase":"EXTERNALIZE","validated":true}
+
+externalize lag delta for slot 12 is 0 ms
+Prepare delta for slot 12 is 0 ms
+2020-07-28T17:49:22.263 <test> [Ledger INFO] Got consensus: [seq=12, prev=00a715, txs=0, ops=0, sv: [ txH: 559fec, ct: 68, upgrades: [ ] ]]
+2020-07-28T17:49:22.266 <test> [Ledger INFO] Closed ledger: [seq=12, hash=a027b9]
+externalize delay (GAXSR) delta for slot 12 is 0 ms
+recvSCPEnvelope (ready) from: GAOBN s:2 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:10 1969
+externalize delay (GAOBN) delta for slot 12 is 0 ms
+recvSCPEnvelope (ready) from: GAB6L s:2 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:10 1969
+externalize delay (GAB6L) delta for slot 12 is 0 ms
+recvSCPEnvelope (ready) from: GCSCQ s:3 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GB3X5 s:3 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GAXSR s:3 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GAOBN s:3 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GAB6L s:3 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GDWYI s:1 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GDWYI s:2 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:10 1969
+externalize delay (GDWYI) delta for slot 11 is 6200 ms
+recvSCPEnvelope (ready) from: GDWYI s:1 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GDWYI s:2 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:10 1969
+externalize delay (GDWYI) delta for slot 12 is 1100 ms
+recvSCPEnvelope (ready) from: GDWYI s:1 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GDWYI s:2 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:10 1969
+externalize delay (GDWYI) delta for slot 11 is 6200 ms
+recvSCPEnvelope (ready) from: GDWYI s:1 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GDWYI s:2 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:10 1969
+externalize delay (GDWYI) delta for slot 12 is 1100 ms
+recvSCPEnvelope (ready) from: GDWYI s:1 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GDWYI s:2 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:10 1969
+externalize delay (GDWYI) delta for slot 11 is 6200 ms
+recvSCPEnvelope (ready) from: GDWYI s:1 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GDWYI s:2 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:10 1969
+externalize delay (GDWYI) delta for slot 12 is 1100 ms
+recvSCPEnvelope (ready) from: GDWYI s:1 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GDWYI s:2 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:10 1969
+externalize delay (GDWYI) delta for slot 11 is 6200 ms
+recvSCPEnvelope (ready) from: GDWYI s:1 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GDWYI s:2 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:10 1969
+externalize delay (GDWYI) delta for slot 12 is 1100 ms
+recvSCPEnvelope (ready) from: GDWYI s:1 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GDWYI s:2 i:11 a:Synced! current virtual time = Wed Dec 31 19:01:10 1969
+externalize delay (GDWYI) delta for slot 11 is 6300 ms
+recvSCPEnvelope (ready) from: GDWYI s:1 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:10 1969
+recvSCPEnvelope (ready) from: GDWYI s:2 i:12 a:Synced! current virtual time = Wed Dec 31 19:01:10 1969
+externalize delay (GDWYI) delta for slot 12 is 1200 ms

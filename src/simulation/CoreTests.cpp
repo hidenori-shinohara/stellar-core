@@ -178,6 +178,7 @@ resilienceTest(Simulation::pointer sim)
         victimConfig.FORCE_SCP = false;
         // kill instance
         sim->removeNode(victimID);
+        std::cout << "remove a node" << std::endl;
         // let the rest of the network move on
         crankForward(nbLedgerStep, 1);
         // start the instance
@@ -210,6 +211,8 @@ resilienceTest(Simulation::pointer sim)
                 sim->addConnection(victimID, nodes[k]);
             }
         }
+        // network should be fully in sync now
+        crankForward(nbLedgerStep, 1);
     }
 }
 TEST_CASE("resilience tests", "[resilience][simulation][!hide]")

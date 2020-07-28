@@ -1006,12 +1006,12 @@ HerderSCPDriver::recordLogTiming(VirtualClock::time_point start,
 {
     auto delta =
         std::chrono::duration_cast<std::chrono::nanoseconds>(end - start);
-    if (Logging::logDebug("Herder"))
+    if (true || Logging::logDebug("Herder"))
     {
         auto msCount =
             std::chrono::duration_cast<std::chrono::milliseconds>(delta)
                 .count();
-        CLOG(DEBUG, "Herder") << fmt::format("{} delta for slot {} is {} ms",
+        CLOG(WARNING, "Herder") << fmt::format("{} delta for slot {} is {} ms",
                                              logStr, slotIndex, msCount);
     }
     if (delta >= threshold)

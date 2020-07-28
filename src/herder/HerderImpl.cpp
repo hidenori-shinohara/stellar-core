@@ -553,14 +553,15 @@ HerderImpl::recvSCPEnvelope(SCPEnvelope const& envelope)
     {
         std::string txt("READY");
         ZoneText(txt.c_str(), txt.size());
-        if (Logging::logDebug("Herder"))
+        auto t = std::chrono::system_clock::to_time_t(mApp.getClock().system_now());
+        auto s = getJsonInfo(20).toStyledString();
+        if (mApp.getConfig().toStrKey(mApp.getConfig().NODE_SEED.getPublicKey(), false) == "GDWYI")
         {
-            CLOG(DEBUG, "Herder")
-                << "recvSCPEnvelope (ready) from: "
-                << mApp.getConfig().toShortString(envelope.statement.nodeID)
-                << " s:" << envelope.statement.pledges.type()
-                << " i:" << envelope.statement.slotIndex
-                << " a:" << mApp.getStateHuman();
+            CLOG(WARNING, "Herder")
+                << "Context : "
+                << s
+                << " current virtual time = "
+                << std::ctime(&t);
         }
 
         processSCPQueue();
