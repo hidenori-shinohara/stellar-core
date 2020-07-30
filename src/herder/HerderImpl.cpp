@@ -923,7 +923,7 @@ HerderImpl::triggerNextLedger(uint32_t ledgerSeqToTrigger)
         return;
     }
 
-    if (lcl.header.ledgerVersion >= 11)
+    if (lcl.header.ledgerVersion >= 100)
     {
         // version 11 and above require values to be signed during nomination
         signStellarValue(mApp.getConfig().NODE_SEED, newProposedValue);

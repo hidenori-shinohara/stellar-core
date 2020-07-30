@@ -319,7 +319,7 @@ HerderSCPDriver::validateValueHelper(uint64_t slotIndex, StellarValue const& b,
         return SCPDriver::kInvalidValue;
     }
 
-    if ((!nomination || lcl.ledgerVersion < 11) &&
+    if ((!nomination || lcl.ledgerVersion < 100) &&
         b.ext.v() != STELLAR_VALUE_BASIC)
     {
         // ballot protocol or
@@ -330,7 +330,7 @@ HerderSCPDriver::validateValueHelper(uint64_t slotIndex, StellarValue const& b,
         return SCPDriver::kInvalidValue;
     }
     if (nomination &&
-        (lcl.ledgerVersion >= 11 && b.ext.v() != STELLAR_VALUE_SIGNED))
+        (lcl.ledgerVersion >= 100 && b.ext.v() != STELLAR_VALUE_SIGNED))
     {
         // v11 and above use SIGNED for nomination
         CLOG(TRACE, "Herder")
