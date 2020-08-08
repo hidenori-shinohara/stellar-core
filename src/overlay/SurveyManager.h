@@ -78,6 +78,8 @@ class SurveyManager : public std::enable_shared_from_this<SurveyManager>,
 
     std::unordered_set<NodeID> mPeersToSurvey;
 
+    int hidenori;
+
     std::chrono::seconds const SURVEY_THROTTLE_TIMEOUT_SEC;
 
     std::unordered_set<NodeID> mBadResponseNodes;
