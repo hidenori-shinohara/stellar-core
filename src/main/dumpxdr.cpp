@@ -233,7 +233,8 @@ printOneXdr(xdr::opaque_vec<> const& o, std::string const& desc)
 {
     T tmp;
     xdr::xdr_from_opaque(o, tmp);
-    std::cout << xdr::xdr_to_string(tmp, desc.c_str()) << std::endl;
+    cereal::JSONOutputArchive ar(std::cout);
+    ar(tmp);
 }
 
 void
