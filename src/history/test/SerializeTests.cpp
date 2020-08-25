@@ -30,12 +30,12 @@ TEST_CASE("Serialization round trip", "[history]")
             std::ifstream in(inputPath);
             in.exceptions(std::ios::badbit);
             std::string input((std::istreambuf_iterator<char>(in)),
-                                 std::istreambuf_iterator<char>());
+                              std::istreambuf_iterator<char>());
 
             std::ifstream out(outputPath);
             out.exceptions(std::ios::badbit);
             std::string output((std::istreambuf_iterator<char>(out)),
-                                 std::istreambuf_iterator<char>());
+                               std::istreambuf_iterator<char>());
 
             HistoryArchiveState has;
             has.fromString(input);

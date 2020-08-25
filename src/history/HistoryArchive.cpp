@@ -36,7 +36,7 @@
 namespace stellar
 {
 
-unsigned const HistoryArchiveState::HISTORY_ARCHIVE_STATE_VERSION = 1;
+unsigned const HistoryArchiveState::HISTORY_ARCHIVE_STATE_VERSION = 2;
 
 template <typename... Tokens>
 std::string
@@ -368,8 +368,11 @@ HistoryArchiveState::HistoryArchiveState() : server(STELLAR_CORE_VERSION)
 }
 
 HistoryArchiveState::HistoryArchiveState(uint32_t ledgerSeq,
-                                         BucketList const& buckets)
-    : server(STELLAR_CORE_VERSION), currentLedger(ledgerSeq)
+                                         BucketList const& buckets,
+                                         std::string const& passphrase)
+    : server(STELLAR_CORE_VERSION)
+    , networkPassphrase(passphrase)
+    , currentLedger(ledgerSeq)
 {
     for (uint32_t i = 0; i < BucketList::kNumLevels; ++i)
     {
