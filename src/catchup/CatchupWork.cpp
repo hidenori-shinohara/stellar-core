@@ -242,6 +242,14 @@ CatchupWork::runCatchupStep()
     }
 
     auto const& has = mGetHistoryArchiveStateWork->getHistoryArchiveState();
+    if (has.version >= 2 &&
+        has.networkPassphrase != mApp.getConfig().NETWORK_PASSPHRASE)
+    {
+        CLOG(ERROR, "History")
+            << "The network passphrase of the application does not match "
+            << "that of the history archive state";
+        return State::WORK_FAILURE;
+    }
     // Step 2: Compare local and remote states
     if (!hasAnyLedgersToCatchupTo())
     {
