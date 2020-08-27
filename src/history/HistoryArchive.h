@@ -40,14 +40,31 @@ struct HistoryStateBucket
     void
     serialize(Archive& ar) const
     {
-        ar(CEREAL_NVP(curr), CEREAL_NVP(next), CEREAL_NVP(snap));
+        ar(CEREAL_NVP(curr));
+        try
+        {
+            ar(CEREAL_NVP(next));
+        }
+        catch (std::exception& e)
+        {
+        }
+
+        ar(CEREAL_NVP(snap));
     }
 
     template <class Archive>
     void
     serialize(Archive& ar)
     {
-        ar(CEREAL_NVP(curr), CEREAL_NVP(next), CEREAL_NVP(snap));
+        ar(CEREAL_NVP(curr));
+        try
+        {
+            ar(CEREAL_NVP(next));
+        }
+        catch (std::exception& e)
+        {
+        }
+        ar(CEREAL_NVP(snap));
     }
 };
 

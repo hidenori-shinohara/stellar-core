@@ -15,11 +15,13 @@ TEST_CASE("Serialization round trip", "[history]")
     std::vector<std::string> inputFiles = {
         "stellar-history.testnet.6714239.json",
         "stellar-history.livenet.15686975.json",
-        "stellar-history.testnet.6714239.version2.input.json"};
+        "stellar-history.testnet.6714239.version2.input.json",
+        "stellar-history.livenet.15686975.input.without-next.json"};
     std::vector<std::string> outputFiles = {
         "stellar-history.testnet.6714239.json",
         "stellar-history.livenet.15686975.json",
-        "stellar-history.testnet.6714239.version2.output.json"};
+        "stellar-history.testnet.6714239.version2.output.json",
+        "stellar-history.livenet.15686975.output.without-next.json"};
     for (int i = 0; i < inputFiles.size(); i++)
     {
         std::string fnPath = "testdata/";
