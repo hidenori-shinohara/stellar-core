@@ -137,11 +137,11 @@ HistoryArchiveState::load(std::string const& inFile)
     in.exceptions(std::ios::badbit);
     cereal::JSONInputArchive ar(in);
     serialize(ar);
-    if (version != HISTORY_ARCHIVE_STATE_VERSION)
+    if (version > HISTORY_ARCHIVE_STATE_VERSION)
     {
         CLOG(ERROR, "History")
-            << "Unexpected history archive state version: " << version;
-        throw std::runtime_error("unexpected history archive state version");
+            << "Unknown history archive state version: " << version;
+        throw std::runtime_error("unknown history archive state version");
     }
 }
 
