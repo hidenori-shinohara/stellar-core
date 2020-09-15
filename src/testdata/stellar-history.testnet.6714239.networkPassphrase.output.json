@@ -1,8 +1,7 @@
 {
-    "version": 2,
+    "version": 1,
     "server": "v9.0.1-dirty",
     "currentLedger": 6714239,
-    "networkPassphrase": "(V) (;,,;) (V)",
     "currentBuckets": [
         {
             "curr": "0000000000000000000000000000000000000000000000000000000000000000",
