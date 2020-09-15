@@ -40,7 +40,13 @@ TEST_CASE("Serialization round trip", "[history]")
                                std::istreambuf_iterator<char>());
 
             HistoryArchiveState has;
+
+            // Test fromString
             has.fromString(input);
+            REQUIRE(output == has.toString());
+
+            // Test load
+            has.load(inputPath);
             REQUIRE(output == has.toString());
         }
     }
