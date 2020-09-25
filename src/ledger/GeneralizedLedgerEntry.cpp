@@ -581,15 +581,15 @@ GeneralizedLedgerEntry::toString() const
     switch (mType)
     {
     case GeneralizedLedgerEntryType::LEDGER_ENTRY:
-        return xdr::xdr_to_string(ledgerEntry());
+        return xdr_to_string(ledgerEntry());
     case GeneralizedLedgerEntryType::SPONSORSHIP:
         return fmt::format("{{\n  sponsoredID = {},\n  sponsoringID = {}\n}}\n",
-                           xdr_printer(sponsorshipEntry().sponsoredID),
-                           xdr_printer(sponsorshipEntry().sponsoringID));
+                           xdr_to_string(sponsorshipEntry().sponsoredID),
+                           xdr_to_string(sponsorshipEntry().sponsoringID));
     case GeneralizedLedgerEntryType::SPONSORSHIP_COUNTER:
         return fmt::format(
             "{{\n  sponsoringID = {},\n  numSponsoring = {}\n}}\n",
-            xdr_printer(sponsorshipCounterEntry().sponsoringID),
+            xdr_to_string(sponsorshipCounterEntry().sponsoringID),
             sponsorshipCounterEntry().numSponsoring);
     default:
         abort();
