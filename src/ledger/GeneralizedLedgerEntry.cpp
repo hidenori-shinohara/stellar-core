@@ -304,10 +304,10 @@ GeneralizedLedgerKey::toString() const
         return xdr_to_string(ledgerKey());
     case GeneralizedLedgerEntryType::SPONSORSHIP:
         return fmt::format("{{\n  sponsoredID = {}\n}}\n",
-                           xdr_printer(sponsorshipKey().sponsoredID));
+                           xdr_to_string(sponsorshipKey().sponsoredID));
     case GeneralizedLedgerEntryType::SPONSORSHIP_COUNTER:
         return fmt::format("{{\n  sponsoringID = {}\n}}\n",
-                           xdr_printer(sponsorshipCounterKey().sponsoringID));
+                           xdr_to_string(sponsorshipCounterKey().sponsoringID));
     default:
         abort();
     }
