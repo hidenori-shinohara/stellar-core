@@ -283,19 +283,25 @@ GeneralizedLedgerKey::sponsorshipCounterKey() const
     return mSponsorshipCounterKey;
 }
 
-std::string
-GeneralizedLedgerKey::toString() const
+template <typename T>
+std::string xdr_to_string(const T& t)
 {
     std::stringstream os;
     {
         cereal::JSONOutputArchive archive_out(os);
-        archive_out(ledgerKey());
+        archive_out(t);
     }
     std::string json_str = os.str();
+    return json_str;
+}
+
+std::string
+GeneralizedLedgerKey::toString() const
+{
     switch (mType)
     {
     case GeneralizedLedgerEntryType::LEDGER_ENTRY:
-        return json_str;
+        return xdr_to_string(ledgerKey());
     case GeneralizedLedgerEntryType::SPONSORSHIP:
         return fmt::format("{{\n  sponsoredID = {}\n}}\n",
                            xdr_printer(sponsorshipKey().sponsoredID));
