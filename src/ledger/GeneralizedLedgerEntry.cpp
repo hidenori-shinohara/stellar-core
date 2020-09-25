@@ -7,7 +7,6 @@
 #include "util/types.h"
 #include "xdr/Stellar-ledger-entries.h"
 #include <xdrpp/cereal.h>
-#include "xdrpp/printer.h"
 #include <cereal/archives/json.hpp>
 #include <cereal/cereal.hpp>
 
