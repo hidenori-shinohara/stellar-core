@@ -5,7 +5,10 @@
 #include "ledger/GeneralizedLedgerEntry.h"
 #include "util/XDROperators.h"
 #include "util/types.h"
+#include "xdr/Stellar-ledger-entries.h"
 #include "xdrpp/printer.h"
+#include <cereal/archives/json.hpp>
+#include <cereal/cereal.hpp>
 
 #include <fmt/format.h>
 
@@ -282,10 +285,36 @@ GeneralizedLedgerKey::sponsorshipCounterKey() const
 std::string
 GeneralizedLedgerKey::toString() const
 {
+    /*** Fail with the following error message.
+     
+ ../lib/cereal/include/cereal/cereal.hpp:543:9: error: static_assert failed due to requirement 'traits::detail::count_output_serializers<stellar::LedgerKey, cereal::JSONOutputArchive>::value != 0' "cereal could not find any output serialization functions for the provided type and archive combination. \n\n Types must either have a serialize function, load/save pair, or load_minimal/save_minimal pair (you may not mix these). \n Serialize functions generally have the following signature: \n\n template<class Archive> \n   void serialize(Archive & ar) \n   { \n     ar( member1, member2, member3 ); \n   } \n\n "
+        static_assert(traits::detail::count_output_serializers<T, ArchiveType>::value != 0,
+        ^             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../lib/cereal/include/cereal/cereal.hpp:417:15: note: in instantiation of function template specialization 'cereal::OutputArchive<cereal::JSONOutputArchive, 0>::processImpl<stellar::LedgerKey, 0>' requested here
+        self->processImpl( head );
+              ^
+../lib/cereal/include/cereal/cereal.hpp:311:15: note: in instantiation of function template specialization 'cereal::OutputArchive<cereal::JSONOutputArchive, 0>::process<const stellar::LedgerKey &>' requested here
+        self->process( std::forward<Types>( args )... );
+              ^
+ledger/GeneralizedLedgerEntry.cpp:291:20: note: in instantiation of function template specialization 'cereal::OutputArchive<cereal::JSONOutputArchive, 0>::operator()<const stellar::LedgerKey &>' requested here
+        archive_out(ledgerKey());
+                   ^
+1 error generated.
+make[2]: *** [ledger/GeneralizedLedgerEntry.o] Error 1
+make[1]: *** [install] Error 2
+make: *** [install-recursive] Error 1
+
+    ***/
+    std::stringstream os;
+    {
+        cereal::JSONOutputArchive archive_out(os);
+        archive_out(ledgerKey());
+    }
+    std::string json_str = os.str();
     switch (mType)
     {
     case GeneralizedLedgerEntryType::LEDGER_ENTRY:
-        return xdr::xdr_to_string(ledgerKey());
+        return json_str;
     case GeneralizedLedgerEntryType::SPONSORSHIP:
         return fmt::format("{{\n  sponsoredID = {}\n}}\n",
                            xdr_printer(sponsorshipKey().sponsoredID));
