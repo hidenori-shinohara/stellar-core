@@ -4,9 +4,8 @@
 
 #include "ledger/GeneralizedLedgerEntry.h"
 #include "util/XDROperators.h"
+#include "util/XDRCereal.h"
 #include "util/types.h"
-#include "xdr/Stellar-ledger-entries.h"
-#include <xdrpp/cereal.h>
 #include <cereal/archives/json.hpp>
 #include <cereal/cereal.hpp>
 
