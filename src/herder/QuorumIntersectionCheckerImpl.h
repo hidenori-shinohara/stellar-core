@@ -483,6 +483,8 @@ class QuorumIntersectionCheckerImpl : public stellar::QuorumIntersectionChecker
         size_t mEarlyExit22s = {0};
         size_t mEarlyExit31s = {0};
         size_t mEarlyExit32s = {0};
+        size_t mTotalNumberOfSubsets = {0};
+        size_t mNumberOfRemovableSubsets = {0};
         void log() const;
     };
 

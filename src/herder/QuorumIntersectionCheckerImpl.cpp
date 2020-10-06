@@ -230,6 +230,14 @@ MinQuorumEnumerator::anyMinQuorumHasDisjointQuorum()
         }
         return false;
     }
+    else
+    {
+        mQic.mStats.mTotalNumberOfSubsets++;
+        if (mCommitted.count() == maxCommit())
+        {
+            mQic.mStats.mNumberOfRemovableSubsets++;
+        }
+    }
 
     // Principal enumeration branch and third early exit: stop when
     // committed has grown to a quorum, enumerating it if it's a
@@ -381,6 +389,26 @@ QuorumIntersectionCheckerImpl::Stats::log() const
                        << ", X2.2:" << mEarlyExit22s
                        << ", X3.1:" << mEarlyExit31s
                        << ", X3.2:" << mEarlyExit32s << "]";
+    // Example outputs of the following std::cout.
+    //
+    // "quorum intersection 4-org fully-connected - elide all minquorums"
+    // [[[mTotalNumberOfSubsets:7426, mNumberOfRemovableSubsets:3071, ratio
+    // = 41.3547%]]]
+    //
+    // "quorum intersection 8-org core-and-periphery balanced"
+    // herder/test/QuorumIntersectionTests.cpp:550
+    // [[[mTotalNumberOfSubsets:19717, mNumberOfRemovableSubsets:6147, ratio
+    // = 31.1761%]]]
+    //
+    // "quorum intersection 6-org 3-node fully-connected"
+    // herder/test/QuorumIntersectionTests.cpp:751
+    // [[[mTotalNumberOfSubsets:40310, mNumberOfRemovableSubsets:17722, ratio
+    // = 43.9643%]]]
+    std::cout << "\n[[[mTotalNumberOfSubsets:" << mTotalNumberOfSubsets
+              << ", mNumberOfRemovableSubsets:" << mNumberOfRemovableSubsets
+              << ", ratio = "
+              << 100.0 * mNumberOfRemovableSubsets / mTotalNumberOfSubsets
+              << "%]]]\n";
 }
 
 // This function is the innermost call in the checker and must be as fast
