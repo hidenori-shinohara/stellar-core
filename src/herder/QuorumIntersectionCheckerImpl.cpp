@@ -364,9 +364,6 @@ QuorumIntersectionCheckerImpl::getMaxQuorumsFound() const
 }
 
 
-int mContainsQuorumSlice = 0;
-int mContainsQuorumSliceLoop = 0;
-
 void
 QuorumIntersectionCheckerImpl::Stats::log() const
 {
@@ -385,9 +382,6 @@ QuorumIntersectionCheckerImpl::Stats::log() const
                        << ", X2.2:" << mEarlyExit22s
                        << ", X3.1:" << mEarlyExit31s
                        << ", X3.2:" << mEarlyExit32s << "]";
-    std::cout << "[mContainsQuorumSlice = " << mContainsQuorumSlice << "]" << std::endl;
-    std::cout << "[mContainsQuorumSliceLoop = " << mContainsQuorumSliceLoop << "]" << std::endl;
-    std::cout << "[Avg loop / call = " << mContainsQuorumSliceLoop * 1.0 / mContainsQuorumSlice << "]" << std::endl;
 }
 
 // This function is the innermost call in the checker and must be as fast
@@ -396,7 +390,6 @@ bool
 QuorumIntersectionCheckerImpl::containsQuorumSlice(BitSet const& bs,
                                                    QBitSet const& qbs) const
 {
-    mContainsQuorumSlice++;
     // First we do a very quick check: do we have enough bits in 'bs'
     // intersected with the top-level set of nodes to meet the threshold for
     // this qset?
@@ -438,7 +431,6 @@ QuorumIntersectionCheckerImpl::containsQuorumSlice(BitSet const& bs,
     size_t innerFailLimit = qbs.mInnerSets.size() - innerThreshold + 1;
     for (auto const& inner : qbs.mInnerSets)
     {
-        mContainsQuorumSliceLoop++;
         if (containsQuorumSlice(bs, inner))
         {
             innerThreshold--;
