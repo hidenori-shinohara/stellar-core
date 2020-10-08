@@ -465,7 +465,14 @@ QuorumIntersectionCheckerImpl::containsQuorumSliceForNode(BitSet const& bs,
 bool
 QuorumIntersectionCheckerImpl::isAQuorum(BitSet const& nodes) const
 {
-    return (bool)contractToMaximalQuorum(nodes);
+    for (size_t i = 0; nodes.nextSet(i); ++i)
+    {
+        if (!containsQuorumSliceForNode(nodes, i))
+        {
+            return false;
+        }
+    }
+    return true;
 }
 
 BitSet
