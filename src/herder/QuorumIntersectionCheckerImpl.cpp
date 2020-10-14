@@ -18,6 +18,8 @@ namespace
 using namespace stellar;
 struct QBitSet;
 using QGraph = std::vector<QBitSet>;
+int hit, miss;
+std::map<int64, bool> dp;
 
 QBitSet::QBitSet(uint32_t threshold, BitSet const& nodes,
                  QGraph const& innerSets)
@@ -349,6 +351,8 @@ QuorumIntersectionCheckerImpl::QuorumIntersectionCheckerImpl(
 {
     buildGraph(qmap);
     buildSCCs();
+    dp.clear();
+    hit = miss = 0;
 }
 
 std::pair<std::vector<PublicKey>, std::vector<PublicKey>>
@@ -381,6 +385,10 @@ QuorumIntersectionCheckerImpl::Stats::log() const
                        << ", X2.2:" << mEarlyExit22s
                        << ", X3.1:" << mEarlyExit31s
                        << ", X3.2:" << mEarlyExit32s << "]";
+    std::cout << "==============" << std::endl;
+    std::cout << "hit  = " << hit << std::endl;
+    std::cout << "miss = " << miss << std::endl;
+    std::cout << "==============" << std::endl;
 }
 
 // This function is the innermost call in the checker and must be as fast
@@ -450,6 +458,9 @@ QuorumIntersectionCheckerImpl::containsQuorumSlice(BitSet const& bs,
     return false;
 }
 
+// The hit rate is not bad, but not great.
+// (miss < hit < 2 * miss in many cases)
+// It's not at all faster. It is 10x slower (or maybe even worse).
 bool
 QuorumIntersectionCheckerImpl::containsQuorumSliceForNode(BitSet const& bs,
                                                           size_t node) const
@@ -458,7 +469,24 @@ QuorumIntersectionCheckerImpl::containsQuorumSliceForNode(BitSet const& bs,
     {
         return false;
     }
-    return containsQuorumSlice(bs, mGraph.at(node));
+
+    int64 key(node);
+    key <<= 30;
+    for (size_t i = 0; bs.nextSet(i); ++i)
+    {
+        key |= (1LL << i);
+    }
+
+    if (dp.find(key) == dp.end())
+    {
+        miss++;
+        dp[key] = containsQuorumSlice(bs, mGraph.at(node));
+    }
+    else
+    {
+        hit++;
+    }
+    return dp[key];
 }
 
 bool
