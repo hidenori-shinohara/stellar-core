@@ -21,7 +21,7 @@ struct QBitSet;
 using QGraph = std::vector<QBitSet>;
 int hit = 0;
 int miss = 0;
-std::map<std::string, bool> dp;
+std::map<int64, bool> dp;
 //std::map<std::pair<BitSet, size_t>, bool> dp;
 
 
@@ -32,7 +32,6 @@ QBitSet::QBitSet(uint32_t threshold, BitSet const& nodes,
     , mInnerSets(innerSets)
     , mAllSuccessors(getSuccessors(nodes, innerSets))
 {
-    std::cout << "new qbitset created" << std::endl;
 }
 
 void
@@ -356,6 +355,7 @@ QuorumIntersectionCheckerImpl::QuorumIntersectionCheckerImpl(
 {
     buildGraph(qmap);
     buildSCCs();
+    dp.clear();
 }
 
 std::pair<std::vector<PublicKey>, std::vector<PublicKey>>
@@ -390,7 +390,7 @@ QuorumIntersectionCheckerImpl::Stats::log() const
                        << ", X3.1:" << mEarlyExit31s
                        << ", X3.2:" << mEarlyExit32s << "]";
     std::cout << "==============" << std::endl;
-    std::cout << "hit = " << hit << std::endl;
+    std::cout << "hit  = " << hit << std::endl;
     std::cout << "miss = " << miss << std::endl;
     std::cout << "==============" << std::endl;
 }
@@ -464,36 +464,33 @@ QuorumIntersectionCheckerImpl::containsQuorumSlice(BitSet const& bs,
 }
 
 
+// The hit rate is not bad. (hit > miss in almost all cases)
+// But it's not at all faster. (it takes more than 10x)
 bool
 QuorumIntersectionCheckerImpl::containsQuorumSliceForNode(BitSet const& bs,
                                                           size_t node) const
 {
-
     if (!bs.get(node))
     {
         return false;
     }
-    std::stringstream ss;
-    ss << bs << " " << node;
-    std::string inp = ss.str();
+    int64 key = node << 30;
 
-    bool theirres = containsQuorumSlice(bs, mGraph.at(node));
-    std::cout << "(((" << inp << ")))" << std::endl;
+    for (size_t i = 0; bs.nextSet(i); ++i)
+    {
+        key |= (1LL << i);
+    }
 
-    std::cout << "[[[" << (theirres ? "true" : "false") << "]]]" << std::endl;
-    if (dp.find(inp) == dp.end())
+    if (dp.find(key) == dp.end())
     {
         miss++;
-        dp[inp] = theirres;
+        dp[key] = containsQuorumSlice(bs, mGraph.at(node));
     }
     else
     {
         hit++;
-        std::cout << "dp[inp] = " << (dp[inp] ? "true" : "false") << std::endl;
     }
-    std::cout << "dp.size() = " << dp.size() << std::endl;
-
-    return theirres;
+    return dp[key];
 }
 
 bool
