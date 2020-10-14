@@ -414,6 +414,16 @@ bitset_equal(const bitset_t* b1, const bitset_t* b2)
         if (b1->array[k] != b2->array[k])
             return false;
     }
+    for (size_t k = minlength; k < b1->arraysize; ++k)
+    {
+        if (b1->array[k])
+            return false;
+    }
+    for (size_t k = minlength; k < b2->arraysize; ++k)
+    {
+        if (b2->array[k])
+            return false;
+    }
     return true;
 }
 

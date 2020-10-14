@@ -7,6 +7,7 @@
 
 #include "util/Logging.h"
 #include "util/Math.h"
+#include <set>
 
 namespace
 {
@@ -18,6 +19,11 @@ namespace
 using namespace stellar;
 struct QBitSet;
 using QGraph = std::vector<QBitSet>;
+int hit = 0;
+int miss = 0;
+std::map<std::string, bool> dp;
+//std::map<std::pair<BitSet, size_t>, bool> dp;
+
 
 QBitSet::QBitSet(uint32_t threshold, BitSet const& nodes,
                  QGraph const& innerSets)
@@ -26,6 +32,7 @@ QBitSet::QBitSet(uint32_t threshold, BitSet const& nodes,
     , mInnerSets(innerSets)
     , mAllSuccessors(getSuccessors(nodes, innerSets))
 {
+    std::cout << "new qbitset created" << std::endl;
 }
 
 void
@@ -363,6 +370,7 @@ QuorumIntersectionCheckerImpl::getMaxQuorumsFound() const
     return mStats.mMaxQuorumsSeen;
 }
 
+
 void
 QuorumIntersectionCheckerImpl::Stats::log() const
 {
@@ -381,7 +389,12 @@ QuorumIntersectionCheckerImpl::Stats::log() const
                        << ", X2.2:" << mEarlyExit22s
                        << ", X3.1:" << mEarlyExit31s
                        << ", X3.2:" << mEarlyExit32s << "]";
+    std::cout << "==============" << std::endl;
+    std::cout << "hit = " << hit << std::endl;
+    std::cout << "miss = " << miss << std::endl;
+    std::cout << "==============" << std::endl;
 }
+
 
 // This function is the innermost call in the checker and must be as fast
 // as possible. We spend almost all of our time in here.
@@ -450,15 +463,37 @@ QuorumIntersectionCheckerImpl::containsQuorumSlice(BitSet const& bs,
     return false;
 }
 
+
 bool
 QuorumIntersectionCheckerImpl::containsQuorumSliceForNode(BitSet const& bs,
                                                           size_t node) const
 {
+
     if (!bs.get(node))
     {
         return false;
     }
-    return containsQuorumSlice(bs, mGraph.at(node));
+    std::stringstream ss;
+    ss << bs << " " << node;
+    std::string inp = ss.str();
+
+    bool theirres = containsQuorumSlice(bs, mGraph.at(node));
+    std::cout << "(((" << inp << ")))" << std::endl;
+
+    std::cout << "[[[" << (theirres ? "true" : "false") << "]]]" << std::endl;
+    if (dp.find(inp) == dp.end())
+    {
+        miss++;
+        dp[inp] = theirres;
+    }
+    else
+    {
+        hit++;
+        std::cout << "dp[inp] = " << (dp[inp] ? "true" : "false") << std::endl;
+    }
+    std::cout << "dp.size() = " << dp.size() << std::endl;
+
+    return theirres;
 }
 
 bool
