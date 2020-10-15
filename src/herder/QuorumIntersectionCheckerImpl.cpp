@@ -18,6 +18,8 @@ namespace
 using namespace stellar;
 struct QBitSet;
 using QGraph = std::vector<QBitSet>;
+int hit, miss;
+std::map<int64, bool> dp;
 
 QBitSet::QBitSet(uint32_t threshold, BitSet const& nodes,
                  QGraph const& innerSets)
@@ -349,6 +351,8 @@ QuorumIntersectionCheckerImpl::QuorumIntersectionCheckerImpl(
 {
     buildGraph(qmap);
     buildSCCs();
+    dp.clear();
+    hit = miss = 0;
 }
 
 std::pair<std::vector<PublicKey>, std::vector<PublicKey>>
@@ -381,6 +385,10 @@ QuorumIntersectionCheckerImpl::Stats::log() const
                        << ", X2.2:" << mEarlyExit22s
                        << ", X3.1:" << mEarlyExit31s
                        << ", X3.2:" << mEarlyExit32s << "]";
+    std::cout << "==============" << std::endl;
+    std::cout << "hit  = " << hit << std::endl;
+    std::cout << "miss = " << miss << std::endl;
+    std::cout << "==============" << std::endl;
 }
 
 // This function is the innermost call in the checker and must be as fast
@@ -464,7 +472,22 @@ QuorumIntersectionCheckerImpl::containsQuorumSliceForNode(BitSet const& bs,
 bool
 QuorumIntersectionCheckerImpl::isAQuorum(BitSet const& nodes) const
 {
-    return (bool)contractToMaximalQuorum(nodes);
+    int64 key(0);
+    for (size_t i = 0; nodes.nextSet(i); ++i)
+    {
+        key |= (1LL << i);
+    }
+
+    if (dp.find(key) == dp.end())
+    {
+        miss++;
+        dp[key] = (bool)contractToMaximalQuorum(nodes);
+    }
+    else
+    {
+        hit++;
+    }
+    return dp[key];
 }
 
 BitSet
