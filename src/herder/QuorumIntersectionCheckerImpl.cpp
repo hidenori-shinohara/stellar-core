@@ -346,6 +346,7 @@ QuorumIntersectionCheckerImpl::QuorumIntersectionCheckerImpl(
     , mQuiet(quiet)
     , mTSC(mGraph)
     , mInterruptFlag(interruptFlag)
+    , mCachedQuorums(MAX_CACHED_QUORUMS_SIZE)
 {
     buildGraph(qmap);
     buildSCCs();
@@ -464,7 +465,16 @@ QuorumIntersectionCheckerImpl::containsQuorumSliceForNode(BitSet const& bs,
 bool
 QuorumIntersectionCheckerImpl::isAQuorum(BitSet const& nodes) const
 {
-    return (bool)contractToMaximalQuorum(nodes);
+    if (!mCachedQuorums.exists(nodes))
+    {
+        bool result = (bool)contractToMaximalQuorum(nodes);
+        mCachedQuorums.put(nodes, result);
+        return result;
+    }
+    else
+    {
+        return mCachedQuorums.get(nodes);
+    }
 }
 
 BitSet

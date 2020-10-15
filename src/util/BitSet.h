@@ -10,6 +10,7 @@
 #include <memory>
 #include <ostream>
 #include <set>
+#include <vector>
 
 extern "C" {
 #include "util/cbitset.h"
@@ -351,6 +352,25 @@ class BitSet
     {
         streamWith(out, [](std::ostream& out, size_t i) { out << i; });
     }
+    class HashFunction
+    {
+        std::hash<uint64_t> hasher;
+
+      public:
+        size_t
+        operator()(BitSet const& bitset) const noexcept
+        {
+            // Implementation taken from Boost.
+            // https://www.boost.org/doc/libs/1_35_0/doc/html/boost/hash_combine_id241013.html
+            size_t seed = 0;
+            for (size_t i = 0; i < bitset.mPtr->arraysize; i++)
+            {
+                seed ^= hasher(bitset.mPtr->array[i]) + 0x9e3779b9 +
+                        (seed << 6) + (seed >> 2);
+            }
+            return seed;
+        }
+    };
 };
 
 inline std::ostream&

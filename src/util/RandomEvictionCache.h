@@ -5,6 +5,7 @@
 
 #include "util/Math.h"
 #include "util/NonCopyable.h"
+#include "util/optional.h"
 
 #include <random>
 #include <unordered_map>
