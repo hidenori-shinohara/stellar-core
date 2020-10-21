@@ -19,8 +19,7 @@ using namespace stellar;
 struct QBitSet;
 using QGraph = std::vector<QBitSet>;
 
-int hit, miss;
-std::map<int64, BitSet> dp;
+std::unordered_map<int64, BitSet> dp;
 
 QBitSet::QBitSet(uint32_t threshold, BitSet const& nodes,
                  QGraph const& innerSets)
@@ -353,7 +352,6 @@ QuorumIntersectionCheckerImpl::QuorumIntersectionCheckerImpl(
     buildGraph(qmap);
     buildSCCs();
     dp.clear();
-    hit = miss = 0;
 }
 
 std::pair<std::vector<PublicKey>, std::vector<PublicKey>>
@@ -386,10 +384,6 @@ QuorumIntersectionCheckerImpl::Stats::log() const
                        << ", X2.2:" << mEarlyExit22s
                        << ", X3.1:" << mEarlyExit31s
                        << ", X3.2:" << mEarlyExit32s << "]";
-    std::cout << "==============" << std::endl;
-    std::cout << "hit  = " << hit << std::endl;
-    std::cout << "miss = " << miss << std::endl;
-    std::cout << "==============" << std::endl;
 }
 
 // This function is the innermost call in the checker and must be as fast
@@ -494,24 +488,21 @@ QuorumIntersectionCheckerImpl::contractToMaximalQuorum(BitSet nodes) const
 
     if (dp.find(key) != dp.end())
     {
-        hit++;
         return dp[key];
     }
     else
     {
-        miss++;
         while (true)
         {
-            BitSet filtered(nodes.count());
+            BitSet filtered(nodes);
             for (size_t i = 0; nodes.nextSet(i); ++i)
             {
-                if (containsQuorumSliceForNode(nodes, i))
+                if (containsQuorumSliceForNode(filtered, i))
                 {
                     if (mLogTrace)
                     {
                         CLOG(TRACE, "SCP") << "Have qslice for " << i;
                     }
-                    filtered.set(i);
                 }
                 else
                 {
@@ -519,6 +510,7 @@ QuorumIntersectionCheckerImpl::contractToMaximalQuorum(BitSet nodes) const
                     {
                         CLOG(TRACE, "SCP") << "Missing qslice for " << i;
                     }
+                    filtered.unset(i);
                 }
             }
             if (filtered.count() == nodes.count() || filtered.empty())
