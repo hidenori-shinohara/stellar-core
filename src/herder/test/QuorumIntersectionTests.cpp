@@ -9,6 +9,7 @@
 #include "main/Config.h"
 #include "scp/LocalNode.h"
 #include "test/test.h"
+#include "util/BitSet.h"
 #include "util/Logging.h"
 #include "util/Math.h"
 #include "xdrpp/marshal.h"
@@ -22,6 +23,34 @@ using QS = SCPQuorumSet;
 using VQ = xdr::xvector<QS>;
 using VK = xdr::xvector<PublicKey>;
 using std::make_shared;
+
+TEST_CASE("bitset map", "[herder][quorumintersection]")
+{
+    const int length = 10;
+
+    BitSet b1(length), b2(length);
+    b1.set(2);
+    b1.set(3);
+    b1.set(5);
+
+    b2.set(0);
+    b2.set(2);
+    b2.set(3);
+    b2.set(5);
+
+    std::map<BitSet, int> mymap;
+
+    REQUIRE(mymap[b1] == 0);
+
+    mymap[b2]++;
+    REQUIRE(mymap[b1] == 0); // This fails because mymap[b1] == 1.
+
+    /*
+     * Explanation
+     * b1 <= b2 if and only if b1 is a subset of b2.
+     * Therefore, it doesn't seem to work super well with a binary search tree.
+     */
+}
 
 TEST_CASE("quorum intersection basic 4-node", "[herder][quorumintersection]")
 {
