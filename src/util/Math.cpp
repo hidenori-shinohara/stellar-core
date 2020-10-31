@@ -66,61 +66,62 @@ k_means(std::vector<double> const& points, uint32_t k)
         return std::set<double>(points.begin(), points.end());
     }
 
-    const uint32_t MAX_RECOMPUTE_ITERATIONS = 50;
+    std::vector<double> a(points);
+    std::sort(a.begin(), a.end());
+    int n = a.size();
 
-    std::set<double> centroids{rand_element(points)};
-    uint32_t i = 0;
+    const double MAXIMUM_DOUBLE = std::numeric_limits<double>::max();
 
-    while (centroids.size() < k && i++ < MAX_RECOMPUTE_ITERATIONS)
+    // https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5148156/
+    // The dp array corresponds to the D array in the article.
+    // bestMeans and bestIndices help us extract the best j chosen in the end.
+    std::vector<std::vector<double>> dp(n + 1), bestMeans(n + 1),
+        bestIndices(n + 1);
+
+    for (int i = 0; i <= n; i++)
     {
-        std::vector<double> weights;
-        for (auto const& p : points)
-        {
-            auto closest = closest_cluster(p, centroids);
-            weights.emplace_back(std::pow(std::fabs(closest - p), 2));
-        }
-
-        std::discrete_distribution<size_t> weightedDistribution(weights.begin(),
-                                                                weights.end());
-
-        // Select the next centroid based on weights
-        auto nextIndex = weightedDistribution(gRandomEngine);
-        releaseAssertOrThrow(nextIndex < points.size());
-        centroids.insert(points[nextIndex]);
+        dp[i].resize(k + 1);
+        bestMeans[i].resize(k + 1);
+        bestIndices[i].resize(k + 1);
     }
 
-    bool recalculate = true;
-    uint32_t iteration = 0;
-
-    // Run until convergence or iteration depth exhaustion
-    while (recalculate && iteration++ < MAX_RECOMPUTE_ITERATIONS)
+    for (int i = 0; i < n; i++)
     {
-        std::unordered_map<double, std::vector<double>> assignment;
-        recalculate = false;
-        // centroid -> assigned points
-        for (auto const& p : points)
+        // If k = 0, then the best distance is "infinity."
+        dp[i + 1][0] = MAXIMUM_DOUBLE;
+        for (int kk = 1; kk <= k; kk++)
         {
-            // Assign each point to the closest centroid
-            auto cVal = closest_cluster(p, centroids);
-            assignment[cVal].push_back(p);
-        }
-
-        // Now that assignment is done, recompute centroids or converge
-        std::set<double> newCentroids;
-        for (auto const& a : assignment)
-        {
-            newCentroids.insert(
-                std::accumulate(a.second.begin(), a.second.end(), 0.0) /
-                a.second.size());
-        }
-
-        if (centroids != newCentroids)
-        {
-            recalculate = true;
-            centroids = std::move(newCentroids);
+            double bestDist = std::numeric_limits<double>::max();
+            double bestMean(0), sum(0), sumSquares(0);
+            int bestIndex = -1;
+            for (int j = i; j >= 0; j--)
+            {
+                sum += a[j];
+                sumSquares += a[j] * a[j];
+                if (dp[j][kk - 1] < MAXIMUM_DOUBLE)
+                {
+                    int m = i - j + 1;
+                    double currentDist =
+                        dp[j][kk - 1] + sumSquares - sum * sum / m;
+                    if (currentDist < bestDist)
+                    {
+                        bestDist = currentDist;
+                        bestMean = sum / m;
+                        bestIndex = j;
+                    }
+                }
+            }
+            dp[i + 1][kk] = bestDist;
+            bestMeans[i + 1][kk] = bestMean;
+            bestIndices[i + 1][kk] = bestIndex;
         }
     }
-
-    return centroids;
+    std::set<double> results;
+    for (int i = n - 1, kk = k; kk >= 1; kk--)
+    {
+        results.insert(bestMeans[i + 1][kk]);
+        i = bestIndices[i + 1][kk] - 1;
+    }
+    return results;
 }
 }
