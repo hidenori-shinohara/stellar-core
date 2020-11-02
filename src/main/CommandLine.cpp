@@ -913,6 +913,21 @@ runHttpCommand(CommandLineArgs const& args)
 }
 
 int
+runSelfCheck(CommandLineArgs const& args)
+{
+    CommandLine::ConfigOption configOption;
+    std::string command;
+
+    return runWithHelp(args,
+                       {configurationParser(configOption),
+                        requiredArgParser(command, "COMMAND")},
+                       [&] {
+                           selfCheck(command, configOption.getConfig());
+                           return 0;
+                       });
+}
+
+int
 runInferQuorum(CommandLineArgs const& args)
 {
     CommandLine::ConfigOption configOption;
@@ -1452,6 +1467,7 @@ handleCommandLine(int argc, char* const* argv)
          {"gen-seed", "generate and print a random node seed", runGenSeed},
          {"http-command", "send a command to local stellar-core",
           runHttpCommand},
+         {"self-check", "performs sanity checks", runSelfCheck},
          {"infer-quorum", "print a quorum set inferred from history",
           runInferQuorum},
          {"new-db", "creates or restores the DB to the genesis ledger",

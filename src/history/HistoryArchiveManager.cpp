@@ -4,6 +4,7 @@
 
 #include "history/HistoryArchiveManager.h"
 #include "history/HistoryArchive.h"
+#include "history/HistoryArchiveReportWork.h"
 #include "historywork/GetHistoryArchiveStateWork.h"
 #include "historywork/PutHistoryArchiveStateWork.h"
 #include "main/Application.h"
@@ -155,6 +156,13 @@ HistoryArchiveManager::selectRandomReadableHistoryArchive() const
         return archives[i];
     }
 }
+
+std::shared_ptr<HistoryArchiveReportWork>
+HistoryArchiveManager::logReportOnArchiveConfig() const
+{
+    return mApp.getWorkScheduler().scheduleWork<HistoryArchiveReportWork>(
+        mArchives);
+};
 
 bool
 HistoryArchiveManager::initializeHistoryArchive(std::string const& arch) const

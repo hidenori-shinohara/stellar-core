@@ -16,6 +16,7 @@ int runWithConfig(Config cfg, optional<CatchupConfiguration> cc);
 void setForceSCPFlag();
 void initializeDatabase(Config cfg);
 void httpCommand(std::string const& command, unsigned short port);
+void selfCheck(std::string const& command, Config cfg);
 void showOfflineInfo(Config cfg);
 int reportLastHistoryCheckpoint(Config cfg, std::string const& outputFile);
 #ifdef BUILD_TESTS

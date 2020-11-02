@@ -10,6 +10,7 @@
 #include "database/Database.h"
 #include "history/HistoryArchive.h"
 #include "history/HistoryArchiveManager.h"
+#include "history/HistoryArchiveReportWork.h"
 #include "historywork/GetHistoryArchiveStateWork.h"
 #include "ledger/LedgerManager.h"
 #include "main/ErrorMessages.h"
@@ -70,6 +71,7 @@ runWithConfig(Config cfg, optional<CatchupConfiguration> cc)
         {
             return 1;
         }
+        app->getHistoryArchiveManager().logReportOnArchiveConfig();
         if (cfg.ARTIFICIALLY_ACCELERATE_TIME_FOR_TESTING)
         {
             LOG(WARNING) << "Artificial acceleration of time enabled "
@@ -168,6 +170,27 @@ httpCommand(std::string const& command, unsigned short port)
     {
         LOG(INFO) << "http failed(" << code << ") port: " << port
                   << " command: " << command;
+    }
+}
+
+void
+selfCheck(std::string const& command, Config cfg)
+{
+    if (command == "history")
+    {
+        VirtualClock clock;
+        cfg.setNoListen();
+        Application::pointer app = Application::create(clock, cfg, false);
+        std::shared_ptr<HistoryArchiveReportWork> w =
+            app->getHistoryArchiveManager().logReportOnArchiveConfig();
+        while (clock.crank(true) &&
+               w->getState() != BasicWork::State::WORK_SUCCESS &&
+               w->getState() != BasicWork::State::WORK_FAILURE)
+            ;
+    }
+    else
+    {
+        LOG(ERROR) << "Unknown selfCheck command: " << command;
     }
 }
 
