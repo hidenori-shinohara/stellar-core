@@ -7,6 +7,7 @@
 
 #include "util/Logging.h"
 #include "util/Math.h"
+#include "util/optional.h"
 
 namespace
 {
@@ -465,7 +466,8 @@ QuorumIntersectionCheckerImpl::containsQuorumSliceForNode(BitSet const& bs,
 bool
 QuorumIntersectionCheckerImpl::isAQuorum(BitSet const& nodes) const
 {
-    if (!mCachedQuorums.exists(nodes))
+    auto v = mCachedQuorums.maybeGet(nodes);
+    if (!v)
     {
         bool result = (bool)contractToMaximalQuorum(nodes);
         mCachedQuorums.put(nodes, result);
@@ -473,7 +475,7 @@ QuorumIntersectionCheckerImpl::isAQuorum(BitSet const& nodes) const
     }
     else
     {
-        return mCachedQuorums.get(nodes);
+        return *v;
     }
 }
 

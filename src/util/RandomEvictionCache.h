@@ -199,5 +199,24 @@ class RandomEvictionCache : public NonMovableOrCopyable
             throw std::range_error("There is no such key in cache");
         }
     }
+
+    // `maybeGet` does not throw.
+    optional<V>
+    maybeGet(K const& k)
+    {
+        auto it = mValueMap.find(k);
+        if (it != mValueMap.end())
+        {
+            auto& cacheVal = it->second;
+            ++mCounters.mHits;
+            cacheVal.mLastAccess = ++mGeneration;
+            return make_optional<V>(cacheVal.mValue);
+        }
+        else
+        {
+            ++mCounters.mMisses;
+            return nullopt<V>();
+        }
+    }
 };
 }
