@@ -540,11 +540,12 @@ attemptToApplyOps(LedgerTxn& ltx, PublicKey const& sourceAccount,
         {
             if (txFramePtr->getResultCode() != txSUCCESS)
             {
-                auto const msg = fmt::format(
-                    FMT_STRING("Error {} while applying operations "
-                               "while fuzzing: transaction result {}"),
-                    txFramePtr->getResultCode(),
-                    xdr_to_string(txFramePtr->getResult()));
+                auto const msg =
+                    fmt::format(FMT_STRING("Error {} while applying operations "
+                                           "while fuzzing: {}"),
+                                txFramePtr->getResultCode(),
+                                xdr_to_string(txFramePtr->getResult(),
+                                              "TransactionResult"));
                 LOG_FATAL(DEFAULT_LOG, "{}", msg);
                 throw std::runtime_error(msg);
             }
@@ -564,8 +565,8 @@ attemptToApplyOps(LedgerTxn& ltx, PublicKey const& sourceAccount,
                 {
                     auto const msg = fmt::format(
                         FMT_STRING("MANAGE_OFFER_DELETED while setting "
-                                   "up fuzzing -- operation is {}"),
-                        xdr_to_string(op));
+                                   "up fuzzing -- {}"),
+                        xdr_to_string(op, "operation"));
                     LOG_FATAL(DEFAULT_LOG, "{}", msg);
                     throw std::runtime_error(msg);
                 }
@@ -850,7 +851,9 @@ TransactionFuzzer::inject(std::string const& filename)
     }
 
     resetTxInternalState(*mApp);
-    LOG_TRACE(DEFAULT_LOG, "Fuzz ops ({}): {}", ops.size(), xdr_to_string(ops));
+    LOG_TRACE(DEFAULT_LOG, "{}",
+              xdr_to_string(ops, fmt::format("Fuzz ops ({})", ops.size())));
+
     LedgerTxn ltx(mApp->getLedgerTxnRoot());
     attemptToApplyOps(ltx, mSourceAccountID, ops.begin(), ops.end(), *mApp,
                       false);
