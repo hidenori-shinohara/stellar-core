@@ -34,21 +34,28 @@ cereal_override(cereal::JSONOutputArchive& ar, const xdr::opaque_array<N>& s,
                  field);
 }
 
-// We still need one explicit composite-container override because cereal
-// appears to process arrays-of-arrays internally, without calling back through
-// an NVP adaptor.
-template <uint32_t N>
-void
-cereal_override(cereal::JSONOutputArchive& ar,
-                const xdr::xarray<stellar::Hash, N>& s, const char* field)
+template <typename T>
+std::enable_if_t<xdr::xdr_traits<T>::is_container>
+cereal_override(cereal::JSONOutputArchive& ar, T const& t, const char* field)
 {
-    std::vector<std::string> tmp;
-    for (auto const& h : s)
+    // setNextName, startNode, and finishNode create a new sub-object
+    // inside which we process each element of t.
+    ar.setNextName(field);
+    ar.startNode();
+
+    // It does not matter what value we pass here to cereal::make_size_tag
+    // since it will be ignored. See the comment
+    //
+    // > SizeTags are strictly ignored for JSON, they just indicate
+    // > that the current node should be made into an array
+    //
+    // in include/cereal/archives/json.hpp
+    ar(cereal::make_size_tag(0));
+    for (auto const& element : t)
     {
-        tmp.emplace_back(
-            stellar::binToHex(stellar::ByteSlice(h.data(), h.size())));
+        xdr::archive(ar, element);
     }
-    xdr::archive(ar, tmp, field);
+    ar.finishNode();
 }
 
 template <uint32_t N>
