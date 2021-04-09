@@ -2013,6 +2013,9 @@ BallotProtocol::getJsonInfo()
 Json::Value
 BallotProtocol::getJsonQuorumInfo(NodeID const& id, bool summary, bool fullKeys)
 {
+    std::cout << "Hey, I think I'm at the place where everything happens. i.e., BallotProtocol::getJsonQuorumInfo" << std::endl;
+    std::cout << "[[[summary = " << summary << "]]]" << std::endl;
+    std::cout << "[[[fullKeys = " << fullKeys << "]]]" << std::endl;
     Json::Value ret;
     auto& phase = ret["phase"];
 
@@ -2068,7 +2071,11 @@ BallotProtocol::getJsonQuorumInfo(NodeID const& id, bool summary, bool fullKeys)
         phase = "expired";
         return ret;
     }
+    // This is where everything happens.
+    // This is where we count the number of missing, delayed, and disagree nodes.
     LocalNode::forAllNodes(*qSet, [&](NodeID const& n) {
+        // mLatestEnvelopes comes from the ballot protocol.
+        // So, if the node isn't in the ballot protocol, we count it as missing.
         auto it = mLatestEnvelopes.find(n);
         if (it == mLatestEnvelopes.end())
         {

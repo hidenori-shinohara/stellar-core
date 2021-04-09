@@ -341,6 +341,7 @@ Slot::getJsonInfo(bool fullKeys)
 Json::Value
 Slot::getJsonQuorumInfo(NodeID const& id, bool summary, bool fullKeys)
 {
+    std::cout << "I'm at Slot::getJsonQuorumInfo" << std::endl;
     Json::Value ret = mBallotProtocol.getJsonQuorumInfo(id, summary, fullKeys);
     if (getLocalNode()->isValidator())
     {

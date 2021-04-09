@@ -125,13 +125,18 @@ Json::Value
 SCP::getJsonQuorumInfo(NodeID const& id, bool summary, bool fullKeys,
                        uint64 index)
 {
+    std::cout << "Hey I'm at SCP::getJsonQuorumInfo" << std::endl;
     Json::Value ret;
     if (index == 0)
     {
+        int a = 0;
+        // TODO: Why don't I just use the last one?
+        // I'm really not sure why this just doesn't use the last one.
         for (auto& item : mKnownSlots)
         {
             auto& slot = *item.second;
             ret = slot.getJsonQuorumInfo(id, summary, fullKeys);
+            std::cout << "Hey " << ++a << "th iteration of the cool forloop for [[[" << slot.getSlotIndex() << "]]]" << std::endl;
             ret["ledger"] = static_cast<Json::UInt64>(slot.getSlotIndex());
         }
     }

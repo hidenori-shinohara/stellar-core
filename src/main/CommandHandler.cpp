@@ -502,6 +502,8 @@ CommandHandler::selfCheck(std::string const&, std::string& retStr)
     mApp.getHistoryArchiveManager().scheduleHistoryArchiveReportWork();
 }
 
+
+// This is the function that is used to take care of the quorum HTTP endpoint.
 void
 CommandHandler::quorum(std::string const& params, std::string& retStr)
 {
@@ -510,6 +512,14 @@ CommandHandler::quorum(std::string const& params, std::string& retStr)
     http::server::server::parseParams(params, retMap);
 
     NodeID n;
+
+    for (auto const& v : retMap) {
+        // This is the input that's being passed from the command line.
+        // For instance, "quorum?compact=true&hidenori=shinohara" would result in
+        // [[[compact, true]]]
+        // [[[hidenori, shinohara]]]
+        std::cout << "[[[" << v.first << ", " << v.second << "]]]" << std::endl;
+    }
 
     std::string nID = retMap["node"];
 
@@ -528,11 +538,16 @@ CommandHandler::quorum(std::string const& params, std::string& retStr)
     Json::Value root;
     if (retMap["transitive"] == "true")
     {
+        // I'm not quite sure what this is
+        // TODO(hidenori): Look into this. This is probably important.
         root = mApp.getHerder().getJsonTransitiveQuorumInfo(
             n, retMap["compact"] == "true", retMap["fullkeys"] == "true");
     }
     else
     {
+        std::cout << "I'm at CommandHandler::quorum" << std::endl;
+        std::cout << "calling getJsonQuorumInfo with index = 0" << std::endl;
+        // I'll start with this side.
         root = mApp.getHerder().getJsonQuorumInfo(
             n, retMap["compact"] == "true", retMap["fullkeys"] == "true", 0);
     }

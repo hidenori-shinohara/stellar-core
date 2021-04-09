@@ -171,6 +171,7 @@ httpCommand(std::string const& command, unsigned short port)
     }
     else
     {
+        std::cout << "Hey, we just ran " << command << " and it didn't work" << std::endl;
         LOG_INFO(DEFAULT_LOG, "http failed({}) port: {} command: {}", code,
                  port, command);
     }

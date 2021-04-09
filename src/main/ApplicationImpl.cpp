@@ -327,6 +327,7 @@ ApplicationImpl::getJsonInfo()
     // network.
     if (herder.getCurrentLedgerSeq() > 1)
     {
+        std::cout << "Hey I'm at ApplicationImpl::getJsonInfo and I'm about to call getJsonQuorumInfo" << std::endl;
         quorumInfo =
             herder.getJsonQuorumInfo(getConfig().NODE_SEED.getPublicKey(), true,
                                      false, herder.getCurrentLedgerSeq() - 1);

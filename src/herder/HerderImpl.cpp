@@ -1231,11 +1231,13 @@ Json::Value
 HerderImpl::getJsonQuorumInfo(NodeID const& id, bool summary, bool fullKeys,
                               uint64 index)
 {
+    std::cout << "Hey I'm at HerderImpl::getJsonQuorumInfo" << std::endl;
     Json::Value ret;
     ret["node"] = mApp.getConfig().toStrKey(id, fullKeys);
     ret["qset"] = getSCP().getJsonQuorumInfo(id, summary, fullKeys, index);
 
     bool isSelf = id == mApp.getConfig().NODE_SEED.getPublicKey();
+    std::cout << "isSelf = [[[" << isSelf << "]]]" << std::endl;
     if (isSelf)
     {
         if (mLastQuorumMapIntersectionState.hasAnyResults())
