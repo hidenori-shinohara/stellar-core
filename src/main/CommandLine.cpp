@@ -1041,30 +1041,109 @@ runReportLastHistoryCheckpoint(CommandLineArgs const& args)
         });
 }
 
+std::vector<std::pair<uint32_t, uint32_t>>
+parseSimulateSleepPerOp(std::vector<std::string> const& inputs)
+{
+    // The input must be of the form percentage/duration
+    // where
+    //     * 0 <= percentage <= 100
+    //     * 0 <= duration
+    //     * percentage for slow + percentage for medium + percentage for fast =
+    //     100.
+    //     * duration for slow >= duration for medium >= duration for fast.
+    if (std::any_of(inputs.begin(), inputs.end(),
+                    [](std::string const& s) { return s.empty(); }))
+    {
+        throw std::runtime_error(
+            "All three of simulate-sleep-per-op-{slow, medium, fast} must be "
+            "defined if at least one is defined");
+    }
+    auto parser = [](std::string const& input, uint32_t& percentage,
+                     uint32_t& duration) {
+        auto separatorIndex = input.find("/");
+        try
+        {
+            auto pos = std::size_t{0};
+            percentage = std::stoul(input.substr(0, separatorIndex), &pos);
+            duration = std::stoul(input.substr(separatorIndex + 1), &pos);
+        }
+        catch (std::exception&)
+        {
+            throw std::runtime_error(
+                "simulate-sleep-per-op-{slow, medium, fast} must be of the "
+                "form percentage/duration");
+        }
+    };
+
+    uint32_t percentage, duration, totalPercentage{0};
+    std::vector<std::pair<uint32_t, uint32_t>> ret;
+    for (auto const& input : inputs)
+    {
+        parser(input, percentage, duration);
+        if (!ret.empty() && ret.back().second < duration)
+        {
+            throw std::runtime_error(
+                "duration for slow, medium, fast must be non-increasing "
+                "(i.e., slow >= medium >= fast)");
+        }
+        ret.push_back(std::make_pair(percentage, duration));
+        totalPercentage += percentage;
+    }
+    if (totalPercentage != 100)
+    {
+        throw std::runtime_error(
+            "The sum of the percentages in "
+            "--simulate-apply-per-op-{slow, medium, fast} must equal 100");
+    }
+    for (auto const& p : ret)
+    {
+        LOG_INFO(DEFAULT_LOG, "Sleeps for {} usec {}\% of the time", p.second,
+                 p.first);
+    }
+    return ret;
+}
+
 int
 run(CommandLineArgs const& args)
 {
     CommandLine::ConfigOption configOption;
     auto disableBucketGC = false;
-    uint32_t simulateSleepPerOp = 0;
     std::string stream;
     bool inMemory = false;
     bool waitForConsensus = false;
     uint32_t startAtLedger = 0;
     std::string startAtHash;
+    std::string simulateApplyPerOpSlow, simulateApplyPerOpMedium,
+        simulateApplyPerOpFast;
 
-    auto simulateParser = [](uint32_t& simulateSleepPerOp) {
-        return clara::Opt{simulateSleepPerOp,
+    auto simulateParserGenerator = [](std::string const& speed) {
+        return [&speed](std::string& simulateApplyPerOpListInput) {
+            return clara::Opt{
+                simulateApplyPerOpListInput,
+                "PERCENTAGE_AND_USEC"}["--simulate-apply-per-op-" + speed](
+                "Simulate application time per operation in the form of "
+                "percentage/duration");
+        };
+    };
+
+    uint32_t simulateApplyPerOp = 0;
+    auto simulateParser = [](uint32_t& simulateApplyPerOp) {
+        return clara::Opt{simulateApplyPerOp,
                           "MICROSECONDS"}["--simulate-apply-per-op"](
-            "simulate application time per operation");
+            "deprecated: Use --simulate-apply-per-op-{fast, medium, slow} "
+            "instead");
     };
 
     return runWithHelp(
         args,
         {configurationParser(configOption),
          disableBucketGCParser(disableBucketGC),
-         simulateParser(simulateSleepPerOp), metadataOutputStreamParser(stream),
-         inMemoryParser(inMemory), waitForConsensusParser(waitForConsensus),
+         simulateParser(simulateApplyPerOp),
+         simulateParserGenerator("fast")(simulateApplyPerOpFast),
+         simulateParserGenerator("medium")(simulateApplyPerOpMedium),
+         simulateParserGenerator("slow")(simulateApplyPerOpSlow),
+         metadataOutputStreamParser(stream), inMemoryParser(inMemory),
+         waitForConsensusParser(waitForConsensus),
          startAtLedgerParser(startAtLedger), startAtHashParser(startAtHash)},
         [&] {
             Config cfg;
@@ -1073,10 +1152,31 @@ run(CommandLineArgs const& args)
             {
                 cfg = configOption.getConfig();
                 cfg.DISABLE_BUCKET_GC = disableBucketGC;
-                if (simulateSleepPerOp > 0)
+                if (!simulateApplyPerOpSlow.empty() ||
+                    !simulateApplyPerOpMedium.empty() ||
+                    !simulateApplyPerOpFast.empty() || simulateApplyPerOp > 0)
                 {
                     cfg.DATABASE = SecretValue{"sqlite3://:memory:"};
-                    cfg.OP_APPLY_SLEEP_TIME_FOR_TESTING = simulateSleepPerOp;
+                    if (simulateApplyPerOp > 0)
+                    {
+                        if (!simulateApplyPerOpSlow.empty() ||
+                            !simulateApplyPerOpMedium.empty() ||
+                            !simulateApplyPerOpFast.empty())
+                        {
+                            throw std::runtime_error(
+                                "--simulate-apply-per-op is deprecated. Only "
+                                "use --simulate-apply-per-op-{fast, medium, "
+                                "slow}");
+                        }
+                        simulateApplyPerOpSlow =
+                            fmt::format("100/{}", simulateApplyPerOp);
+                        simulateApplyPerOpMedium = simulateApplyPerOpFast =
+                            "0/0";
+                    }
+                    cfg.OP_APPLY_SLEEP_TIME_FOR_TESTING =
+                        parseSimulateSleepPerOp({simulateApplyPerOpSlow,
+                                                 simulateApplyPerOpMedium,
+                                                 simulateApplyPerOpFast});
                     cfg.MODE_STORES_HISTORY = false;
                     cfg.MODE_USES_IN_MEMORY_LEDGER = false;
                     cfg.MODE_ENABLES_BUCKETLIST = false;
