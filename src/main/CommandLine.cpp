@@ -1068,8 +1068,9 @@ parseSimulateSleepPerOpList(std::string const& simulateSleepPerOpListInput)
     if (reconstruct.str() != simulateSleepPerOpListInput)
     {
         throw std::runtime_error(
-            fmt::format("Unable to parse --simulate-apply-per-op-list. Did you "
+            fmt::format("Unable to parse --simulate-apply-per-op-list. We got \"{}\". Did you "
                         "mean to type \"{}\"?",
+                        simulateSleepPerOpListInput,
                         reconstruct.str()));
     }
     if (totalWeight != 100)
