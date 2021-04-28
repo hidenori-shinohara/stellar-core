@@ -191,10 +191,9 @@ class Config : public std::enable_shared_from_this<Config>
 
     // A config parameter that forces transaction application during ledger
     // close to sleep. This option is only for consensus and overlay simulation
-    // testing. Each element in the vector is in the form of (percentage,
-    // duration) where the chance of sleeping `duration` microseconds is equal
-    // to `percentage` percent.
-    std::vector<std::pair<uint32_t, uint32_t>> OP_APPLY_SLEEP_TIME_FOR_TESTING;
+    // testing. This vector contains 100 elements each of which is a duration.
+    // Some durations repeat themselves to achieve a desired distribution.
+    std::vector<std::chrono::microseconds> OP_APPLY_SLEEP_TIME_FOR_TESTING;
 
     // A config parameter that allows a node to generate buckets. This should
     // be set to `false` only for testing purposes.
@@ -436,5 +435,7 @@ class Config : public std::enable_shared_from_this<Config>
     // A special name to be used for stdin in stead of a file name in command
     // line arguments.
     static std::string const STDIN_SPECIAL_NAME;
+
+    std::chrono::microseconds chooseOpApplySleepTimeForTesting() const;
 };
 }

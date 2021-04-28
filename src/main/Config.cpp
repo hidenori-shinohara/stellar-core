@@ -102,8 +102,7 @@ Config::Config() : NODE_SEED(SecretKey::random())
     MODE_DOES_CATCHUP = true;
     MODE_AUTO_STARTS_OVERLAY = true;
     MODE_KEEPS_BUCKETS = true;
-    OP_APPLY_SLEEP_TIME_FOR_TESTING =
-        std::vector<std::pair<uint32_t, uint32_t>>();
+    OP_APPLY_SLEEP_TIME_FOR_TESTING = std::vector<std::chrono::microseconds>();
 
     FORCE_SCP = false;
     LEDGER_PROTOCOL_VERSION = CURRENT_LEDGER_PROTOCOL_VERSION;
@@ -1690,4 +1689,23 @@ Config::toString(SCPQuorumSet const& qset)
 }
 
 std::string const Config::STDIN_SPECIAL_NAME = "/dev/stdin";
+
+std::chrono::microseconds
+Config::chooseOpApplySleepTimeForTesting() const
+{
+    if (OP_APPLY_SLEEP_TIME_FOR_TESTING.size() != 100)
+    {
+        throw std::runtime_error(fmt::format(
+            "chooseOpApplySleepTimeForTesting should be called only if "
+            "OP_APPLY_SLEEP_TIME_FOR_TESTING contains exactly 100 elements "
+            "each of which represents one percent, but it contains {} elements",
+            OP_APPLY_SLEEP_TIME_FOR_TESTING.size()));
+    }
+    else
+    {
+        int sample = rand_uniform(0, 99);
+        return OP_APPLY_SLEEP_TIME_FOR_TESTING[sample];
+    }
+}
+
 }

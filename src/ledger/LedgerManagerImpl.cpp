@@ -1,4 +1,5 @@
 // Copyright 2014 Stellar Development Foundation and contributors. Licensed
+// heheh
 // under the Apache License, Version 2.0. See the COPYING file at the root
 // of this distribution or at http://www.apache.org/licenses/LICENSE-2.0
 
@@ -742,23 +743,11 @@ LedgerManagerImpl::closeLedger(LedgerCloseData const& ledgerData)
     if (!mApp.getConfig().OP_APPLY_SLEEP_TIME_FOR_TESTING.empty())
     {
         // Sleep for a parameterized amount of time in simulation mode
-        int sample = rand_uniform(1, 100);
-        uint32_t chosenDuration = 0;
-        // Pick the i-th duration if only if the sample above lies within
-        // [percentage_0 + ... + percentage_{i-1} + 1, percentage_0 + ... +
-        // percentage_i] As the sum of the percentages equals 100, this gives us
-        // the i-th duration percentage_i percent of the time.
-        for (auto const& p : mApp.getConfig().OP_APPLY_SLEEP_TIME_FOR_TESTING)
+        std::chrono::microseconds sleepFor{0};
+        for (int i = 0; i < txSet->sizeOp(); i++)
         {
-            sample -= p.first;
-            if (sample <= 0)
-            {
-                chosenDuration = p.second;
-                break;
-            }
+            sleepFor += mApp.getConfig().chooseOpApplySleepTimeForTesting();
         }
-        auto sleepFor =
-            std::chrono::microseconds{chosenDuration * txSet->sizeOp()};
         std::chrono::microseconds applicationTime =
             closeLedgerTime.checkElapsedTime();
         if (applicationTime < sleepFor)
