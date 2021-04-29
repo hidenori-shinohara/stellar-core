@@ -20,6 +20,7 @@
 
 #include "util/UnorderedSet.h"
 #include <fmt/chrono.h>
+#include <regex>
 #include <fmt/format.h>
 #include <functional>
 #include <sstream>
@@ -707,6 +708,70 @@ Config::verifyHistoryValidatorsBlocking(
     }
 }
 
+std::vector<std::chrono::microseconds>
+Config::parseSimulateSleepPerOp(std::vector<std::string> const& inputs)
+{
+    auto parser = [](std::string const& input, uint32_t& percentage,
+                     std::chrono::microseconds& duration) {
+        // We expect that input to be of the form "percentage/duration".
+        std::regex re("^([0-9]+)/([0-9]+)$");
+        std::smatch match;
+
+        std::string const message = "OP_APPLY_SLEEP_TIME_FOR_TESTING must be a list each element of which is of"
+                                    " the form percentage/duration";
+
+        if (regex_search(input, match, re))
+        {
+            auto pos = std::size_t{0};
+            try
+            {
+                percentage = std::stoul(match[1], &pos);
+                duration =
+                    std::chrono::microseconds(std::stoul(match[2], &pos));
+            }
+            catch (std::exception&)
+            {
+                throw std::invalid_argument(message);
+            }
+        }
+        else
+        {
+            throw std::invalid_argument(message);
+        }
+    };
+
+    uint32_t totalPercentage{0};
+    std::vector<std::pair<uint32_t, std::chrono::microseconds>> parsedInput;
+    parsedInput.reserve(inputs.size());
+    for (auto const& input : inputs)
+    {
+        uint32_t percentage;
+        std::chrono::microseconds duration;
+        parser(input, percentage, duration);
+        parsedInput.push_back(std::make_pair(percentage, duration));
+        totalPercentage += percentage;
+    }
+    if (totalPercentage != 100)
+    {
+        throw std::invalid_argument(
+            "The sum of the percentages in "
+            "OP_APPLY_SLEEP_TIME_FOR_TESTING must equal 100");
+    }
+    std::vector<std::chrono::microseconds> ret;
+    ret.reserve(100);
+    for (auto const& p : parsedInput)
+    {
+        LOG_INFO(DEFAULT_LOG, "Sleeps for {} usec {}\% of the time",
+                 p.second.count(), p.first);
+        for (int i = 0; i < p.first; i++)
+        {
+            ret.push_back(p.second);
+        }
+    }
+    return ret;
+}
+
+
 void
 Config::processConfig(std::shared_ptr<cpptoml::table> t)
 {
@@ -1073,6 +1138,27 @@ Config::processConfig(std::shared_ptr<cpptoml::table> t)
             {
                 EXCLUDE_TRANSACTIONS_CONTAINING_OPERATION_TYPE =
                     readXdrEnumArray<OperationType>(item);
+            }
+            else if (item.first == "OP_APPLY_SLEEP_TIME_FOR_TESTING")
+            {
+                if (!OP_APPLY_SLEEP_TIME_FOR_TESTING.empty())
+                {
+                    LOG_FATAL(DEFAULT_LOG, "--simulate-apply-per-op is deprecated. Use OP_APPLY_SLEEP_TIME_FOR_TESTING");
+                    throw std::invalid_argument("--simulate-apply-per-op is deprecated");
+                }
+                auto perOpPairs = readStringArray(item);
+                std::cout << "Hey, I just read OP_APPLY_SLEEP_TIME_FOR_TESTING" << std::endl;
+                for (auto p : perOpPairs)
+                {
+                    std::cout << "[[[" << p << "]]]" << std::endl;
+                }
+                OP_APPLY_SLEEP_TIME_FOR_TESTING = parseSimulateSleepPerOp(perOpPairs);
+                // TODO! Update this
+                DATABASE = SecretValue{"sqlite3://:memory:"};
+                MODE_STORES_HISTORY = false;
+                MODE_USES_IN_MEMORY_LEDGER = false;
+                MODE_ENABLES_BUCKETLIST = false;
+                PREFETCH_BATCH_SIZE = 0;
             }
             else
             {

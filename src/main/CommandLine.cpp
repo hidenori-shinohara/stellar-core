@@ -1042,69 +1042,6 @@ runReportLastHistoryCheckpoint(CommandLineArgs const& args)
         });
 }
 
-std::vector<std::chrono::microseconds>
-parseSimulateSleepPerOp(std::vector<std::string> const& inputs)
-{
-    auto parser = [](std::string const& input, uint32_t& percentage,
-                     std::chrono::microseconds& duration) {
-        // We expect that input to be of the form "percentage/duration".
-        std::regex re("^([0-9]+)/([0-9]+)$");
-        std::smatch match;
-
-        std::string const message = "simulate-sleep-per-op-dist must be a list "
-                                    "of the form percentage/duration";
-
-        if (regex_search(input, match, re))
-        {
-            auto pos = std::size_t{0};
-            try
-            {
-                percentage = std::stoul(match[1], &pos);
-                duration =
-                    std::chrono::microseconds(std::stoul(match[2], &pos));
-            }
-            catch (std::exception&)
-            {
-                throw std::invalid_argument(message);
-            }
-        }
-        else
-        {
-            throw std::invalid_argument(message);
-        }
-    };
-
-    uint32_t totalPercentage{0};
-    std::vector<std::pair<uint32_t, std::chrono::microseconds>> parsedInput;
-    parsedInput.reserve(inputs.size());
-    for (auto const& input : inputs)
-    {
-        uint32_t percentage;
-        std::chrono::microseconds duration;
-        parser(input, percentage, duration);
-        parsedInput.push_back(std::make_pair(percentage, duration));
-        totalPercentage += percentage;
-    }
-    if (totalPercentage != 100)
-    {
-        throw std::invalid_argument(
-            "The sum of the percentages in "
-            "--simulate-apply-per-op-dist must equal 100");
-    }
-    std::vector<std::chrono::microseconds> ret;
-    ret.reserve(100);
-    for (auto const& p : parsedInput)
-    {
-        LOG_INFO(DEFAULT_LOG, "Sleeps for {} usec {}\% of the time",
-                 p.second.count(), p.first);
-        for (int i = 0; i < p.first; i++)
-        {
-            ret.push_back(p.second);
-        }
-    }
-    return ret;
-}
-
 int
 run(CommandLineArgs const& args)
 {
@@ -1115,12 +1052,6 @@ run(CommandLineArgs const& args)
     bool waitForConsensus = false;
     uint32_t startAtLedger = 0;
     std::string startAtHash;
-    std::vector<std::string> perOpPairs;
-    auto simulateDistParser =
-        clara::Opt{perOpPairs,
-                   "PERCENT/MICROSECOND"}["--simulate-apply-per-op-dist"](
-            "percent followed by time in microsecond (specified several times, "
-            "sum of percent must be 100)");
 
     uint32_t simulateApplyPerOp = 0;
     auto simulateParser = [](uint32_t& simulateApplyPerOp) {
@@ -1133,7 +1064,7 @@ run(CommandLineArgs const& args)
         args,
         {configurationParser(configOption),
          disableBucketGCParser(disableBucketGC),
-         simulateParser(simulateApplyPerOp), simulateDistParser,
+         simulateParser(simulateApplyPerOp),
          metadataOutputStreamParser(stream), inMemoryParser(inMemory),
          waitForConsensusParser(waitForConsensus),
          startAtLedgerParser(startAtLedger), startAtHashParser(startAtHash)},
@@ -1144,22 +1075,13 @@ run(CommandLineArgs const& args)
             {
                 cfg = configOption.getConfig();
                 cfg.DISABLE_BUCKET_GC = disableBucketGC;
-                if (!perOpPairs.empty() || simulateApplyPerOp > 0)
+                if (simulateApplyPerOp > 0)
                 {
+                // TODO: Consider what to do with this. Should I deprecate this?
                     cfg.DATABASE = SecretValue{"sqlite3://:memory:"};
-                    if (simulateApplyPerOp > 0)
-                    {
-                        if (!perOpPairs.empty())
-                        {
-                            throw std::invalid_argument(
-                                "--simulate-apply-per-op is deprecated. Use "
-                                "--simulate-apply-per-op-dist");
-                        }
-                        perOpPairs.push_back(
-                            fmt::format("100/{}", simulateApplyPerOp));
-                    }
-                    cfg.OP_APPLY_SLEEP_TIME_FOR_TESTING =
-                        parseSimulateSleepPerOp(perOpPairs);
+                    LOG_WARNING(DEFAULT_LOG, "--simulate-apply-per-op is deprecated. Use OP_APPLY_SLEEP_TIME_FOR_TESTING in the config file.");
+                    cfg.OP_APPLY_SLEEP_TIME_FOR_TESTING.reserve(100);
+                    std::fill(cfg.OP_APPLY_SLEEP_TIME_FOR_TESTING.begin(), cfg.OP_APPLY_SLEEP_TIME_FOR_TESTING.end(), std::chrono::microseconds(simulateApplyPerOp));
                     cfg.MODE_STORES_HISTORY = false;
                     cfg.MODE_USES_IN_MEMORY_LEDGER = false;
                     cfg.MODE_ENABLES_BUCKETLIST = false;

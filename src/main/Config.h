@@ -86,6 +86,9 @@ class Config : public std::enable_shared_from_this<Config>
     UnorderedMap<std::string, ValidatorQuality>
     parseDomainsQuality(std::shared_ptr<cpptoml::base> domainsQuality);
 
+    std::vector<std::chrono::microseconds>
+    parseSimulateSleepPerOp(std::vector<std::string> const& inputs);
+
     static SCPQuorumSet
     generateQuorumSetHelper(std::vector<ValidatorEntry>::const_iterator begin,
                             std::vector<ValidatorEntry>::const_iterator end,
