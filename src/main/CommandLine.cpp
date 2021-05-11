@@ -210,6 +210,12 @@ compactParser(bool& compact)
 }
 
 clara::Opt
+txstatsParser(bool& txstats)
+{
+    return clara::Opt{txstats}["--txstats"]("transaction stats");
+}
+
+clara::Opt
 base64Parser(bool& base64)
 {
     return clara::Opt{base64}["--base64"]("use base64");
@@ -900,12 +906,15 @@ runDumpXDR(CommandLineArgs const& args)
 {
     std::string xdr;
     bool compact = false;
+    bool txstats = false;
 
-    return runWithHelp(args, {compactParser(compact), fileNameParser(xdr)},
-                       [&] {
-                           dumpXdrStream(xdr, compact);
-                           return 0;
-                       });
+    return runWithHelp(
+        args,
+        {txstatsParser(txstats), compactParser(compact), fileNameParser(xdr)},
+        [&] {
+            dumpXdrStream(xdr, txstats, compact);
+            return 0;
+        });
 }
 
 int

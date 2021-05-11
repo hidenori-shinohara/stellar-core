@@ -59,8 +59,73 @@ dumpstream(XDRInputFileStream& in, bool compact)
     }
 }
 
+template <typename T>
+int
+findSize(T v)
+{
+    // explicit type name.
+    xdr::xvector<unsigned char, 4294967292U> opaque = xdr::xdr_to_opaque(v);
+    return opaque.size() * sizeof(unsigned char);
+}
+
+int round(int n, int m)
+{
+    return ((n + m - 1) / m) * m;
+}
+
 void
-dumpXdrStream(std::string const& filename, bool compact)
+dumpstreamTransactionHistoryEntry(XDRInputFileStream& in, bool txstats,
+                                  bool compact)
+{
+    TransactionHistoryEntry tmp;
+    cereal::JSONOutputArchive archive(
+        std::cout, compact ? cereal::JSONOutputArchive::Options::NoIndent()
+                           : cereal::JSONOutputArchive::Options::Default());
+    archive.makeArray();
+    while (in && in.readOne(tmp))
+    {
+        if (txstats)
+        {
+            for (auto tx : tmp.txSet.txs)
+            {
+                xdr::xvector<Operation,100> ops;
+                switch (tx.type())
+                {
+                case ENVELOPE_TYPE_TX_V0:
+                    ops = tx.v0().tx.operations;
+                    break;
+                case ENVELOPE_TYPE_TX:
+                    ops = tx.v1().tx.operations;
+                    break;
+                case ENVELOPE_TYPE_TX_FEE_BUMP:
+                    ops = tx.feeBump().tx.innerTx.v1().tx.operations;
+                    break;
+                default:
+                    abort();
+                }
+                int size = round(findSize(tx), 100); // round up to the nearest multiple of 100
+                int numops = ops.size();
+                // round up to the closest multiple of 10.
+                numops = round(numops, 10);
+                int opsizes = 0;
+                for (auto op : ops)
+                {
+                    opsizes += findSize(op);
+                }
+                // Round up to the nearest multiple of 20.
+                int avgOpSize = round(opsizes / ops.size(), 20);
+                std::cout << size << "," << numops << "," << avgOpSize << std::endl;
+            }
+        }
+        else
+        {
+            archive(tmp);
+        }
+    }
+}
+
+void
+dumpXdrStream(std::string const& filename, bool txstats, bool compact)
 {
     std::regex rx(
         ".*(ledger|bucket|transactions|results|scp)-[[:xdigit:]]+\\.xdr");
@@ -80,7 +145,7 @@ dumpXdrStream(std::string const& filename, bool compact)
         }
         else if (sm[1] == "transactions")
         {
-            dumpstream<TransactionHistoryEntry>(in, compact);
+            dumpstreamTransactionHistoryEntry(in, txstats, compact);
         }
         else if (sm[1] == "results")
         {
