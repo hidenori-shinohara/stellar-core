@@ -59,8 +59,43 @@ dumpstream(XDRInputFileStream& in, bool compact)
     }
 }
 
+template <typename T>
+int
+findSize(T v)
+{
+    // explicit type name.
+    xdr::xvector<unsigned char, 4294967292U> opaque = xdr::xdr_to_opaque(v);
+    return opaque.size() * sizeof(unsigned char);
+}
+
 void
-dumpXdrStream(std::string const& filename, bool compact)
+dumpstreamTransactionHistoryEntry(XDRInputFileStream& in, bool txstats,
+                                  bool compact)
+{
+    TransactionHistoryEntry tmp;
+    cereal::JSONOutputArchive archive(
+        std::cout, compact ? cereal::JSONOutputArchive::Options::NoIndent()
+                           : cereal::JSONOutputArchive::Options::Default());
+    archive.makeArray();
+    while (in && in.readOne(tmp))
+    {
+        if (txstats)
+        {
+            for (auto tx : tmp.txSet.txs)
+            {
+                int size = findSize(tx);
+                std::cout << size << std::endl;
+            }
+        }
+        else
+        {
+            archive(tmp);
+        }
+    }
+}
+
+void
+dumpXdrStream(std::string const& filename, bool txstats, bool compact)
 {
     std::regex rx(
         ".*(ledger|bucket|transactions|results|scp)-[[:xdigit:]]+\\.xdr");
@@ -80,7 +115,7 @@ dumpXdrStream(std::string const& filename, bool compact)
         }
         else if (sm[1] == "transactions")
         {
-            dumpstream<TransactionHistoryEntry>(in, compact);
+            dumpstreamTransactionHistoryEntry(in, txstats, compact);
         }
         else if (sm[1] == "results")
         {
