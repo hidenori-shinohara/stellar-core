@@ -9,7 +9,7 @@
 namespace stellar
 {
 
-void dumpXdrStream(std::string const& filename, bool json);
+void dumpXdrStream(std::string const& filename, bool txstats, bool json);
 void printXdr(std::string const& filename, std::string const& filetype,
               bool base64, bool compact, bool rawMode);
 void signtxn(std::string const& filename, std::string netId, bool base64);

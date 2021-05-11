@@ -60,7 +60,48 @@ dumpstream(XDRInputFileStream& in, bool compact)
 }
 
 void
-dumpXdrStream(std::string const& filename, bool compact)
+dumpstreamTransactionHistoryEntry(XDRInputFileStream& in, bool txstats,
+                                  bool compact)
+{
+    TransactionHistoryEntry tmp;
+    cereal::JSONOutputArchive archive(
+        std::cout, compact ? cereal::JSONOutputArchive::Options::NoIndent()
+                           : cereal::JSONOutputArchive::Options::Default());
+    archive.makeArray();
+    while (in && in.readOne(tmp))
+    {
+        if (txstats)
+        {
+            int numops = 0;
+            for (auto tx : tmp.txSet.txs)
+            {
+                switch (tx.type())
+                {
+                case ENVELOPE_TYPE_TX_V0:
+                    numops += tx.v0().tx.operations.size();
+                    break;
+                case ENVELOPE_TYPE_TX:
+                    numops += tx.v1().tx.operations.size();
+                    break;
+                case ENVELOPE_TYPE_TX_FEE_BUMP:
+                    numops += tx.feeBump().tx.innerTx.v1().tx.operations.size();
+                    break;
+                default:
+                    abort();
+                }
+            }
+            std::cout << tmp.ledgerSeq << "," << tmp.txSet.txs.size() << ","
+                      << numops << std::endl;
+        }
+        else
+        {
+            archive(tmp);
+        }
+    }
+}
+
+void
+dumpXdrStream(std::string const& filename, bool txstats, bool compact)
 {
     std::regex rx(
         ".*(ledger|bucket|transactions|results|scp)-[[:xdigit:]]+\\.xdr");
@@ -80,7 +121,7 @@ dumpXdrStream(std::string const& filename, bool compact)
         }
         else if (sm[1] == "transactions")
         {
-            dumpstream<TransactionHistoryEntry>(in, compact);
+            dumpstreamTransactionHistoryEntry(in, txstats, compact);
         }
         else if (sm[1] == "results")
         {
