@@ -68,11 +68,6 @@ findSize(T v)
     return opaque.size() * sizeof(unsigned char);
 }
 
-int round(int n, int m)
-{
-    return ((n + m - 1) / m) * m;
-}
-
 void
 dumpstreamTransactionHistoryEntry(XDRInputFileStream& in, bool txstats,
                                   bool compact)
@@ -103,17 +98,17 @@ dumpstreamTransactionHistoryEntry(XDRInputFileStream& in, bool txstats,
                 default:
                     abort();
                 }
-                int size = round(findSize(tx), 100); // round up to the nearest multiple of 100
+                int size = findSize(tx);
                 int numops = ops.size();
-                // round up to the closest multiple of 10 if larger than 10.
-                numops = numops >= 10 ? round(numops, 10) : numops;
                 int opsizes = 0;
                 for (auto op : ops)
                 {
                     opsizes += findSize(op);
                 }
-                // Round up to the nearest multiple of 20.
-                int avgOpSize = round(opsizes / ops.size(), 20);
+                // Round up to the nearest multiple of 4.
+                int avgOpSize = opsizes / ops.size();
+                while (avgOpSize != 4) avgOpSize ++;
+
                 std::cout << size << "," << numops << "," << avgOpSize << std::endl;
             }
         }
