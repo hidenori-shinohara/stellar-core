@@ -98,15 +98,7 @@ dumpstreamTransactionHistoryEntry(XDRInputFileStream& in, bool txstats,
                 default:
                     abort();
                 }
-                int size = findSize(tx);
-                int sizePerOp = size / numops;
-                // Round up to the nearest multiple of 4.
-                while (sizePerOp % 4 != 0)
-                    sizePerOp++;
-                for (int i = 0; i < numops; i++)
-                {
-                    std::cout << sizePerOp << std::endl;
-                }
+                std::cout << numops << std::endl;
             }
         }
         else
