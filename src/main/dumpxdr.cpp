@@ -105,8 +105,8 @@ dumpstreamTransactionHistoryEntry(XDRInputFileStream& in, bool txstats,
                 }
                 int size = round(findSize(tx), 100); // round up to the nearest multiple of 100
                 int numops = ops.size();
-                // round up to the closest multiple of 10.
-                numops = round(numops, 10);
+                // round up to the closest multiple of 10 if larger than 10.
+                numops = numops >= 10 ? round(numops, 10) : numops;
                 int opsizes = 0;
                 for (auto op : ops)
                 {
