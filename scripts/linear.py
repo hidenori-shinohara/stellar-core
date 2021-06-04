@@ -23,23 +23,47 @@ print("coef = {}".format(lr.coef_))
 print("intercept = {}".format(lr.intercept_))
 print("mse = {}".format(metrics.mean_squared_error(sizes, prediction)))
 
-# calculate the relative error
+# calculate the relative and absolute error
 
 def relativeError(a, b):
-    return int(100 * abs(a - b) / max(a, b))
+    e = int(100 * abs(a - b) / a)
+    return min(e, 100) # If off by more than 100%, just say 100%
 
-relativeErrorCounts = [0] * 100
+def absoluteError(a, b):
+    e = int(abs(a - b))
+    return min(e, 400) # If off by more than 400 bytes, just say 400 bytes
+
+
+relativeErrorCounts = [0] * 101
+absoluteErrorCounts = [0] * 401
 
 tot = 0
+smaller = 0
+larger = 0
 for i in range(len(prediction)):
     p = prediction[i][0]
     s = sizes[i][0]
+    if p + 50 > s:
+        larger += 1
+    else:
+        smaller += 1
     relativeErrorCounts[relativeError(p, s)] += 1
+    absoluteErrorCounts[absoluteError(p, s)] += 1
     tot += 1
 
+print("larger = {}, smaller = {}".format(larger, smaller))
+
 runningTotal = 0
-for i in range(100):
+for i in range(101):
     cnt = relativeErrorCounts[i]
     runningTotal += cnt
     percent = 100 * runningTotal / tot
     print("{:.2f}% of all txns have <= {}% error".format(percent, i))
+
+runningTotal = 0
+for i in range(401):
+    cnt = absoluteErrorCounts[i]
+    runningTotal += cnt
+    percent = 100 * runningTotal / tot
+    if i % 4 == 0: # Print every 4 bytes
+        print("{:.2f}% of all txns are off by <= {} bytes".format(percent, i))
