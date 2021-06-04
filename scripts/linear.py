@@ -39,19 +39,15 @@ absoluteErrorCounts = [0] * 401
 
 tot = 0
 smaller = 0
-larger = 0
 for i in range(len(prediction)):
     p = prediction[i][0]
     s = sizes[i][0]
-    if p + 50 > s:
-        larger += 1
-    else:
+    relativeErrorCounts[relativeError(s, p)] += 1
+    if s < 250:
         smaller += 1
-    relativeErrorCounts[relativeError(p, s)] += 1
     absoluteErrorCounts[absoluteError(p, s)] += 1
     tot += 1
-
-print("larger = {}, smaller = {}".format(larger, smaller))
+print("{:.2f}% is smaller than 250 bytes".format(100 * smaller / tot))
 
 runningTotal = 0
 for i in range(101):
