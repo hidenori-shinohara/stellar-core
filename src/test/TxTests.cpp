@@ -513,6 +513,15 @@ getAccountSigners(PublicKey const& k, Application& app)
     return account.current().data.account().signers;
 }
 
+template <typename T>
+int
+findSize(T v)
+{
+    // explicit type name.
+    xdr::xvector<unsigned char, 4294967292U> opaque = xdr::xdr_to_opaque(v);
+    return opaque.size() * sizeof(unsigned char);
+}
+
 TransactionFramePtr
 transactionFromOperationsV0(Application& app, SecretKey const& from,
                             SequenceNumber seq,
@@ -526,12 +535,16 @@ transactionFromOperationsV0(Application& app, SecretKey const& from,
                        (ops.size() * app.getLedgerManager().getLastTxFee()) &
                        UINT32_MAX);
     e.v0().tx.seqNum = seq;
+    std::cout << "the size: " << findSize(e) << std::endl;
     std::copy(std::begin(ops), std::end(ops),
               std::back_inserter(e.v0().tx.operations));
+    std::cout << "the size after adding " << ops.size() << " ops: " << findSize(e) << std::endl;
 
     auto res = std::static_pointer_cast<TransactionFrame>(
         TransactionFrameBase::makeTransactionFromWire(app.getNetworkID(), e));
+    std::cout << "the size of res->getEnvelop(): " << findSize(res->getEnvelope()) << std::endl;
     res->addSignature(from);
+    std::cout << "the size after adding a signature: " << findSize(res->getEnvelope()) << std::endl;
     return res;
 }
 
