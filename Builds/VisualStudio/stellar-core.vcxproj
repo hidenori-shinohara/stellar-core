@@ -18,6 +18,7 @@
     <ProjectGuid>{916B91AB-A300-422C-B9C2-D683924DC109}</ProjectGuid>
     <RootNamespace>stellar-core</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <UseNativeEnvironment>true</UseNativeEnvironment>
   </PropertyGroup>
   <PropertyGroup>
     <DisableFastUpToDateCheck>true</DisableFastUpToDateCheck>
@@ -621,6 +622,7 @@ exit /b 0
     <ClCompile Include="..\..\src\work\Work.cpp" />
     <ClCompile Include="..\..\src\work\WorkScheduler.cpp" />
     <ClCompile Include="..\..\src\work\WorkSequence.cpp" />
+    <ClCompile Include="..\..\src\work\WorkWithCallback.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\lib\catch.hpp" />
@@ -907,6 +909,7 @@ exit /b 0
     <ClInclude Include="..\..\src\work\Work.h" />
     <ClInclude Include="..\..\src\work\WorkScheduler.h" />
     <ClInclude Include="..\..\src\work\WorkSequence.h" />
+    <ClInclude Include="..\..\src\work\WorkWithCallback.h" />
     <ClInclude Include="src\generated\xdr\Stellar-ledger-entries.h" />
     <ClInclude Include="src\generated\xdr\Stellar-ledger.h" />
     <ClInclude Include="src\generated\xdr\Stellar-overlay.h" />

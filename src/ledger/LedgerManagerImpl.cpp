@@ -126,6 +126,8 @@ LedgerManagerImpl::LedgerManagerImpl(Application& app)
           {"ledger", "age", "closed"}, {5000.0, 7000.0, 10000.0, 20000.0}))
     , mLedgerAge(
           app.getMetrics().NewCounter({"ledger", "age", "current-seconds"}))
+    , mMetaStreamWriteTime(
+          app.getMetrics().NewTimer({"ledger", "metastream", "write"}))
     , mLastClose(mApp.getClock().now())
     , mCatchupDuration(
           app.getMetrics().NewTimer({"ledger", "catchup", "duration"}))
@@ -180,7 +182,7 @@ LedgerManagerImpl::getState() const
 std::string
 LedgerManagerImpl::getStateHuman() const
 {
-    static const char* stateStrings[LM_NUM_STATE] = {
+    static std::array<const char*, LM_NUM_STATE> stateStrings = std::array{
         "LM_BOOTING_STATE", "LM_SYNCED_STATE", "LM_CATCHING_UP_STATE"};
     return std::string(stateStrings[getState()]);
 }
@@ -511,6 +513,7 @@ LedgerManagerImpl::emitNextMeta()
 {
     releaseAssert(mNextMetaToEmit);
     releaseAssert(mMetaStream);
+    auto streamWrite = mMetaStreamWriteTime.TimeScope();
     mMetaStream->writeOne(*mNextMetaToEmit);
     mMetaStream->flush();
     mNextMetaToEmit.reset();
@@ -740,17 +743,24 @@ LedgerManagerImpl::closeLedger(LedgerCloseData const& ledgerData)
     // step 4
     mApp.getBucketManager().forgetUnreferencedBuckets();
 
-    // Maybe sleep for parameterized amount of time in simulation mode
-    auto sleepFor = std::chrono::microseconds{
-        mApp.getConfig().OP_APPLY_SLEEP_TIME_FOR_TESTING * txSet->sizeOp()};
-    std::chrono::microseconds applicationTime =
-        closeLedgerTime.checkElapsedTime();
-    if (applicationTime < sleepFor)
+    if (!mApp.getConfig().getOpApplySleepTimeForTesting().empty())
     {
-        sleepFor -= applicationTime;
-        CLOG_DEBUG(Perf, "Simulate application: sleep for {} microseconds",
-                   sleepFor.count());
-        std::this_thread::sleep_for(sleepFor);
+        // Sleep for a parameterized amount of time in simulation mode
+        std::chrono::microseconds sleepFor{0};
+        for (size_t i = 0; i < txSet->sizeOp(); i++)
+        {
+            sleepFor +=
+                rand_element(mApp.getConfig().getOpApplySleepTimeForTesting());
+        }
+        std::chrono::microseconds applicationTime =
+            closeLedgerTime.checkElapsedTime();
+        if (applicationTime < sleepFor)
+        {
+            sleepFor -= applicationTime;
+            CLOG_DEBUG(Perf, "Simulate application: sleep for {} microseconds",
+                       sleepFor.count());
+            std::this_thread::sleep_for(sleepFor);
+        }
     }
 
     std::chrono::duration<double> ledgerTimeSeconds = ledgerTime.Stop();

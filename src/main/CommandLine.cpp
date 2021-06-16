@@ -609,7 +609,6 @@ runCatchup(CommandLineArgs const& args)
     std::string archive;
     std::string trustedCheckpointHashesFile;
     bool completeValidation = false;
-    bool replayInMemory = false;
     bool inMemory = false;
     bool forceBack = false;
     uint32_t startAtLedger = 0;
@@ -659,11 +658,6 @@ runCatchup(CommandLineArgs const& args)
             "verify all files from the archive for the catchup range");
     };
 
-    auto replayInMemoryParser = [](bool& replayInMemory) {
-        return clara::Opt{replayInMemory}["--replay-in-memory"](
-            "deprecated: use --in-memory flag, common to 'catchup' and 'run'");
-    };
-
     auto forceBackParser = [](bool& forceBackClean) {
         return clara::Opt{forceBackClean}["--force-back"](
             "force ledger state to a previous state, preserving older "
@@ -676,8 +670,7 @@ runCatchup(CommandLineArgs const& args)
          catchupArchiveParser,
          trustedCheckpointHashesParser(trustedCheckpointHashesFile),
          outputFileParser(outputFile), disableBucketGCParser(disableBucketGC),
-         validationParser(completeValidation),
-         replayInMemoryParser(replayInMemory), inMemoryParser(inMemory),
+         validationParser(completeValidation), inMemoryParser(inMemory),
          startAtLedgerParser(startAtLedger), startAtHashParser(startAtHash),
          metadataOutputStreamParser(stream), forceBackParser(forceBack)},
         [&] {
@@ -699,15 +692,15 @@ runCatchup(CommandLineArgs const& args)
                 config.AUTOMATIC_MAINTENANCE_COUNT = MAINTENANCE_LEDGER_COUNT;
             }
 
-            maybeEnableInMemoryMode(config, (inMemory || replayInMemory),
-                                    startAtLedger, startAtHash,
+            maybeEnableInMemoryMode(config, inMemory, startAtLedger,
+                                    startAtHash,
                                     /* persistMinimalData */ false);
             maybeSetMetadataOutputStream(config, stream);
 
             VirtualClock clock(VirtualClock::REAL_TIME);
             int result;
             {
-                auto app = Application::create(clock, config, replayInMemory);
+                auto app = Application::create(clock, config, inMemory);
                 auto const& ham = app->getHistoryArchiveManager();
                 auto archivePtr = ham.getHistoryArchive(archive);
                 if (iequals(archive, "any"))
@@ -780,8 +773,7 @@ runCatchup(CommandLineArgs const& args)
                     LOG_INFO(
                         DEFAULT_LOG,
                         "Resetting ledger state to genesis before catching up");
-                    auto& lsRoot = app->getLedgerTxnRoot();
-                    lsRoot.deleteObjectsModifiedOnOrAfterLedger(0);
+                    app->resetLedgerState();
                     lm.startNewLedger();
                 }
 
@@ -1087,25 +1079,18 @@ run(CommandLineArgs const& args)
 {
     CommandLine::ConfigOption configOption;
     auto disableBucketGC = false;
-    uint32_t simulateSleepPerOp = 0;
     std::string stream;
     bool inMemory = false;
     bool waitForConsensus = false;
     uint32_t startAtLedger = 0;
     std::string startAtHash;
 
-    auto simulateParser = [](uint32_t& simulateSleepPerOp) {
-        return clara::Opt{simulateSleepPerOp,
-                          "MICROSECONDS"}["--simulate-apply-per-op"](
-            "simulate application time per operation");
-    };
-
     return runWithHelp(
         args,
         {configurationParser(configOption),
          disableBucketGCParser(disableBucketGC),
-         simulateParser(simulateSleepPerOp), metadataOutputStreamParser(stream),
-         inMemoryParser(inMemory), waitForConsensusParser(waitForConsensus),
+         metadataOutputStreamParser(stream), inMemoryParser(inMemory),
+         waitForConsensusParser(waitForConsensus),
          startAtLedgerParser(startAtLedger), startAtHashParser(startAtHash)},
         [&] {
             Config cfg;
@@ -1118,10 +1103,11 @@ run(CommandLineArgs const& args)
                 // First, craft and validate the configuration
                 cfg = configOption.getConfig();
                 cfg.DISABLE_BUCKET_GC = disableBucketGC;
-                if (simulateSleepPerOp > 0)
+
+                if (!cfg.OP_APPLY_SLEEP_TIME_DURATION_FOR_TESTING.empty() ||
+                    !cfg.OP_APPLY_SLEEP_TIME_WEIGHT_FOR_TESTING.empty())
                 {
                     cfg.DATABASE = SecretValue{"sqlite3://:memory:"};
-                    cfg.OP_APPLY_SLEEP_TIME_FOR_TESTING = simulateSleepPerOp;
                     cfg.MODE_STORES_HISTORY_MISC = false;
                     cfg.MODE_USES_IN_MEMORY_LEDGER = false;
                     cfg.MODE_ENABLES_BUCKETLIST = false;

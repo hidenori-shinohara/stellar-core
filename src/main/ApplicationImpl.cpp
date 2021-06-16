@@ -12,6 +12,7 @@
 #include "util/asio.h"
 #include "bucket/Bucket.h"
 #include "bucket/BucketManager.h"
+#include "catchup/ApplyBucketsWork.h"
 #include "crypto/SHA.h"
 #include "crypto/SecretKey.h"
 #include "database/Database.h"
@@ -29,6 +30,7 @@
 #include "ledger/InMemoryLedgerTxnRoot.h"
 #include "ledger/LedgerManager.h"
 #include "ledger/LedgerTxn.h"
+#include "main/ApplicationUtils.h"
 #include "main/CommandHandler.h"
 #include "main/ExternalQueue.h"
 #include "main/Maintainer.h"
@@ -133,8 +135,86 @@ ApplicationImpl::ApplicationImpl(VirtualClock& clock, Config const& cfg)
     }
 }
 
+static void
+maybeRebuildLedger(Application& app, bool applyBuckets)
+{
+    std::set<LedgerEntryType> toRebuild;
+    auto& ps = app.getPersistentState();
+    for (auto let : xdr::xdr_traits<LedgerEntryType>::enum_values())
+    {
+        LedgerEntryType t = static_cast<LedgerEntryType>(let);
+        if (ps.shouldRebuildForType(t))
+        {
+            toRebuild.emplace(t);
+        }
+    }
+    if (toRebuild.empty())
+    {
+        return;
+    }
+
+    if (!app.getConfig().MODE_USES_IN_MEMORY_LEDGER)
+    {
+        app.getDatabase().clearPreparedStatementCache();
+        soci::transaction tx(app.getDatabase().getSession());
+
+        for (auto let : toRebuild)
+        {
+            switch (let)
+            {
+            case ACCOUNT:
+                LOG_INFO(DEFAULT_LOG, "Dropping accounts");
+                app.getLedgerTxnRoot().dropAccounts();
+                break;
+            case TRUSTLINE:
+                LOG_INFO(DEFAULT_LOG, "Dropping trustlines");
+                app.getLedgerTxnRoot().dropTrustLines();
+                break;
+            case OFFER:
+                LOG_INFO(DEFAULT_LOG, "Dropping offers");
+                app.getLedgerTxnRoot().dropOffers();
+                break;
+            case DATA:
+                LOG_INFO(DEFAULT_LOG, "Dropping accountdata");
+                app.getLedgerTxnRoot().dropData();
+                break;
+            case CLAIMABLE_BALANCE:
+                LOG_INFO(DEFAULT_LOG, "Dropping claimablebalances");
+                app.getLedgerTxnRoot().dropClaimableBalances();
+                break;
+            default:
+                abort();
+            }
+        }
+
+        tx.commit();
+    }
+
+    // No transaction is needed. ApplyBucketsWork breaks the apply into many
+    // small chunks, each of which has its own transaction. If it fails at some
+    // point in the middle, then rebuildledger will not be cleared so this will
+    // run again on next start up.
+    if (applyBuckets)
+    {
+        LOG_INFO(DEFAULT_LOG, "Rebuilding ledger tables by applying buckets");
+        auto filter = [&toRebuild](LedgerEntryType t) {
+            return toRebuild.find(t) != toRebuild.end();
+        };
+        if (!applyBucketsForLCL(app, filter))
+        {
+            throw std::runtime_error("Could not rebuild ledger tables");
+        }
+        LOG_INFO(DEFAULT_LOG, "Successfully rebuilt ledger tables");
+    }
+
+    for (auto let : toRebuild)
+    {
+        ps.clearRebuildForType(let);
+    }
+}
+
 void
-ApplicationImpl::initialize(bool createNewDB)
+ApplicationImpl::initialize(bool createNewDB, bool forceRebuild)
 {
     // Subtle: initialize the bucket manager first before initializing the
     // database. This is needed as some modes in core (such as in-memory) use a
@@ -159,24 +239,13 @@ ApplicationImpl::initialize(bool createNewDB)
     mHistoryManager = HistoryManager::create(*this);
     mInvariantManager = createInvariantManager();
     mMaintainer = std::make_unique<Maintainer>(*this);
-    mCommandHandler = std::make_unique<CommandHandler>(*this);
     mWorkScheduler = WorkScheduler::create(*this);
     mBanManager = BanManager::create(*this);
     mStatusManager = std::make_unique<StatusManager>();
 
-#ifdef BEST_OFFER_DEBUGGING
-    auto const bestOfferDebuggingEnabled = mConfig.BEST_OFFER_DEBUGGING_ENABLED;
-#endif
-
     if (getConfig().MODE_USES_IN_MEMORY_LEDGER)
     {
-        mLedgerTxnRoot = std::make_unique<InMemoryLedgerTxnRoot>(
-#ifdef BEST_OFFER_DEBUGGING
-            bestOfferDebuggingEnabled
-#endif
-        );
-        mNeverCommittingLedgerTxn =
-            std::make_unique<LedgerTxn>(*mLedgerTxnRoot);
+        resetLedgerState();
     }
     else
     {
@@ -191,7 +260,7 @@ ApplicationImpl::initialize(bool createNewDB)
             *mDatabase, mConfig.ENTRY_CACHE_SIZE, mConfig.PREFETCH_BATCH_SIZE
 #ifdef BEST_OFFER_DEBUGGING
             ,
-            bestOfferDebuggingEnabled
+            mConfig.BEST_OFFER_DEBUGGING_ENABLED
 #endif
         );
     }
@@ -210,22 +279,64 @@ ApplicationImpl::initialize(bool createNewDB)
     }
     else
     {
-        mDatabase->upgradeToCurrentSchema();
+        upgradeToCurrentSchemaAndMaybeRebuildLedger(true, forceRebuild);
     }
 
     // Subtle: process manager should come to existence _after_ BucketManager
     // initialization and newDB run, as it relies on tmp dir created in the
     // constructor
     mProcessManager = ProcessManager::create(*this);
+
+    // After everything is initialized, start accepting HTTP commands
+    mCommandHandler = std::make_unique<CommandHandler>(*this);
+
     LOG_DEBUG(DEFAULT_LOG, "Application constructed");
+}
+
+void
+ApplicationImpl::resetLedgerState()
+{
+    if (getConfig().MODE_USES_IN_MEMORY_LEDGER)
+    {
+        mNeverCommittingLedgerTxn.reset();
+        mLedgerTxnRoot = std::make_unique<InMemoryLedgerTxnRoot>(
+#ifdef BEST_OFFER_DEBUGGING
+            mConfig.BEST_OFFER_DEBUGGING_ENABLED
+#endif
+        );
+        mNeverCommittingLedgerTxn =
+            std::make_unique<LedgerTxn>(*mLedgerTxnRoot);
+    }
+    else
+    {
+        auto& lsRoot = getLedgerTxnRoot();
+        lsRoot.deleteObjectsModifiedOnOrAfterLedger(0);
+    }
 }
 
 void
 ApplicationImpl::newDB()
 {
     mDatabase->initialize();
-    mDatabase->upgradeToCurrentSchema();
+    upgradeToCurrentSchemaAndMaybeRebuildLedger(false, true);
     mLedgerManager->startNewLedger();
+}
+
+void
+ApplicationImpl::upgradeToCurrentSchemaAndMaybeRebuildLedger(bool applyBuckets,
+                                                             bool forceRebuild)
+{
+    if (forceRebuild)
+    {
+        auto& ps = getPersistentState();
+        for (auto let : xdr::xdr_traits<LedgerEntryType>::enum_values())
+        {
+            ps.setRebuildForType(static_cast<LedgerEntryType>(let));
+        }
+    }
+
+    mDatabase->upgradeToCurrentSchema();
+    maybeRebuildLedger(*this, applyBuckets);
 }
 
 void
@@ -688,29 +799,31 @@ ApplicationImpl::targetManualCloseLedgerSeqNum(
     std::optional<uint32_t> const& explicitlyProvidedSeqNum)
 {
     auto const startLedgerSeq = getLedgerManager().getLastClosedLedgerNum();
+    // -1: after externalizing we want to make sure that we don't reason about
+    // ledgers that overflow int32
+    auto const maxLedgerSeq =
+        static_cast<uint32>(std::numeric_limits<int32_t>::max() - 1);
 
     // The "scphistory" stores ledger sequence numbers as INTs.
-    if (startLedgerSeq >=
-        static_cast<uint32>(std::numeric_limits<int32_t>::max()))
+    if (startLedgerSeq >= maxLedgerSeq)
     {
-        throw std::invalid_argument(fmt::format(
-            FMT_STRING(
-                "Manually closed ledger sequence number ({}) already at max"),
-            startLedgerSeq));
+        throw std::invalid_argument(
+            fmt::format(FMT_STRING("Manually closed ledger sequence number "
+                                   "({}) already at max ({})"),
+                        startLedgerSeq, maxLedgerSeq));
     }
 
     auto const nextLedgerSeq = startLedgerSeq + 1;
 
     if (explicitlyProvidedSeqNum)
     {
-        if (*explicitlyProvidedSeqNum >
-            static_cast<uint32>(std::numeric_limits<int32_t>::max()))
+        if (*explicitlyProvidedSeqNum > maxLedgerSeq)
         {
             // The "scphistory" stores ledger sequence numbers as INTs.
             throw std::invalid_argument(fmt::format(
-                FMT_STRING("Manual close ledger sequence number {} beyond max"),
-                *explicitlyProvidedSeqNum,
-                std::numeric_limits<int32_t>::max()));
+                FMT_STRING(
+                    "Manual close ledger sequence number {} beyond max ({})"),
+                *explicitlyProvidedSeqNum, maxLedgerSeq));
         }
 
         if (*explicitlyProvidedSeqNum <= startLedgerSeq)
@@ -884,9 +997,9 @@ ApplicationImpl::getState() const
 std::string
 ApplicationImpl::getStateHuman() const
 {
-    static const char* stateStrings[APP_NUM_STATE] = {
-        "Booting",     "Joining SCP", "Connected",
-        "Catching up", "Synced!",     "Stopping"};
+    static std::array<const char*, APP_NUM_STATE> stateStrings =
+        std::array{"Booting",     "Joining SCP", "Connected",
+                   "Catching up", "Synced!",     "Stopping"};
     return std::string(stateStrings[getState()]);
 }
 
